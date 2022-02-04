@@ -12,33 +12,34 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+    protected $fillable = ['name','email','password'];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
-}
+    protected $hidden   = ['password','remember_token'];
+    
+    protected $casts    = ['email_verified_at' => 'datetime'];
+
+    protected $appends  = ['image_path'];
+
+    //attributes----------------------------------
+    public function getImagePathAttribute()
+    {
+        return asset('storage/' . $this->image);
+
+    }//end of get image path
+
+
+    //scopes -------------------------------------
+    public function scopeWhenSearch($query , $search) 
+    {
+        return $query->when($search, function ($q) use ($search) {
+
+            return $q->where('name' , 'like', "%$search%")
+            ->orWhere('phone', 'like', "%$search%");
+        });
+        
+    }//end o fscopeWhenSearch`
+
+    //relations ----------------------------------
+    
+}//end of model
