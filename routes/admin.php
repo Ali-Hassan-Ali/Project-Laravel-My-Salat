@@ -6,6 +6,7 @@ use App\Http\Controllers\Dashboard\Admin\Auth\AuthController;
 
 use App\Http\Controllers\Dashboard\Admin\WelcomController;
 use App\Http\Controllers\Dashboard\Admin\AdminController;
+use App\Http\Controllers\Dashboard\Admin\OwnerController;
 use App\Http\Controllers\Dashboard\Admin\CategoreyController;
 
 
@@ -18,6 +19,8 @@ Route::prefix('dashboard/admin')->name('dashboard.admin.')->middleware('auth:adm
         Route::get('/', [WelcomController::class,'index'])->name('welcome');
 
         Route::resource('admins', AdminController::class)->except('show');
+
+        Route::resource('owners', OwnerController::class)->except('show');
 
         Route::resource('categoreys', CategoreyController::class)->except('show');
 

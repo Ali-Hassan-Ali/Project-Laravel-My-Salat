@@ -32,8 +32,6 @@
     <div class="account-content">
         <div class="scrollspy-example" data-spy="scroll" data-target="#account-settings-scroll" data-offset="-100">
             <div class="row">
-
-                @include('partials._errors')
                 
                 <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
                     <form action="{{ route('dashboard.admin.admins.store') }}" method="POST" enctype="multipart/form-data" class="section general-info">
@@ -48,7 +46,7 @@
                                         <div class="col-xl-2 col-lg-12 col-md-4">
                                             <div class="upload mt-4 pr-md-4">
                                                 <input type="file" name="image" id="input-file-max-fs" class="dropify" 
-                                                data-default-file="{{ asset('dashboard_admin_files/assets/img/200x200.jpg') }}" 
+                                                data-default-file="{{ asset('uploads/default.png') }}" 
                                                 data-max-file-size="2M"/>
                                                 <p class="mt-2">
                                                     <i class="flaticon-cloud-upload mr-1"></i> 
@@ -62,25 +60,37 @@
                                                     <div class="col-sm-6">
                                                         <div class="form-group">
                                                             <label for="fullName">Full Name</label>
-                                                            <input type="text" name="name" class="form-control mb-4" placeholder="Full Name" value="{{ old('name') }}">
+                                                            <input type="text" name="name" class="form-control @error('name') is-invalid @enderror mb-4" placeholder="Full Name" value="{{ old('name') }}">
+                                                            @error('name')
+                                                                <p class="text-danger">{{ $message }}</p>
+                                                            @enderror
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-6">
                                                         <div class="form-group">
                                                             <label for="fullName">email</label>
-                                                            <input type="email" name="email" class="form-control mb-4" placeholder="enter email" value="{{ old('email') }}">
+                                                            <input type="email" name="email" class="form-control @error('email') is-invalid @enderror mb-4" placeholder="enter email" value="{{ old('email') }}">
+                                                            @error('email')
+                                                                <p class="text-danger">{{ $message }}</p>
+                                                            @enderror
                                                         </div>
                                                     </div>
                                                     <div class="col-12">
                                                         <div class="form-group">
                                                             <label for="fullName">phone</label>
-                                                            <input type="number" name="phone" class="form-control mb-4" placeholder="enter phone" value="{{ old('phone') }}">
+                                                            <input type="number" name="phone" class="form-control @error('phone') is-invalid @enderror mb-4" placeholder="enter phone" value="{{ old('phone') }}">
+                                                            @error('phone')
+                                                                <p class="text-danger">{{ $message }}</p>
+                                                            @enderror
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-6">
                                                         <div class="form-group">
                                                             <label for="fullName">password</label>
-                                                            <input type="password" name="password" class="form-control mb-4" placeholder="enter Name" value="{{ old('password') }}">
+                                                            <input type="password" name="password" class="form-control @error('password') is-invalid @enderror mb-4" placeholder="enter Name" value="{{ old('password') }}">
+                                                            @error('password')
+                                                                <p class="text-danger">{{ $message }}</p>
+                                                            @enderror
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-6">

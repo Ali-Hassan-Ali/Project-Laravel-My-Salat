@@ -10,20 +10,9 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {   
-    public function __construct()
-    {
-        // $this->middleware('admin');
-
-    }//end of __construct admin
     
     public function index()
     {
-        if (!auth()->guard('admin')->check()) {
-            
-            return view('dashboard_admin.auth.login');
-
-        }//end of if
-
         $admins = Admin::all();
 
         return view('dashboard_admin.admins.index', compact('admins'));
@@ -32,13 +21,7 @@ class AdminController extends Controller
 
     
     public function create()
-    {
-        if (!auth()->guard('admin')->check()) {
-            
-            return view('dashboard_admin.auth.login');
-
-        }//end of if
-        
+    {        
         return view('dashboard_admin.admins.create');
 
     }//end of create
@@ -50,9 +33,9 @@ class AdminController extends Controller
          $request->validate([
             'name'        => ['required','max:255'],
             'email'       => ['required','unique:users'],
-            'image'       => 'image|mimes:jpg,png,jpeg,gif,TIF,ICO,PSD,WebP|max:2048',
+            'image'       => ['required','image'],
+            'phone'       => ['required','max:11','min:8'],
             'password'    => ['required','confirmed'],
-            // 'permissions' => ['required','min:1'],
         ]);
 
         try {
@@ -97,8 +80,7 @@ class AdminController extends Controller
         $request->validate([
             'name'        => ['required','max:255'],
             'email'       => ['required', Rule::unique('admins')->ignore($admin->id)],
-            // 'password'    => ['required','confirmed'],
-            // 'permissions' => ['required','min:1'],
+            'phone'       => ['required','max:11','min:8'],
         ]);
 
         try {

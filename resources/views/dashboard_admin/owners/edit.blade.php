@@ -1,6 +1,6 @@
-@extends('dashboard_admin.layout.master')
+@extends('dashboard_owner.layout.master')
 
-@section('title', __('dashboard.admins'))
+@section('title', __('dashboard.owners'))
 
 @section('content')
 
@@ -12,13 +12,13 @@
         <nav class="breadcrumb-one" aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
-                    <a href="{{ route('dashboard.admin.welcome') }}">
+                    <a href="{{ route('dashboard.owner.welcome') }}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home">
                         <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                         <polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
                     </a>
                 </li>
-                <li class="breadcrumb-item"><a href="{{ route('dashboard.admin.admins.index') }}">admin</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('dashboard.admin.owners.index') }}">owner</a></li>
                 <li class="breadcrumb-item active" aria-current="page"><span>create</span></li>
             </ol>
         </nav>
@@ -33,19 +33,19 @@
         <div class="scrollspy-example" data-spy="scroll" data-target="#account-settings-scroll" data-offset="-100">
             <div class="row">
                 <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
-                    <form method="post" action="{{ route('dashboard.admin.admins.update', $admin->id) }}" enctype="multipart/form-data" class="section general-info">
+                    <form method="post" action="{{ route('dashboard.admin.owners.update', $owner->id) }}" enctype="multipart/form-data" class="section general-info">
                           @csrf
                           @method('put')
 
                         <div class="info">
-                            <h6 class="">create new admin</h6>
+                            <h6 class="">create new owner</h6>
                             <div class="row">
                                 <div class="col-lg-11 mx-auto">
                                     <div class="row">
                                         <div class="col-xl-2 col-lg-12 col-md-4">
                                             <div class="upload mt-4 pr-md-4">
                                                 <input type="file" name="image" id="input-file-max-fs" class="dropify" 
-                                                data-default-file="{{ $admin->image_path }}" 
+                                                data-default-file="{{ $owner->image_path }}" 
                                                 data-max-file-size="2M"/>
                                                 <p class="mt-2">
                                                     <i class="flaticon-cloud-upload mr-1"></i> 
@@ -59,7 +59,7 @@
                                                     <div class="col-sm-6">
                                                         <div class="form-group">
                                                             <label for="fullName">Full Name</label>
-                                                            <input type="text" name="name" class="form-control @error('name') is-invalid @enderror mb-4" placeholder="Full Name" value="{{ $admin->name }}">
+                                                            <input type="text" name="name" class="form-control @error('name') is-invalid @enderror mb-4" placeholder="Full Name" value="{{ $owner->name }}">
                                                             @error('name')
                                                                 <p class="text-danger">{{ $message }}</p>
                                                             @enderror
@@ -68,7 +68,7 @@
                                                     <div class="col-sm-6">
                                                         <div class="form-group">
                                                             <label for="fullName">Full email</label>
-                                                            <input type="email" name="email" class="form-control @error('email') is-invalid @enderror mb-4" placeholder="enter email" value="{{ $admin->email }}">
+                                                            <input type="email" name="email" class="form-control @error('email') is-invalid @enderror mb-4" placeholder="enter email" value="{{ $owner->email }}">
                                                             @error('email')
                                                                 <p class="text-danger">{{ $message }}</p>
                                                             @enderror
@@ -77,7 +77,7 @@
                                                     <div class="col-12">
                                                         <div class="form-group">
                                                             <label for="fullName">phone</label>
-                                                            <input type="number" name="phone" class="form-control @error('phone') is-invalid @enderror mb-4" placeholder="enter phone" value="{{ $admin->phone }}">
+                                                            <input type="number" name="phone" class="form-control @error('phone') is-invalid @enderror mb-4" placeholder="enter phone" value="{{ $owner->phone }}">
                                                             @error('phone')
                                                                 <p class="text-danger">{{ $message }}</p>
                                                             @enderror
