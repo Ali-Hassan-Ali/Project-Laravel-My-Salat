@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard;
+namespace App\Http\Controllers\Dashboard\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
@@ -12,12 +12,18 @@ class AdminController extends Controller
 {   
     public function __construct()
     {
-        $this->middleware('admin');
+        // $this->middleware('admin');
 
     }//end of __construct admin
     
     public function index()
     {
+        if (!auth()->guard('admin')->check()) {
+            
+            return view('dashboard_admin.auth.login');
+
+        }//end of if
+
         $admins = Admin::all();
 
         return view('dashboard_admin.admins.index', compact('admins'));
@@ -27,6 +33,12 @@ class AdminController extends Controller
     
     public function create()
     {
+        if (!auth()->guard('admin')->check()) {
+            
+            return view('dashboard_admin.auth.login');
+
+        }//end of if
+        
         return view('dashboard_admin.admins.create');
 
     }//end of create

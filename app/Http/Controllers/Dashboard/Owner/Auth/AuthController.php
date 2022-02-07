@@ -1,20 +1,17 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard\Auth;
+namespace App\Http\Controllers\Dashboard\Owner\Auth;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
-use App\Models\Admin;
 
 class AuthController extends Controller
 {
     public function index()
     {
-        if (!auth()->guard('admin')->check()) {
+        if (!auth()->guard('owner')->check()) {
             
-            return view('dashboard_admin.auth.login');
+            return view('dashboard_owner.auth.login');
 
         }//end of if
 
@@ -34,13 +31,11 @@ class AuthController extends Controller
 
             $credentials = $request->only('email', 'password');
 
-            $auth = auth()->guard('admin')->attempt($credentials);
-
-            return auth()->guard('admin')->user()->name;
+            $auth = auth()->guard('owner')->attempt($credentials);
 
             if ($auth) {
 
-                return view('dashboard_admin.welcome');
+                return redirect()->route('dashboard.owner.welcome');
 
             }//end of auth
 
@@ -87,12 +82,13 @@ class AuthController extends Controller
 
     }//end of login store function
 
-    public function seller_logout()
+    public function admin_logout()
     {
         auth()->guard('admin')->logout();
 
-        notify()->success( __('dashboard.login_successfully'));
-        return redirect()->route('dashboard.admin.login');
+        // notify()->success( __('dashboard.login_successfully'));
+        session()->flash('success', __('dashboard.login_successfully'));
+        return view('dashboard_admin.auth.login');
 
     }//end of logout admin
 
@@ -142,4 +138,4 @@ class AuthController extends Controller
 
     }//end of update profile
 
-}//end of controller
+}//end of index

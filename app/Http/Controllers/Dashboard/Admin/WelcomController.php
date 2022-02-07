@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard;
+namespace App\Http\Controllers\Dashboard\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -8,12 +8,6 @@ use Illuminate\Http\Request;
 class WelcomController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->middleware('admin');
-
-    }//end of __construct admin
-    
     public function index()
     {
         return view('dashboard_admin.welcome');
