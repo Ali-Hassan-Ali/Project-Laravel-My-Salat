@@ -6,7 +6,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     
-    return 'welcome'; 
+    return auth()->guard('owner')->user()->banner->id;
+
+    return App\Models\Owner::with('banner')->first(); 
     return auth()->guard('admin')->logout();
     return auth()->guard('admin')->user()->name;
     return view('welcome');

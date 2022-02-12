@@ -27,21 +27,41 @@
     <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM STYLES -->
     <link href="{{ asset('dashboard_admin_files/plugins/apex/apexcharts.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('dashboard_admin_files/plugins/dropify/dropify.min.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('dashboard_admin_files/assets/css/dashboard/dash_1.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('dashboard_admin_files/assets/css/tables/breadcrumb.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('dashboard_admin_files/assets/css/users/account-setting.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('dashboard_admin_files/assets/css/dashboard/dash_1.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('dashboard_admin_files/assets/css/tables/breadcrumb.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('dashboard_admin_files/assets/css/users/account-setting.css') }}" rel="stylesheet" type="text/css"/>
+    
+    <link href="{{ asset('dashboard_admin_files/plugins/file-upload/file-upload-with-preview.min.css') }}" rel="stylesheet" type="text/css"/>
+
+    <link href="{{ asset('dashboard_admin_files/plugins/notification/snackbar/snackbar.min.css') }}" rel="stylesheet" type="text/css"/>
     <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
+
+    <!-- BEGIN PAGE LEVEL STYLE -->
+    <link href="{{ asset('dashboard_admin_files/plugins/fullcalendar/fullcalendar.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('dashboard_admin_files/plugins/fullcalendar/custom-fullcalendar.advance.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('dashboard_admin_files/plugins/flatpickr/flatpickr.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('dashboard_admin_files/plugins/flatpickr/custom-flatpickr.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('dashboard_admin_files/assets/css/forms/theme-checkbox-radio.css') }}" rel="stylesheet" type="text/css" />
+
+    {{-- fonts.googleapis --}}
+    <link href="https://fonts.googleapis.com/css?family=Cairo:400,700" rel="stylesheet">
+
+    <style>
+        body, h1, h2, h3, h4, h5, h6 {
+            font-family: 'Cairo', sans-serif !important;
+        }
+    </style>
 
 </head>
 {{-- alt-menu open meun --}}
 <body class="sidebar-noneoverflow">
 
     <!-- BEGIN LOADER -->
-    {{-- @include('dashboard_admin.Layout.include._loader') --}}
+    {{-- @include('dashboard_owner.Layout.include._loader') --}}
     <!--  END LOADER -->
 
     <!--  BEGIN NAVBAR  -->
-    @include('dashboard_admin.Layout.include._header')
+    @include('dashboard_owner.Layout.include._header')
     <!--  END NAVBAR  -->
 
     <!--  BEGIN MAIN CONTAINER  -->
@@ -51,7 +71,7 @@
         <div class="search-overlay"></div>
 
         <!--  BEGIN SIDEBAR  -->
-        @include('dashboard_admin.Layout.include._sidebar')
+        @include('dashboard_owner.Layout.include._sidebar')
         <!--  END SIDEBAR  -->
         
         <!--  BEGIN CONTENT AREA  -->
@@ -67,7 +87,6 @@
     </div>
     <!-- END MAIN CONTAINER -->
 
-    @include('partials._session')
 
     <!-- BEGIN GLOBAL MANDATORY SCRIPTS -->
     <script src="{{ asset('dashboard_admin_files/assets/js/libs/jquery-3.1.1.min.js') }}"></script>
@@ -75,11 +94,6 @@
     <script src="{{ asset('dashboard_admin_files/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('dashboard_admin_files/plugins/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
     <script src="{{ asset('dashboard_admin_files/assets/js/app.js') }}"></script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            App.init();
-        });
-    </script>
     <script src="{{ asset('dashboard_admin_files/assets/js/custom.js') }}"></script>
     <!-- END GLOBAL MANDATORY SCRIPTS -->
 
@@ -90,8 +104,38 @@
     <script src="{{ asset('dashboard_admin_files/plugins/dropify/dropify.min.js') }}"></script>
     <script src="{{ asset('dashboard_admin_files/plugins/blockui/jquery.blockUI.min.js') }}"></script>
     <script src="{{ asset('dashboard_admin_files/assets/js/users/account-settings.js') }}"></script>
+
+    <script src="{{ asset('dashboard_admin_files/plugins/notification/snackbar/snackbar.min.js') }}"></script>
+    <script src="{{ asset('dashboard_admin_files/assets/js/components/notification/custom-snackbar.js') }}"></script>
+
+    {{-- confirm_deleded.js --}}
     <script src="{{ asset('dashboard_admin_files/assets/js/custom/confirm_deleded.js') }}"></script>
+    
+    {{-- file-upload kd --}}
+    <script src="{{ asset('dashboard_admin_files/plugins/file-upload/file-upload-with-preview.min.js') }}"></script>
+
+    <script src="{{ asset('dashboard_admin_files/customer/main.js') }}"></script>
     <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
+
+    @include('partials._session')
+
+    <!-- BEGIN PAGE LEVEL SCRIPTS -->
+    <script src="{{ asset('dashboard_admin_files/plugins/fullcalendar/moment.min.js') }}"></script>
+    <script src="{{ asset('dashboard_admin_files/plugins/fullcalendar/flatpickr.js') }}"></script>
+    <script src="{{ asset('dashboard_admin_files/plugins/fullcalendar/fullcalendar.min.js') }}"></script>
+    <!-- END PAGE LEVEL SCRIPTS -->
+
+    <!--  BEGIN CUSTOM SCRIPTS FILE  -->
+    <script src="{{ asset('dashboard_admin_files/plugins/fullcalendar/custom-fullcalendar.advance.js') }}"></script>
+
+    <script type="text/javascript">
+        //First upload
+    // var firstUpload = new FileUploadWithPreview('myFirstImage')
+    //Second upload
+    var secondUpload = new FileUploadWithPreview('mySecondImage')
+
+
+    </script>
 
 </body>
 </html>

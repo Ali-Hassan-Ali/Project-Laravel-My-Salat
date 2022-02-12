@@ -20,7 +20,7 @@ class CategoreyTableSeeder extends Seeder
 
             \App\Models\Categorey::create([
                 'name'  => $categorey,
-                'slug'  => str::slug($categorey,'_'),
+                'slug'  => str::slug($categorey, '_'),
             ]);
             
         }//end of foreach

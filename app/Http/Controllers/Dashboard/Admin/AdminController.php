@@ -42,7 +42,6 @@ class AdminController extends Controller
 
             $request_data             = $request->except(['password', 'password_confirmation', 'permissions', 'image']);
             $request_data['password'] = bcrypt($request->password);
-            $request_data['phone']    = '1231222';
 
             if ($request->image) {
 
@@ -91,7 +90,7 @@ class AdminController extends Controller
 
                 if ($admin->image != 'admin_images/default.png') {
 
-                    Storage::disk('local')->delete('/admin_images/' . $admin->image);
+                    Storage::disk('local')->delete('public/'. $admin->image);
 
                 } //end of inner if
 
@@ -121,7 +120,7 @@ class AdminController extends Controller
 
             if ($admin->image != 'admin_images/default.png') {
 
-                Storage::disk('local')->delete('/admin_images/' . $admin->image);
+                Storage::disk('local')->delete('public/'. $admin->image);
 
             } //end of inner if
 

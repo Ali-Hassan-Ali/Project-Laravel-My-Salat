@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard\Owner\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Owner;
 
 class AuthController extends Controller
 {
@@ -14,7 +15,6 @@ class AuthController extends Controller
             return view('dashboard_owner.auth.login');
 
         }//end of if
-
         return redirect()->route('dashboard.admin.welcome');
 
     }//end of index login function
@@ -35,6 +35,7 @@ class AuthController extends Controller
 
             if ($auth) {
 
+                session()->flash('success', __('dashboard.login_successfully'));
                 return redirect()->route('dashboard.owner.welcome');
 
             }//end of auth
@@ -82,13 +83,12 @@ class AuthController extends Controller
 
     }//end of login store function
 
-    public function admin_logout()
+    public function owner_logout()
     {
-        auth()->guard('admin')->logout();
+        auth()->guard('owner')->logout();
 
-        // notify()->success( __('dashboard.login_successfully'));
-        session()->flash('success', __('dashboard.login_successfully'));
-        return view('dashboard_admin.auth.login');
+        session()->flash('success', __('dashboard.logoute_successfully'));
+        return view('dashboard_owner.auth.login');
 
     }//end of logout admin
 

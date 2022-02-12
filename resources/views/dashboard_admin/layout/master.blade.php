@@ -27,10 +27,20 @@
     <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM STYLES -->
     <link href="{{ asset('dashboard_admin_files/plugins/apex/apexcharts.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('dashboard_admin_files/plugins/dropify/dropify.min.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('dashboard_admin_files/assets/css/dashboard/dash_1.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('dashboard_admin_files/assets/css/tables/breadcrumb.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('dashboard_admin_files/assets/css/users/account-setting.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('dashboard_admin_files/assets/css/dashboard/dash_1.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('dashboard_admin_files/assets/css/tables/breadcrumb.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('dashboard_admin_files/assets/css/users/account-setting.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('dashboard_admin_files/plugins/notification/snackbar/snackbar.min.css') }}" rel="stylesheet" type="text/css"/>
     <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
+
+    {{-- fonts.googleapis --}}
+    <link href="https://fonts.googleapis.com/css?family=Cairo:400,700" rel="stylesheet">
+
+    <style>
+        body, h1, h2, h3, h4, h5, h6 {
+            font-family: 'Cairo', sans-serif !important;
+        }
+    </style>
 
 </head>
 {{-- alt-menu open meun --}}
@@ -43,6 +53,7 @@
     <!--  BEGIN NAVBAR  -->
     @include('dashboard_admin.Layout.include._header')
     <!--  END NAVBAR  -->
+
 
     <!--  BEGIN MAIN CONTAINER  -->
     <div class="main-container sidebar-closed sbar-open" id="container">
@@ -67,7 +78,6 @@
     </div>
     <!-- END MAIN CONTAINER -->
 
-    @include('partials._session')
 
     <!-- BEGIN GLOBAL MANDATORY SCRIPTS -->
     <script src="{{ asset('dashboard_admin_files/assets/js/libs/jquery-3.1.1.min.js') }}"></script>
@@ -91,6 +101,12 @@
     <script src="{{ asset('dashboard_admin_files/plugins/blockui/jquery.blockUI.min.js') }}"></script>
     <script src="{{ asset('dashboard_admin_files/assets/js/users/account-settings.js') }}"></script>
     <script src="{{ asset('dashboard_admin_files/assets/js/custom/confirm_deleded.js') }}"></script>
+
+    <script src="{{ asset('dashboard_admin_files/plugins/notification/snackbar/snackbar.min.js') }}"></script>
+    <script src="{{ asset('dashboard_admin_files/assets/js/components/notification/custom-snackbar.js') }}"></script>
+
+    @include('partials._session')
+
     <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
 
 </body>

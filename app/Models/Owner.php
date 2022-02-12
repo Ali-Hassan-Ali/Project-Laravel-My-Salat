@@ -10,9 +10,17 @@ class Owner extends Authenticatable
 {
     use HasFactory;
 
-    protected $guard    = 'owner';
+    // protected $dispatchesevents = [
+    //     'createed' => BannerOwner::class,
+    // ];
     
     protected $guarded  = [];
+    
+    protected $guard    = 'owner';
+
+    protected $hidden   = ['password','remember_token'];
+    
+    protected $casts    = ['email_verified_at' => 'datetime'];
 
     protected $appends  = ['image_path'];
 
@@ -22,5 +30,11 @@ class Owner extends Authenticatable
         return asset('storage/' . $this->image);
 
     }//end of get image path
+
+    public function banner()
+    {
+        return $this->hasOne(Banner::class);
+
+    }//end of owner
 
 }//end of model

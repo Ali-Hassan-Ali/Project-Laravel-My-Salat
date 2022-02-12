@@ -93,7 +93,7 @@ class OwnerController extends Controller
 
                 if ($owner->image != 'owner_images/default.png') {
 
-                    Storage::disk('local')->delete('/owner_images/' . $owner->image);
+                    Storage::disk('local')->delete('public/'. $owner->image);
 
                 } //end of inner if
 
@@ -121,7 +121,7 @@ class OwnerController extends Controller
 
             if ($owner->image != 'owner_images/default.png') {
 
-                Storage::disk('local')->delete('/owner_images/' . $owner->image);
+                Storage::disk('local')->delete('public/'. $owner->image);
 
             } //end of inner if
 
