@@ -20,9 +20,17 @@ class Banner extends Model
 
     }//end of get image path
 
+     //relationsheep----------------------------------
     public function owner()
     {
         return $this->belongsTo(OWner::class);
+        
+    }//end of owner
+
+    //relationsheep----------------------------------
+    public function category()
+    {
+        return $this->belongsTo(Categorey::class,'categoreys_id');
         
     }//end of owner
 

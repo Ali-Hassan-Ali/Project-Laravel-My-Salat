@@ -4,15 +4,23 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', function () {
-    
-    return now()->toTimeString();
-    
-})->name('test');
+// Route::get('/', [\App\Http\Controllers\Api\WelcomeController::class,'index']);
 
-// Route::get('/login', function () {
-//     return view('dashboard_admin.auth.login');
-// });
+Route::get('/', function () {
+
+    $categoreys = App\Models\Categorey::all();
+
+    return response()->api(App\Http\Resources\CategoryResource::collection($categoreys));
+
+});
+
+Route::get('Api/Banner', function () {
+
+    $banners = App\Models\Banner::where('categoreys_id',1)->get();
+
+    return response()->api(App\Http\Resources\BannerResource::collection($banners));
+
+});
 
 Auth::routes();;
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
