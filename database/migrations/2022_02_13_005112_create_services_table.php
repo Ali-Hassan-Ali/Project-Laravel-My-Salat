@@ -15,6 +15,11 @@ class CreateServicesTable extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('price');
+            $table->foreignId('owner_id')->constrained()->onDelete('cascade');
+            $table->integer('service_categorie_id')->default(false);
+            // $table->foreignId('service_categorie_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -20,5 +20,8 @@ return [
     'service_category'     => 'قسم الخدمات',
     'sub_category'         => 'القسم الفرعي',
     'no_categorey'         => 'دون قسم',
+    
+    'services'  => 'الخدمات',
+    'service'   => 'خدمة',
 
 ];
