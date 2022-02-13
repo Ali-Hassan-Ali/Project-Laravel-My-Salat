@@ -6,15 +6,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     
-    return auth()->guard('owner')->user()->banner->id;
-
-    return App\Models\Owner::with('banner')->first(); 
-    return auth()->guard('admin')->logout();
-    return auth()->guard('admin')->user()->name;
-    return view('welcome');
-    return view('dashboard_admin.layout.master');
+    return now()->toTimeString();
     
-})->name('aaa');
+})->name('test');
 
 // Route::get('/login', function () {
 //     return view('dashboard_admin.auth.login');

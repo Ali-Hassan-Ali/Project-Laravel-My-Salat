@@ -34,6 +34,19 @@ class OwnerTableSeeder extends Seeder
             
         }//end of foreach
 
+        $packages = ['فطور','غداء','عشاء',' 😅سحور',' 😅فطور بلدي'];
+
+        foreach ($packages as $package) {
+
+            \App\Models\Package::create([
+                'name'      => $package,
+                'owner_id'  => $owner->id,
+                'form'      => now()->toTimeString(),
+                'to'        => now()->toTimeString(),
+            ]);            
+            
+        }//end of foreach
+
     }//end of run
     
 }//end of class

@@ -13,6 +13,7 @@ return [
     'deleted_successfully' => 'تم حذف البيانات بنجاح',
     'logoute_successfully' => 'تم تسجيل الخروج بنجاح',
     'login_successfully'   => 'تم تسجيل الدخول بنجاح',
+    'created_at'           => 'تاريخ الانشاء',
 
     'add'     => 'إضافة',
     'create'  => 'انشاء',
@@ -20,6 +21,7 @@ return [
     'update'  => 'تحديث',
     'delete'  => 'حذف',
     'list'    => 'قائمة',
+    'action'  => 'الاحداث',
     
     'name'    => 'الاسم',
     'email'   => 'الاميل',

@@ -79,7 +79,7 @@
                 <ul class="collapse submenu recent-submenu mini-recent-submenu list-unstyled show" id="banner" data-parent="#accordionExample">
                     <li class="active">
                         <a href="{{ route('dashboard.owner.packages.create') }}">
-                            @lang('owner.create') @lang('owner.package')
+                            @lang('dashboard.create') @lang('owner.package')
                         </a>
                     </li>
                     <li class="active">

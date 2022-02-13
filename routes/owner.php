@@ -9,7 +9,7 @@ use App\Http\Controllers\Dashboard\Owner\WelcomeController;
 use App\Http\Controllers\Dashboard\Owner\StaticController;
 use App\Http\Controllers\Dashboard\Owner\BannerController;
 use App\Http\Controllers\Dashboard\Owner\GalleryController;
-// use App\Http\Controllers\Dashboard\ownerController;
+use App\Http\Controllers\Dashboard\Owner\PackageController;
 
 
 Route::get('dashboard/owner/login', [AuthController::class,'index'])->name('dashboard.owner.login');
@@ -30,6 +30,6 @@ Route::prefix('dashboard/owner')->name('dashboard.owner.')->middleware('auth:own
 
         Route::resource('gallerys', GalleryController::class)->except('show');
 
-        // Route::resource('gallerys', PackageController::class)->except('show');
+        Route::resource('packages', PackageController::class)->except('show');
 
 });//group(function
