@@ -1,28 +1,27 @@
-@extends('dashboard_admin.layout.master')
+@extends('dashboard_owner.layout.master')
 
-@section('title', __('dashboard.admins'))
+@section('title', __('dashboard.list') . ' | ' . __('owner.service_categorys'))
 
 @section('content')
 
     <div class="page-header">
         <div class="page-title">
-            <h3>Dashboard</h3>
+            <h3>@lang('dashboard.dashboard')</h3>
         </div>
 
         <nav class="breadcrumb-one" aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
-                	<a href="{{ route('dashboard.admin.welcome') }}">
+                	<a href="{{ route('dashboard.owner.welcome') }}">
 	                	<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home">
 	                	<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
 	                	<polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
                 	</a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page"><span>admin</span></li>
+                <li class="breadcrumb-item active" aria-current="page"><span>@lang('owner.service_categorys')</span></li>
             </ol>
-        </nav>
-
-    </div>
+        </nav>{{-- breadcrumb --}}
+    </div>{{-- page-header --}}
 
     <div class="row" id="cancel-row">
         <div class="col-xl-12 col-lg-12 col-sm-12 layout-spacing">
@@ -32,12 +31,14 @@
                         <div class="col-4">
                             <input type="text" class="form-control form-control-sm" name="min" id="min" placeholder="">
                         </div>
-                        <a href="{{ route('dashboard.admin.admins.create') }}" class="btn btn-primary">add</a>
+                        <div class="col-4">
+                            <a href="{{ route('dashboard.owner.service_categorys.create') }}" class="btn btn-primary">@lang('dashboard.create')</a>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
+                </div>{{-- table-form --}}
+            </div>{{-- widget-content --}}
+        </div>{{-- col col-xl-12 --}}
+    </div>{{-- row --}}
 
     <div class="row" id="cancel-row">
     
@@ -47,31 +48,27 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Name</th>
-                            <th>email</th>
-                            <th>phone</th>
-                            <th>image</th>
-                            <th>create at</th>
-                            <th class="no-content">Action</th>
+                            <th>@lang('dashboard.name')</th>
+                            <th>@lang('owner.sub_category')</th>
+                            <th>@lang('dashboard.created_at')</th>
+                            <th class="no-content">@lang('dashboard.action')</th>
                         </tr>
                     </thead>
                     <tbody>
-                    	@foreach ($admins as $index=>$admin)
+                    	@foreach ($service_categorys as $index=>$categorysy)
 
 	                        <tr>
 	                            <td>{{ $index+1 }}</td>
-	                            <td>{{ $admin->name }}</td>
-	                            <td>{{ $admin->email }}</td>
-	                            <td>{{ $admin->phone }}</td>
-	                            <td><img src="{{ $admin->image_path }}" width="100"></td>
-	                            <td>{{ $admin->created_at->toFormattedDateString() }}</td>
+	                            <td>{{ $categorysy->name }}</td>
+                                <td>{{ $categorysy->sub_category }}</td>
+	                            <td>{{ $categorysy->created_at->toFormattedDateString() }}</td>
 	                            <td>
-                                    <a href="{{ route('dashboard.admin.admins.edit',$admin->id) }}" data-toggle="tooltip" data-placement="top" title="Edit">
+                                    <a href="{{ route('dashboard.owner.service_categorys.edit',$categorysy->id) }}" data-toggle="tooltip" data-placement="top" title="Edit">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2 text-success">
                                             <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
                                         </svg>
                                     </a>
-                                    <form method="post" action="{{ route('dashboard.admin.admins.destroy', $admin->id) }}" style="display: inline-block;">
+                                    <form method="post" action="{{ route('dashboard.owner.service_categorys.destroy', $categorysy->id) }}" style="display: inline-block;">
                                         @csrf
                                         @method('delete')
                                         
@@ -92,6 +89,6 @@
             </div>
         </div>
 
-    </div>
+    </div>{{-- row --}}
 
 @endsection

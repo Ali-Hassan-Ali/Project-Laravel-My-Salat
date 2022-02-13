@@ -15,5 +15,10 @@ return [
 
     'packages'   => 'الباقات',
     'package'    => 'باقة',
+    
+    'service_categorys'    => 'اقسام الخدمات',
+    'service_category'     => 'قسم الخدمات',
+    'sub_category'         => 'القسم الفرعي',
+    'no_categorey'         => 'دون قسم',
 
 ];

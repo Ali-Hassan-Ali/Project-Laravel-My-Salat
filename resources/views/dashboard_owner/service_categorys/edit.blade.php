@@ -1,6 +1,6 @@
 @extends('dashboard_owner.layout.master')
 
-@section('title', __('dashboard.dashboard') . ' | ' .  __('dashboard.add') . ' | ' . __('owner.packages'))
+@section('title',  __('dashboard.edit') . ' | ' . __('owner.service_categorys'))
 
 @section('content')
 
@@ -18,7 +18,7 @@
                     <polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
                 </a>
             </li>
-            <li class="breadcrumb-item"><a href="{{ route('dashboard.owner.packages.index') }}">@lang('owner.packages')</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('dashboard.owner.service_categorys.index') }}">@lang('owner.service_categorys')</a></li>
             <li class="breadcrumb-item active" aria-current="page"><span>@lang('dashboard.add')</span></li>
         </ol>
     </nav>
@@ -34,9 +34,9 @@
             <div class="row">
                 
                 <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
-                    <form action="{{ route('dashboard.owner.packages.store') }}" method="POST" class="section general-info">
+                    <form action="{{ route('dashboard.owner.service_categorys.update', $serviceCategory->id) }}" method="POST" class="section general-info">
                             @csrf
-                            @method('post')
+                            @method('put')
 
                         <div class="info">
                             <div class="row">
@@ -48,33 +48,37 @@
                                                     <div class="col-12">
                                                         <div class="form-group">
                                                             <label>@lang('dashboard.name')</label>
-                                                            <input type="text" name="name" class="form-control mb-4 @error('name') is-invalid @enderror" placeholder="@lang('dashboard.name')" value="{{ old('name') }}">
+                                                            <input type="text" name="name" class="form-control mb-4 @error('name') is-invalid @enderror" 
+                                                                   placeholder="@lang('dashboard.name')" value="{{ $serviceCategory->name }}">
                                                             @error('name')
                                                                 <p class="text-danger">{{ $message }}</p>
                                                             @enderror
                                                         </div>
                                                     </div>
-                                                    <div class="col-6">
+
+                                                    <div class="col-12">
                                                         <div class="form-group">
-                                                            <label>@lang('owner.form')</label>
-                                                            <input type="time" name="form" class="form-control mb-4 @error('form') is-invalid @enderror" placeholder="@lang('owner.form')" value="{{ old('form') }}">
-                                                            @error('form')
-                                                                <p class="text-danger">{{ $message }}</p>
-                                                            @enderror
+                                                            <label>@lang('owner.sub_category')</label>
+                                                            <select name="parent_id" class="selectpicker form-control">
+                                                                <option value="">@lang('owner.no_categorey')</option>
+                                                                @foreach ($sub_category as $categorey)
+                                                                    
+                                                                    <option value="{{ $categorey->id }}"
+                                                                        {{ $categorey->id == $serviceCategory->parent_id ? 'selected' : '' }}>
+                                                                        {{ $categorey->name }}
+                                                                    </option>
+
+                                                                @endforeach
+                                                            </select>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-6">
-                                                        <div class="form-group">
-                                                            <label>@lang('owner.to')</label>
-                                                            <input type="time" name="to" class="form-control mb-4 @error('to') is-invalid @enderror" placeholder="@lang('owner.to')" value="{{ old('to') }}">
-                                                            @error('to')
-                                                                <p class="text-danger">{{ $message }}</p>
-                                                            @enderror
-                                                        </div>
-                                                    </div>
+                                                    </div>{{-- col-12 --}}
+                                                </div>{{-- row --}}
+                                            </div>{{-- col-12 --}}
+                                            <div class="col-12 py-4">
+                                                <div class="form-group">
+                                                    <button class="btn btn-primary col-12">@lang('dashboard.add')</button>
                                                 </div>
                                             </div>
-                                            <button class="btn btn-primary col-12">@lang('dashboard.add')</button>
                                         </div>
                                     </div>{{-- row --}}
                                 </div>{{-- col mx-auto --}}

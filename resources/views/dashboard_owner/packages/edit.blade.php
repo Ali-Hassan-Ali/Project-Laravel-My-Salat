@@ -12,7 +12,7 @@
     <nav class="breadcrumb-one" aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                <a href="{{ route('dashboard.admin.welcome') }}">
+                <a href="{{ route('dashboard.owner.welcome') }}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home">
                     <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                     <polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
@@ -32,8 +32,6 @@
     <div class="account-content">
         <div class="scrollspy-example" data-spy="scroll" data-target="#account-settings-scroll" data-offset="-100">
             <div class="row">
-
-                @include('partials._errors')
                 
                 <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
                     <form action="{{ route('dashboard.owner.packages.update', $package->id) }}" method="POST" class="section general-info">
@@ -50,19 +48,28 @@
                                                     <div class="col-12">
                                                         <div class="form-group">
                                                             <label>@lang('dashboard.name')</label>
-                                                            <input type="text" name="name" class="form-control mb-4" placeholder="@lang('dashboard.name')" value="{{ $package->name }}">
+                                                            <input type="text" name="name" class="form-control mb-4 @error('name') is-invalid @enderror" placeholder="@lang('dashboard.name')" value="{{ $package->name }}">
+                                                            @error('name')
+                                                                <p class="text-danger">{{ $message }}</p>
+                                                            @enderror
                                                         </div>
                                                     </div>
                                                     <div class="col-6">
                                                         <div class="form-group">
                                                             <label>@lang('owner.form')</label>
-                                                            <input type="time" name="form" class="form-control mb-4" placeholder="@lang('owner.form')" value="{{ $package->form }}">
+                                                            <input type="time" name="form" class="form-control mb-4 @error('name') is-invalid @enderror" placeholder="@lang('owner.form')" value="{{ $package->form }}">
+                                                            @error('form')
+                                                                <p class="text-danger">{{ $message }}</p>
+                                                            @enderror
                                                         </div>
                                                     </div>
                                                     <div class="col-6">
                                                         <div class="form-group">
                                                             <label>@lang('owner.to')</label>
-                                                            <input type="time" name="to" class="form-control mb-4" placeholder="@lang('owner.to')" value="{{ $package->to }}">
+                                                            <input type="time" name="to" class="form-control mb-4 @error('name') is-invalid @enderror" placeholder="@lang('owner.to')" value="{{ $package->to }}">
+                                                            @error('to')
+                                                                <p class="text-danger">{{ $message }}</p>
+                                                            @enderror
                                                         </div>
                                                     </div>
                                                 </div>

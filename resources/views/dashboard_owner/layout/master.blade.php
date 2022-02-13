@@ -42,6 +42,7 @@
     <link href="{{ asset('dashboard_admin_files/plugins/flatpickr/flatpickr.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('dashboard_admin_files/plugins/flatpickr/custom-flatpickr.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('dashboard_admin_files/assets/css/forms/theme-checkbox-radio.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('dashboard_admin_files/plugins/bootstrap-select/bootstrap-select.min.css') }}" rel="stylesheet" type="text/css" />
 
     {{-- fonts.googleapis --}}
     <link href="https://fonts.googleapis.com/css?family=Cairo:400,700" rel="stylesheet">
@@ -127,6 +128,7 @@
 
     <!--  BEGIN CUSTOM SCRIPTS FILE  -->
     <script src="{{ asset('dashboard_admin_files/plugins/fullcalendar/custom-fullcalendar.advance.js') }}"></script>
+    <script src="{{ asset('dashboard_admin_files/plugins/bootstrap-select/bootstrap-select.min.js') }}"></script>
 
     <script type="text/javascript">
         //First upload
