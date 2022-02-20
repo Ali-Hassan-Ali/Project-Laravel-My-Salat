@@ -17,7 +17,7 @@ class CreateServiceCategoriesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('parent_id')->default(false);
-            $table->foreignId('owner_id')->constrained()->onDelete('cascade');
+            $table->foreignId('categoreys_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

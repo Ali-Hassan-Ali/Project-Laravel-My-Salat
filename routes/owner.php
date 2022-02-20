@@ -10,7 +10,6 @@ use App\Http\Controllers\Dashboard\Owner\StaticController;
 use App\Http\Controllers\Dashboard\Owner\BannerController;
 use App\Http\Controllers\Dashboard\Owner\GalleryController;
 use App\Http\Controllers\Dashboard\Owner\PackageController;
-use App\Http\Controllers\Dashboard\Owner\ServiceCategoryController;
 use App\Http\Controllers\Dashboard\Owner\ServiceController;
 
 
@@ -33,8 +32,6 @@ Route::prefix('dashboard/owner')->name('dashboard.owner.')->middleware('auth:own
         Route::resource('gallerys', GalleryController::class)->except('show');
 
         Route::resource('packages', PackageController::class)->except('show');
-
-        Route::resource('service_categorys', ServiceCategoryController::class)->except('show');
 
         Route::resource('services', ServiceController::class)->except('show');
 

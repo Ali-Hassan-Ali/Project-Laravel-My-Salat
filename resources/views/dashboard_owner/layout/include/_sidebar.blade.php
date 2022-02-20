@@ -14,7 +14,8 @@
         </ul>
 
         <ul class="list-unstyled menu-categories" id="accordionExample">
-            <li class="menu active">
+
+            <li class="menu {{ request()->segment(2) == 'categories' ? 'active' : '' }}">
                 <a href="#dashboard" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">
                     <div class="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
@@ -25,12 +26,12 @@
                     </div>
                 </a>
                 <ul class="collapse submenu recent-submenu mini-recent-submenu list-unstyled show" id="dashboard" data-parent="#accordionExample">
-                    <li class="active">
+                    <li class="{{ request()->segment(2) == 'categories' ? 'active' : '' }}">
                         <a href="{{ route('dashboard.owner.welcome') }}">
                             @lang('dashboard.statistics')
                         </a>
                     </li>
-                    <li>
+                    <li class="{{ request()->segment(2) == 'categories' ? 'active' : '' }}">
                         <a href="{{ route('dashboard.owner.calendar') }}">
                             @lang('dashboard.calendar')
                         </a>
@@ -52,13 +53,14 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
                     </div>
                 </a>
-                <ul class="collapse submenu recent-submenu mini-recent-submenu list-unstyled show" id="banner" data-parent="#accordionExample">
-                    <li class="active">
+                <ul class="collapse submenu recent-submenu mini-recent-submenu list-unstyled 
+                    {{ request()->segment(3) == 'banners' ? 'show' : '' || request()->segment(3) == 'gallerys' ? 'show' : '' }}" id="banner" data-parent="#accordionExample">
+                    <li class="{{ request()->segment(3) == 'banners' ? 'active' : '' }}">
                         <a href="{{ route('dashboard.owner.banners.edit', auth()->guard('owner')->user()->banner->id) }}">
                             @lang('owner.exterior')
                         </a>
                     </li>
-                    <li class="active">
+                    <li class="{{ request()->segment(3) == 'gallerys' ? 'active' : '' }}">
                         <a href="{{ route('dashboard.owner.gallerys.index') }}">
                             @lang('owner.interior')
                         </a>
@@ -66,23 +68,26 @@
                 </ul>
             </li>
 
-            <li class="menu active">
+            <li class="menu {{ request()->segment(3) == 'packages' ? 'active' : '' }}">
                 <a href="#package" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">
                     <div class="">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                        </svg>ذ
                         <span>@lang('owner.packages')</span>
                     </div>
                     <div>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
                     </div>
                 </a>
-                <ul class="collapse submenu recent-submenu mini-recent-submenu list-unstyled show" id="package" data-parent="#accordionExample">
-                    <li class="active">
+                <ul class="collapse submenu recent-submenu mini-recent-submenu list-unstyled {{ request()->segment(3) == 'packages' ? 'show' : '' }}" id="package" data-parent="#accordionExample">
+                    <li class="{{ request()->segment(3) == 'packages' ? 'active' : '' }}">
                         <a href="{{ route('dashboard.owner.packages.create') }}">
                             @lang('dashboard.create') @lang('owner.package')
                         </a>
                     </li>
-                    <li class="active">
+                    <li class="{{ request()->segment(3) == 'packages' ? 'active' : '' }}">
                         <a href="{{ route('dashboard.owner.packages.index') }}">
                             @lang('dashboard.list') @lang('owner.package')
                         </a>
@@ -90,23 +95,26 @@
                 </ul>
             </li>
 
-            <li class="menu active">
+            <li class="menu {{ request()->segment(3) == 'service_categorys' ? 'active' : '' }}">
                 <a href="#service-category" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">
                     <div class="">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                        </svg>
                         <span>@lang('owner.service_categorys')</span>
                     </div>
                     <div>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
                     </div>
                 </a>
-                <ul class="collapse submenu recent-submenu mini-recent-submenu list-unstyled show" id="service-category" data-parent="#accordionExample">
-                    <li class="active">
+                <ul class="collapse submenu recent-submenu mini-recent-submenu list-unstyled {{ request()->segment(3) == 'service_categorys' ? 'show' : '' }}" id="service-category" data-parent="#accordionExample">
+                    <li class="{{ request()->segment(3) == 'service_categorys' ? 'active' : '' }}">
                         <a href="{{ route('dashboard.owner.service_categorys.create') }}">
                             @lang('dashboard.create') @lang('owner.service_category')
                         </a>
                     </li>
-                    <li class="active">
+                    <li class="{{ request()->segment(3) == 'service_categorys' ? 'active' : '' }}">
                         <a href="{{ route('dashboard.owner.service_categorys.index') }}">
                             @lang('dashboard.list') @lang('owner.service_category')
                         </a>
@@ -114,7 +122,7 @@
                 </ul>
             </li>
 
-            <li class="menu active">
+            <li class="menu {{ request()->segment(3) == 'services' ? 'active' : '' }}">
                 <a href="#service" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">
                     <div class="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
@@ -124,13 +132,13 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
                     </div>
                 </a>
-                <ul class="collapse submenu recent-submenu mini-recent-submenu list-unstyled show" id="service" data-parent="#accordionExample">
-                    <li class="active">
+                <ul class="collapse submenu recent-submenu mini-recent-submenu list-unstyled {{ request()->segment(3) == 'services' ? 'show' : '' }}" id="service" data-parent="#accordionExample">
+                    <li class="{{ request()->segment(3) == 'services' ? 'active' : '' }}">
                         <a href="{{ route('dashboard.owner.services.create') }}">
                             @lang('dashboard.create') @lang('owner.service')
                         </a>
                     </li>
-                    <li class="active">
+                    <li class="{{ request()->segment(3) == 'services' ? 'active' : '' }}">
                         <a href="{{ route('dashboard.owner.services.index') }}">
                             @lang('dashboard.list') @lang('owner.service')
                         </a>

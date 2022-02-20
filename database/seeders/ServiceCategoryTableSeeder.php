@@ -18,8 +18,8 @@ class ServiceCategoryTableSeeder extends Seeder
         foreach ($categoreys as $key => $categorey) {
 
             \App\Models\ServiceCategory::create([
-                'name'      => $categorey,
-                'owner_id'  => 1,
+                'name'          => $categorey,
+                'categoreys_id' => 1,
             ]);
             
         }//end of foreach

@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
 
+    // return 'API TEST';
+    
     $categoreys = App\Models\Categorey::all();
 
     return response()->api(App\Http\Resources\CategoryResource::collection($categoreys));

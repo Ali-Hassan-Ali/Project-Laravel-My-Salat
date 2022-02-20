@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call(OwnerTableSeeder::class);
         $this->call(ServiceCategoryTableSeeder::class);
         $this->call(ServiceTableSeeder::class);
+        $this->call(BookingTableSeeder::class);
         // \App\Models\User::factory(10)->create();
         
     }//end of run

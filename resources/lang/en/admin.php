@@ -2,10 +2,11 @@
 
 return [
 
-    'dashboard'     => 'الرئسية',
+    'dashboard'     => 'dashboard',
 
-    'the_banners'   => 'البيانات الاساسية',
-    'exterior'      => 'المظهر الخارجي',
-    'interior'      => 'المظهر الداخلي',
+    'the_banners'   => 'the banners',
+    'exterior'      => 'exterior',
+    'interior'      => 'interior',
 
+    'bookings'      => 'bookings type',
 ];
