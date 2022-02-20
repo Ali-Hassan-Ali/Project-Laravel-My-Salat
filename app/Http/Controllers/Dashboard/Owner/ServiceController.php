@@ -12,7 +12,7 @@ class ServiceController extends Controller
 
     public function index()
     {
-        $services = Service::all();
+        $services = Service::orderBy('service_categorie_id')->get();
 
         return view('dashboard_owner.services.index', compact('services'));
 
@@ -33,6 +33,7 @@ class ServiceController extends Controller
         $request->validate([
             'name'    => ['required'],
             'price'   => ['required','numeric'],
+            'quantity'=> ['required','numeric'],
         ]);
         
         try {
@@ -68,6 +69,7 @@ class ServiceController extends Controller
         $request->validate([
             'name'    => ['required'],
             'price'   => ['required','numeric'],
+            'quantity'=> ['required','numeric'],
         ]);
         
         try {

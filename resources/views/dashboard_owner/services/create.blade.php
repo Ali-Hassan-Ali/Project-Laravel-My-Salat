@@ -67,6 +67,16 @@
 
                                                     <div class="col-12">
                                                         <div class="form-group">
+                                                            <label>@lang('dashboard.quantity')</label>
+                                                            <input type="number" name="quantity" class="form-control mb-4 @error('quantity') is-invalid @enderror" placeholder="@lang('dashboard.quantity')" value="{{ old('quantity') }}">
+                                                            @error('quantity')
+                                                                <p class="text-danger">{{ $message }}</p>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-12">
+                                                        <div class="form-group">
                                                             <label>@lang('owner.sub_category')</label>
                                                             <select name="service_categorie_id" class="selectpicker form-control">
                                                                 <option value="">@lang('owner.no_categorey')</option>

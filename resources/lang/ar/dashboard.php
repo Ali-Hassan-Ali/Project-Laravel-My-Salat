@@ -30,6 +30,7 @@ return [
     'image'   => 'الصوة',
     'title'   => 'العنوان',
     'price'   => 'السعر',
+    'quantity'=> 'كمية',
 
     'categorey'   => 'الاقسام',
 
