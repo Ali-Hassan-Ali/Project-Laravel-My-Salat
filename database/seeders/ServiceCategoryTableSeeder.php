@@ -13,13 +13,14 @@ class ServiceCategoryTableSeeder extends Seeder
      */
     public function run()
     {
-        $categoreys = ['فريق تنظيم','فريق تأمين','فريق تصوير','فريق مبرمجين 😉','فريق طقة 😉'];
+        $categoreys = ['فريق تنظيم','فريق تصوير','فريق تنظيم','المدخل','الكوشة','الصحون'];
 
-        foreach ($categoreys as $key => $categorey) {
+        foreach ($categoreys as $index => $categorey) {
 
             \App\Models\ServiceCategory::create([
                 'name'          => $categorey,
                 'categoreys_id' => 1,
+                'allow_quantity'=> $categorey == 'الصحون' ? true : false,
             ]);
             
         }//end of foreach

@@ -57,6 +57,16 @@
 
                                                     <div class="col-12">
                                                         <div class="form-group">
+                                                            <label>@lang('admin.allow_quantity')</label>
+                                                            <select name="qty" class="selectpicker form-control">
+                                                                    <option value="false" selected>@lang('admin.not_quantity')</option>
+                                                                    <option value="true">@lang('admin.add_quantity')</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>{{-- col-12 --}}
+
+                                                    <div class="col-12">
+                                                        <div class="form-group">
                                                             <label>@lang('owner.sub_category')</label>
                                                             <select name="parent_id" class="selectpicker form-control">
                                                                 <option value="">@lang('owner.no_categorey')</option>

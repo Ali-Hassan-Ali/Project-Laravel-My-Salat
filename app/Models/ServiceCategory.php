@@ -19,6 +19,12 @@ class ServiceCategory extends Model
 
     }//end of categories
 
+    public function service()
+    {
+        return $this->hasMany(Service::class, 'service_categorie_id');
+
+    }//end of categories
+
     public function getSubCategoryAttribute()
     {
         if ($this->parent_id > '1') {

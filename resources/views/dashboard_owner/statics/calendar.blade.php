@@ -1,10 +1,10 @@
 @extends('dashboard_owner.layout.master')
 
-@section('title', __('dashboard.calendar'))
+@section('title', __('dashboard.dashboard') . ' | ' . __('dashboard.calendar'))
 
 @section('content')
 
- 	<div class="row layout-top-spacing" id="cancel-row">
+    <div class="row layout-top-spacing" id="cancel-row">
         <div class="col-xl-12 col-lg-12 col-md-12">
             <div class="statbox widget box box-shadow">
                 <div class="widget-content widget-content-area">
@@ -12,15 +12,23 @@
                         <div class="row">
                             <div class="col-md-8 col-12">
                                 <div class="labels">
-                                    <p class="label label-primary">Work</p>
-                                    <p class="label label-warning">Travel</p>
-                                    <p class="label label-success">Personal</p>
-                                    <p class="label label-danger">Important</p>
+                                    {{-- <p class="label label-primary">Work</p> --}}
+                                    <p class="label label-warning">@lang('admin.waiting')</p>
+                                    <p class="label label-success">@lang('admin.completed')</p>
+                                    <p class="label label-danger">@lang('admin.cancel')</p>
                                 </div>
                             </div>                                                
                             <div class="col-md-4 col-12">
                                 <form action="javascript:void(0);" class="form-horizontal mt-md-0 mt-3 text-md-right text-center">
-                                    <button id="myBtn" class="btn btn-primary"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar mr-2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg> Add Event</button>
+                                    <button id="myBtn" class="btn btn-primary">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar mr-2">
+                                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                                        </svg>
+                                        @lang('statics.create_order')
+                                     </button>
                                 </form>
                             </div>
                         </div>
@@ -44,7 +52,7 @@
 
                         <div class="add-edit-event-box">
                             <div class="add-edit-event-content">
-                                <h5 class="add-event-title modal-title">Add Events</h5>
+                                <h5 class="add-event-title modal-title">@lang('statics.create_order')</h5>
                                 <h5 class="edit-event-title modal-title">Edit Events</h5>
 
                                 <form class="">
@@ -52,28 +60,61 @@
                                     <div class="row">
 
                                         <div class="col-md-12">
-                                            <label for="start-date" class="">Event Title:</label>
+                                            <label for="start-date">@lang('dashboard.name')</label>
                                             <div class="d-flex event-title">
-                                                <input id="write-e" type="text" placeholder="Enter Title" class="form-control" name="task">
+                                                <input name="name" type="text" placeholder="Enter Title" class="form-control" name="task">
                                             </div>
                                         </div>
 
                                         <div class="col-md-6 col-sm-6 col-12">
                                             <div class="form-group start-date">
-                                                <label for="start-date" class="">From:</label>
+                                                <label for="start-date">@lang('statics.created_at_order')</label>
                                                 <div class="d-flex">
-                                                    <input id="start-date" placeholder="Start Date" class="form-control" type="text">
+                                                    <input name="date_order" placeholder="Start Date" class="form-control" type="date">
                                                 </div>
                                             </div>
                                         </div>
+
                                         <div class="col-md-6 col-sm-6 col-12">
                                             <div class="form-group end-date">
-                                                <label for="end-date" class="">To:</label>
-                                                <div class="d-flex">
-                                                    <input id="end-date" placeholder="End Date" type="text" class="form-control">
-                                                </div>
+                                                <label>@lang('owner.sub_category')</label>
+                                                <select name="packages_id" class="selectpicker form-control">
+                                                    <option value="">@lang('owner.no_categorey')</option>
+                                                    @foreach ($packages as $package)
+                                                        
+                                                        <option value="{{ $package->id }}">{{ $package->name }}</option>
+
+                                                    @endforeach
+                                                </select>
                                             </div>
                                         </div>
+
+                                        @foreach ($service_categorys as $category)
+
+                                            <div class="col-12 mt-4">
+                                                <div class="form-group end-date">
+                                                    <label>{{ $category->name }}</label>
+                                                    <select name="packages_id" class="selectpicker form-control">
+                                                        <option value="">@lang('owner.no_categorey')</option>
+                                                        @foreach ($category->service as $data)
+                                                            
+                                                            <option value="{{ $data->id }}">{{ $data->name }}</option>
+
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+
+                                                @if ($category->allow_quantity == true)
+                                                    <div class="form-group mt-4">
+                                                        <label>Quntty</label>
+                                                        <input type="number" name="quantity" class="form-control">
+                                                    </div>
+                                                @endif
+
+                                            </div>
+
+                                        @endforeach
+                                        
                                     </div>
 
                                     <div class="row">
