@@ -127,9 +127,9 @@
     <!-- END PAGE LEVEL SCRIPTS -->
 
     <!--  BEGIN CUSTOM SCRIPTS FILE  -->
-    <script src="{{ asset('dashboard_admin_files/plugins/fullcalendar/custom-fullcalendar.advance.js') }}"></script>
+    {{-- <script src="{{ asset('dashboard_admin_files/plugins/fullcalendar/custom-fullcalendar.advance.js') }}"></script> --}}
+    @stack('fullcalendar')
     <script src="{{ asset('dashboard_admin_files/plugins/bootstrap-select/bootstrap-select.min.js') }}"></script>
-
     <script type="text/javascript">
         //First upload
     // var firstUpload = new FileUploadWithPreview('myFirstImage')

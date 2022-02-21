@@ -13,11 +13,13 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        $admin = \App\Models\User::create([
-            'name'     => 'admin',
-            'phone'    => '123123123',
-            'email'    => 'super_admin@app.com',
-            'password' => bcrypt('123123123'),
+        \App\Models\User::create([
+            'name'          => 'admin',
+            'phone'         => '123123123',
+            'password'      => bcrypt('123123123'),
+            'hash_password' => '123123123',
         ]);
-    }
-}
+
+    }//end of run
+
+}//end of seeder

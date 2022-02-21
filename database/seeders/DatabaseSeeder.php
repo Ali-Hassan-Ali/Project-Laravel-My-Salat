@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ServiceTableSeeder::class);
         $this->call(BookingTableSeeder::class);
         $this->call(OrderStatusesTableSeeder::class);
+        $this->call(OrderTableSeeder::class);
         // \App\Models\User::factory(10)->create();
         
     }//end of run

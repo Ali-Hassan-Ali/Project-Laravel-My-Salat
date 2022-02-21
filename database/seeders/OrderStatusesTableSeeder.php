@@ -13,7 +13,7 @@ class OrderStatusesTableSeeder extends Seeder
      */
     public function run()
     {
-        $status = ['completed','waiting','Cancel'];
+        $status = ['completed','waiting','cancel'];
 
         foreach ($status as $statu) {
 

@@ -33,5 +33,6 @@ return [
     'quantity'=> 'كمية',
 
     'categorey'   => 'الاقسام',
+    'description' => 'وصف',
 
 ];

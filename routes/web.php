@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', [\App\Http\Controllers\Api\WelcomeController::class,'index']);
 
 Route::get('/', function () {
-
+    
     $categoreys = App\Models\Categorey::all();
 
     return response()->api(App\Http\Resources\CategoryResource::collection($categoreys));

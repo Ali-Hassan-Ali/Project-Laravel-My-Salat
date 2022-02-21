@@ -54,6 +54,15 @@
                                                             @enderror
                                                         </div>
                                                     </div>
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <label>@lang('dashboard.price')</label>
+                                                            <input type="text" name="price" class="form-control mb-4 @error('price') is-invalid @enderror" placeholder="@lang('dashboard.price')" value="{{ old('price') }}">
+                                                            @error('price')
+                                                                <p class="text-danger">{{ $message }}</p>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
                                                     <div class="col-6">
                                                         <div class="form-group">
                                                             <label>@lang('owner.form')</label>
