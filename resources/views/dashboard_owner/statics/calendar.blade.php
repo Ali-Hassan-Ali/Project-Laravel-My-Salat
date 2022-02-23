@@ -55,7 +55,9 @@
                                 <h5 class="add-event-title modal-title">@lang('statics.create_order')</h5>
                                 <h5 class="edit-event-title modal-title">Edit Events</h5>
 
-                                <form class="">
+                                <form action="{{ route('dashboard.owner.create.new.order') }}" method="post">
+                                    @csrf
+                                    @method('post')
 
                                     <div class="row">
 
@@ -70,7 +72,7 @@
                                             <div class="form-group start-date">
                                                 <label for="start-date">@lang('statics.created_at_order')</label>
                                                 <div class="d-flex">
-                                                    <input name="date_order" placeholder="Start Date" class="form-control" type="date">
+                                                    <input name="history" placeholder="Start Date" class="form-control" type="date">
                                                 </div>
                                             </div>
                                         </div>
@@ -155,21 +157,21 @@
 
                                                     <div class="n-chk">
                                                         <label class="new-control new-radio radio-warning">
-                                                          <input type="radio" class="new-control-input" value="waiting" name="marker" value="bg-warning">
+                                                          <input type="radio" class="new-control-input" value="2" name="order_statuses_id" value="bg-warning">
                                                           <span class="new-control-indicator"></span>@lang('admin.waiting')
                                                         </label>
                                                     </div>
 
                                                     <div class="n-chk">
                                                         <label class="new-control new-radio radio-success">
-                                                          <input type="radio" class="new-control-input" value="completed" name="marker" value="bg-success">
+                                                          <input type="radio" class="new-control-input" value="1" name="order_statuses_id" value="bg-success">
                                                           <span class="new-control-indicator"></span>@lang('admin.completed')
                                                         </label>
                                                     </div>
 
                                                     <div class="n-chk">
                                                         <label class="new-control new-radio radio-danger">
-                                                          <input type="radio" class="new-control-input" value="cancel" name="marker" value="bg-danger">
+                                                          <input type="radio" class="new-control-input" value="3" name="order_statuses_id" value="bg-danger">
                                                           <span class="new-control-indicator"></span>@lang('admin.cancel')
                                                         </label>
                                                     </div>
@@ -178,7 +180,7 @@
                                             </div>
                                         </div>
                                     </div>
-
+                                        <button id="add-e" class="btn">adddd</button>
                                 </form>
                             </div>
                         </div>

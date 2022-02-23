@@ -3,6 +3,9 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\MainCategoryController;
+use App\Http\Controllers\Api\OwnerController;
+use App\Http\Controllers\Api\BannerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,8 +18,16 @@ use App\Http\Controllers\Api\AuthController;
 |
 */
 
-Route::post('/login', [AuthController::class,'login']);
+Route::get('min_category', [MainCategoryController::class,'index']);
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::get('owner/{id}', [OwnerController::class,'index']);
+
+Route::get('banners/{id}', [BannerController::class,'index']);
+
+Route::post('login', [AuthController::class,'login']);
+
+Route::middleware('auth:sanctum')->group(function () {
+
+    Route::get('/user', [AuthController::class,'user']);
+    
 });

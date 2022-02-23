@@ -59,4 +59,10 @@ class Order extends Model
         
     }//end of belongsTo user
 
+    public function OrderItem()
+    {
+        return $this->belongsToMany(OrderItem::class,'order_items');
+
+    }//end of item
+
 }//end of model

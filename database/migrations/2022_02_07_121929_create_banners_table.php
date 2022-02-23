@@ -16,7 +16,7 @@ class CreateBannersTable extends Migration
         Schema::create('banners', function (Blueprint $table) {
             $table->id();
             $table->string('name')->default('owner name');
-            $table->string('map')->nullable('owner map');
+            $table->string('map')->default('owner map');
             $table->string('slug')->nullable('owner_name');
             $table->string('image')->default('banner_images/default.png');
             $table->foreignId('categoreys_id')->constrained()->onDelete('cascade');

@@ -17,7 +17,6 @@ class UserTableSeeder extends Seeder
             'name'          => 'admin',
             'phone'         => '123123123',
             'password'      => bcrypt('123123123'),
-            'hash_password' => '123123123',
         ]);
 
     }//end of run

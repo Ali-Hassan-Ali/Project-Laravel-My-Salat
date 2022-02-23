@@ -15,7 +15,7 @@ class OrderTableSeeder extends Seeder
     {
         \App\Models\Order::create([
             'name'              => 'name 1',
-            'deprecation'       => 'deprecation 1',
+            'description'       => 'deprecation 1',
             'packages_id'       => 1,
             'bookings_id'       => 1,
             'owners_id'         => 1,
@@ -25,7 +25,7 @@ class OrderTableSeeder extends Seeder
 
         \App\Models\Order::create([
             'name'              => 'name 2',
-            'deprecation'       => 'deprecation 2',
+            'description'       => 'deprecation 2',
             'packages_id'       => 1,
             'bookings_id'       => 1,
             'owners_id'         => 1,
@@ -35,7 +35,7 @@ class OrderTableSeeder extends Seeder
 
         \App\Models\Order::create([
             'name'              => 'name 3',
-            'deprecation'       => 'deprecation 3',
+            'description'       => 'deprecation 3',
             'packages_id'       => 1,
             'bookings_id'       => 1,
             'owners_id'         => 1,

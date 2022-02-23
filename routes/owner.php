@@ -25,6 +25,8 @@ Route::prefix('dashboard/owner')->name('dashboard.owner.')->middleware('auth:own
 
         Route::get('/', [WelcomeController::class,'index'])->name('welcome');
 
+        Route::post('/create_new_order', [WelcomeController::class,'create_new_order'])->name('create.new.order');
+
         Route::get('calendar', [StaticController::class,'calendar'])->name('calendar');
 
         Route::resource('banners', BannerController::class)->except('show');

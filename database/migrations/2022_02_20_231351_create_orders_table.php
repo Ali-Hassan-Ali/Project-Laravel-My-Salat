@@ -16,7 +16,7 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->longText('deprecation');
+            $table->longText('description');
             $table->dateTime('history')->default(now());
             
             $table->foreignId('order_statuses_id')->constrained()->onDelete('cascade');

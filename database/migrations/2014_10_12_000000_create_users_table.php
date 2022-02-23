@@ -17,10 +17,10 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('phone')->unique();
+            $table->string('image')->default('user_images/default.png');
             $table->string('code')->default('0000');
             $table->double('status')->default(false);
             $table->string('password');
-            $table->string('hash_password');
             $table->rememberToken();
             $table->timestamps();
         });
