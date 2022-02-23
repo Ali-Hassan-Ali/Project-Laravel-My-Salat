@@ -23,7 +23,7 @@ class Banner extends Model
      //relationsheep----------------------------------
     public function owner()
     {
-        return $this->belongsTo(OWner::class);
+        return $this->belongsTo(Owner::class);
         
     }//end of owner
 
