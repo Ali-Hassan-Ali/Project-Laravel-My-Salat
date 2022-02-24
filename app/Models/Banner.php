@@ -34,4 +34,10 @@ class Banner extends Model
         
     }//end of owner
 
+    public function service()
+    {
+        return $this->hasMany(Service::class,'banner_id');
+        
+    }//end of service
+
 }//end of model

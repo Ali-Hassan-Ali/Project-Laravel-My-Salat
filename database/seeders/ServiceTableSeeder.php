@@ -20,7 +20,7 @@ class ServiceTableSeeder extends Seeder
             \App\Models\Service::create([
                 'name'                  => $service,
                 'price'                 => '200',
-                'owner_id'              => 1,
+                'banner_id'             => 1,
                 'service_categorie_id'  => 1,
             ]);
             
@@ -34,7 +34,7 @@ class ServiceTableSeeder extends Seeder
             \App\Models\Service::create([
                 'name'                  => $service,
                 'price'                 => '200',
-                'owner_id'              => 1,
+                'banner_id'             => 1,
                 'service_categorie_id'  => 2,
             ]);
             
@@ -47,7 +47,7 @@ class ServiceTableSeeder extends Seeder
             \App\Models\Service::create([
                 'name'                  => $service,
                 'price'                 => '200',
-                'owner_id'              => 1,
+                'banner_id'             => 1,
                 'service_categorie_id'  => 3,
             ]);
             
@@ -60,7 +60,7 @@ class ServiceTableSeeder extends Seeder
             \App\Models\Service::create([
                 'name'                  => $service,
                 'price'                 => '200',
-                'owner_id'              => 1,
+                'banner_id'             => 1,
                 'service_categorie_id'  => 4,
             ]);
             
@@ -74,7 +74,7 @@ class ServiceTableSeeder extends Seeder
             \App\Models\Service::create([
                 'name'                  => $service,
                 'price'                 => '200',
-                'owner_id'              => 1,
+                'banner_id'             => 1,
                 'service_categorie_id'  => 5,
             ]);
             
@@ -87,7 +87,7 @@ class ServiceTableSeeder extends Seeder
             \App\Models\Service::create([
                 'name'                  => $service,
                 'price'                 => '200',
-                'owner_id'              => 1,
+                'banner_id'             => 1,
                 'service_categorie_id'  => 6,
             ]);
             

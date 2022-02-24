@@ -13,6 +13,8 @@ class Service extends Model
 
     protected $appends = ['sub_category'];
 
+    protected $hidden  = ['created_at','updated_at'];
+
     public function getSubCategoryAttribute()
     {
         if ($this->service_categorie_id > '1') {
@@ -28,5 +30,11 @@ class Service extends Model
         }//end of if     
 
     }//end of get sub categoty
+
+    public function banner()
+    {
+        return $this->belongsTo(Banner::class);
+
+    }//end of belongsTo owner
     
 }//end of model

@@ -25,9 +25,9 @@ Route::get('owner/{id}', [OwnerController::class,'index']);
 Route::get('banners/{id}', [BannerController::class,'index']);
 
 Route::post('login', [AuthController::class,'login']);
+Route::post('register', [AuthController::class,'register']);
 
 Route::middleware('auth:sanctum')->group(function () {
-
+    //user route
     Route::get('/user', [AuthController::class,'user']);
-    
 });

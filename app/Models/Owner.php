@@ -37,4 +37,10 @@ class Owner extends Authenticatable
 
     }//end of owner
 
+    public function service()
+    {
+        return $this->hasMany(Service::class, 'owner_id');
+
+    }//end of belongsTo owner
+
 }//end of model

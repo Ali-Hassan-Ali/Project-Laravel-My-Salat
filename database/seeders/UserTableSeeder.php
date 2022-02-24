@@ -14,7 +14,8 @@ class UserTableSeeder extends Seeder
     public function run()
     {
         \App\Models\User::create([
-            'name'          => 'admin',
+            'username'      => 'username',
+            'region'        => 'region',
             'phone'         => '123123123',
             'password'      => bcrypt('123123123'),
         ]);

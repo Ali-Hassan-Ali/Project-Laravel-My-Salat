@@ -21,6 +21,7 @@ class BannerResource extends JsonResource
             'image'     => $this->image_path,
             'user_name' => $this->owner->name,
             'category'  => $this->category->name,
+            'servers'   => $this->service,
         ];
     }
 }

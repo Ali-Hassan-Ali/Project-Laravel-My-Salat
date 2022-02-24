@@ -18,7 +18,7 @@ class CreateServicesTable extends Migration
             $table->string('name');
             $table->string('quantity')->default('1');
             $table->string('price');
-            $table->foreignId('owner_id')->constrained()->onDelete('cascade');
+            $table->foreignId('banner_id')->constrained()->onDelete('cascade');
             $table->integer('service_categorie_id')->default(false);
             $table->timestamps();
         });
