@@ -11,12 +11,28 @@ class Banner extends Model
 
     protected $guarded = [];
 
-    protected $appends  = ['image_path'];
+    protected $appends  = ['image_path','category_service','images'];
 
      //attributes----------------------------------
     public function getImagePathAttribute()
     {
         return asset('storage/' . $this->image);
+
+    }//end of get image path
+
+    public function getCategoryServiceAttribute()
+    {
+        $categoreys = ServiceCategory::with('service')->whereRelation('service','banner_id', $this->id)->get();
+
+        return $categoreys;
+
+    }//end of get image path
+
+    public function getImagesAttribute()
+    {
+        $gallerys = Gallery::where('banner_id', $this->id)->get();
+
+        return $gallerys;
 
     }//end of get image path
 

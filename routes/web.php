@@ -7,8 +7,10 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', [\App\Http\Controllers\Api\WelcomeController::class,'index']);
 
 Route::get('/', function () {
-    return;
-    $categoreys = App\Models\Categorey::all();
+    
+    return $banners = App\Models\Banner::all();
+
+    $categoreys = App\Models\ServiceCategory::with('service')->get();
 
     return response()->api(App\Http\Resources\CategoryResource::collection($categoreys));
 

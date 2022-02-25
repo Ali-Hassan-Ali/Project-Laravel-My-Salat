@@ -17,7 +17,7 @@ class CreateGalleriesTable extends Migration
             $table->id();
             $table->string('title')->nullable();
             $table->string('image')->default('gallery_images/default.png');
-            $table->foreignId('owner_id')->constrained()->onDelete('cascade');
+            $table->foreignId('banner_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

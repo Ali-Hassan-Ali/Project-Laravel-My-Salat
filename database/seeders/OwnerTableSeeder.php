@@ -23,16 +23,16 @@ class OwnerTableSeeder extends Seeder
 
         $owner->banner()->create(['categoreys_id'=>1]);
 
-        $interiors = ['interior 1','interior 2','interior 3','interior 4'];
+        // $interiors = ['interior 1','interior 2','interior 3','interior 4'];
 
-        foreach ($interiors as $interior) {
+        // foreach ($interiors as $interior) {
 
-            \App\Models\Gallery::create([
-                'title'     => $interior,
-                'owner_id'  => $owner->id,
-            ]);            
+        //     \App\Models\Gallery::create([
+        //         'title'     => $interior,
+        //         'banner_id' => 1,
+        //     ]);            
             
-        }//end of foreach
+        // }//end of foreach
 
         $packages = ['فطور','غداء','عشاء',' 😅سحور',' 😅فطور بلدي'];
 
@@ -71,7 +71,7 @@ class OwnerTableSeeder extends Seeder
 
                 \App\Models\Gallery::create([
                     'title'     => $interior,
-                    'owner_id'  => $new_owner->id,
+                    'banner_id' => 1,
                 ]);            
                 
             }//end of foreach
@@ -112,7 +112,7 @@ class OwnerTableSeeder extends Seeder
 
                 \App\Models\Gallery::create([
                     'title'     => $interior,
-                    'owner_id'  => $new_owner->id,
+                    'banner_id' => 1,
                 ]);            
                 
             }//end of foreach
