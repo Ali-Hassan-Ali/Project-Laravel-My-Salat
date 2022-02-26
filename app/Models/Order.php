@@ -65,4 +65,10 @@ class Order extends Model
 
     }//end of item
 
+    public function order_item()
+    {
+        return $this->hasMany(OrderItem::class,'order_id');
+
+    }//end of item
+
 }//end of model

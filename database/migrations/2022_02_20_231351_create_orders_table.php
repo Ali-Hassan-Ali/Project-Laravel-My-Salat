@@ -19,11 +19,11 @@ class CreateOrdersTable extends Migration
             $table->longText('description');
             $table->dateTime('history')->default(now());
             
-            $table->foreignId('order_statuses_id')->constrained()->onDelete('cascade');
-            $table->foreignId('packages_id')->constrained()->onDelete('cascade');
-            $table->foreignId('bookings_id')->constrained()->onDelete('cascade');
-            $table->foreignId('owners_id')->constrained()->onDelete('cascade');
-            $table->foreignId('users_id')->constrained()->onDelete('cascade');
+            // $table->foreignId('order_statuses_id')->constrained()->onDelete('cascade');
+            // $table->foreignId('packages_id')->constrained()->onDelete('cascade');
+            // $table->foreignId('bookings_id')->constrained()->onDelete('cascade');
+            $table->foreignId('banner_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

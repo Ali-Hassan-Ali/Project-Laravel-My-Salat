@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\MainCategoryController;
 use App\Http\Controllers\Api\OwnerController;
 use App\Http\Controllers\Api\BannerController;
+use App\Http\Controllers\Api\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +24,9 @@ Route::get('min_category', [MainCategoryController::class,'index']);
 Route::get('owner/{id}', [OwnerController::class,'index']);
 
 Route::get('banners/{id}', [BannerController::class,'index']);
+
+Route::post('order/store', [OrderController::class,'store']);
+Route::get('order/show/{order}', [OrderController::class,'show']);
 
 Route::post('login', [AuthController::class,'login']);
 Route::post('register', [AuthController::class,'register']);
