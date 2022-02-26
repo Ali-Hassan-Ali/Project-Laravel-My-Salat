@@ -12,7 +12,7 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         
-        $request_data = $request->except('services','dish');
+        $request_data = $request->except('services','dish','imaging_group');
 
         $order = Order::create($request_data);
 
