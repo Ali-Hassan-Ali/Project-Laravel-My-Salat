@@ -19,7 +19,7 @@ class StaticController extends Controller
         $bookings = Booking::where('categoreys_id', auth()->guard('owner')->user()->banner->category->id)->get();
 
         $service_categorys = ServiceCategory::with('service')
-                                            ->whereRelation('service', 'owner_id', 
+                                            ->whereRelation('service', 'banner_id', 
                                                 auth()->guard('owner')->user()->banner->id)
                                             ->get();
 
