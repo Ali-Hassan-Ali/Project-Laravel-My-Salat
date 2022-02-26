@@ -17,6 +17,8 @@ class CreateBannersTable extends Migration
             $table->id();
             $table->string('name')->default('owner name');
             $table->string('map')->default('owner map');
+            $table->string('online')->default(true);
+            $table->string('description')->default('description');
             $table->string('slug')->nullable('owner_name');
             $table->string('image')->default('banner_images/default.png');
             $table->foreignId('categoreys_id')->constrained()->onDelete('cascade');

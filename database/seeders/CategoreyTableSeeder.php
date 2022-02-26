@@ -14,7 +14,6 @@ class CategoreyTableSeeder extends Seeder
      */
     public function run()
     {
-
         \App\Models\Categorey::create([
             'name'  => 'صالات الافراح',
             'slug'  => str::slug('صالات الافراح', '_'),
