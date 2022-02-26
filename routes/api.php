@@ -31,7 +31,8 @@ Route::get('order/show/{order}', [OrderController::class,'show']);
 Route::post('login', [AuthController::class,'login']);
 Route::post('register', [AuthController::class,'register']);
 
+Route::get('/user', [AuthController::class,'user']);
+
 Route::middleware('auth:sanctum')->group(function () {
     //user route
-    Route::get('/user', [AuthController::class,'user']);
 });
