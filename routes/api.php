@@ -18,6 +18,11 @@ use App\Http\Controllers\Api\OrderController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::post('/test', function (Request $request) {
+    
+    return $request->all();
+
+});
 
 Route::get('min_category', [MainCategoryController::class,'index']);
 
@@ -32,7 +37,7 @@ Route::post('login', [AuthController::class,'login']);
 Route::post('register', [AuthController::class,'register']);
 
 Route::get('/user', [AuthController::class,'user']);
-
+    
 Route::middleware('auth:sanctum')->group(function () {
     //user route
 });

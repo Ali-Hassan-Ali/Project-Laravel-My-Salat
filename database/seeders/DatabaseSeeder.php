@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ServiceCategoryTableSeeder::class);
         $this->call(ServiceTableSeeder::class);
         $this->call(BookingTableSeeder::class);
-        // $this->call(OrderStatusesTableSeeder::class);
+        $this->call(OrderStatusesTableSeeder::class);
         // $this->call(OrderTableSeeder::class);
         $this->call(GalleryTableSeeder::class);
         // \App\Models\User::factory(10)->create();
