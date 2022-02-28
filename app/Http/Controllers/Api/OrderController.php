@@ -12,22 +12,22 @@ class OrderController extends Controller
 {
     public function store(Request $request)
     {
-        // return $request->all();
+        return $request->all();
 
         $validator = Validator::make($request->all(), [
-            'name'        => ['required'],
-            'description' => ['required'],
             'banner_id'   => ['required'],
             'user_id'     => ['required'],
             'services'    => ['required','array'],
         ]);
 
         if ($validator->fails()) {
+
             return response()->api([], 1, $validator->errors()->first());
-        }
+
+        }//end of if
         
         $request_data = $request->except('services','dish','imaging_group');
-        // $request_data['order_statuses_id'] = 1;
+        $request_data['order_statuses_id'] = 1;
 
         $order = Order::create($request_data);
 

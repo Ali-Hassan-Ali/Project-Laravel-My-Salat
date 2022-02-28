@@ -15,9 +15,13 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->longText('description');
-            $table->dateTime('history')->default(now());
+            $table->string('groom_name');
+            $table->date('event_data');
+            $table->time('event_time');
+            $table->string('event_sort');
+            $table->string('primary_key_type');
+            $table->integer('primary_key_number');
+            $table->longText('note');
             
             // $table->foreignId('packages_id')->constrained()->onDelete('cascade');
             // $table->foreignId('bookings_id')->constrained()->onDelete('cascade');
