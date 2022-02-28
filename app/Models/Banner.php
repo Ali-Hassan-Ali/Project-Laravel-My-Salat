@@ -11,7 +11,7 @@ class Banner extends Model
 
     protected $guarded = [];
 
-    protected $appends  = ['image_path','category_service','images'];
+    protected $appends  = ['image_path','category_service','images','payment'];
 
      //attributes----------------------------------
     public function getImagePathAttribute()
@@ -36,6 +36,14 @@ class Banner extends Model
 
     }//end of get image path
 
+    public function getPaymentAttribute()
+    {
+        $payments = PaymentClient::where('banner_id', $this->id)->get();
+
+        return $payments;
+
+    }//end of get image path
+
      //relationsheep----------------------------------
     public function owner()
     {
@@ -53,6 +61,12 @@ class Banner extends Model
     public function service()
     {
         return $this->hasMany(Service::class,'banner_id');
+        
+    }//end of service
+
+    public function payment_clients()
+    {
+        return $this->hasMany(PaymentClient::class,'payment_admins_id');
         
     }//end of service
 

@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
         $this->call(AdminsTableSeeder::class);
         $this->call(CategoreyTableSeeder::class);
         $this->call(UserTableSeeder::class);
+        $this->call(PaymentAdminTableSeeder::class);
         $this->call(OwnerTableSeeder::class);
         $this->call(ServiceCategoryTableSeeder::class);
         $this->call(ServiceTableSeeder::class);
@@ -23,7 +24,7 @@ class DatabaseSeeder extends Seeder
         $this->call(OrderStatusesTableSeeder::class);
         // $this->call(OrderTableSeeder::class);
         $this->call(GalleryTableSeeder::class);
-        // \App\Models\User::factory(10)->create();
+        $this->call(PaymentClientTableSeeder::class);
         
     }//end of run
 

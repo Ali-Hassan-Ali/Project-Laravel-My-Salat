@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     
+    return \App\Models\PaymentAdmin::all();
+    
     return $banners = App\Models\Banner::all();
 
     $categoreys = App\Models\ServiceCategory::with('service')->get();
