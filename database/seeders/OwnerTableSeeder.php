@@ -108,11 +108,11 @@ class OwnerTableSeeder extends Seeder
 
             $interiors = ['interior 1','interior 2','interior 3','interior 4'];
 
-            foreach ($interiors as $interior) {
+            foreach ($interiors as $key=>$interior) {
 
                 \App\Models\Gallery::create([
                     'title'     => $interior,
-                    'banner_id' => 1,
+                    'banner_id' => $key == 0 ? '1' : $key,
                 ]);            
                 
             }//end of foreach

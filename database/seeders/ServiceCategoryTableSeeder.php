@@ -13,7 +13,7 @@ class ServiceCategoryTableSeeder extends Seeder
      */
     public function run()
     {
-        $categoreys = ['فريق تنظيم','فريق تصوير','فريق تنظيم','المدخل','الكوشة','الصحون'];
+        $categoreys = ['الصحون','فريق تصوير','فريق تنظيم','المدخل','الكوشة','كراسي','مكيفات','مولد كهرباء'];
 
         foreach ($categoreys as $index => $categorey) {
 
