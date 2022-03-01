@@ -40,6 +40,19 @@ class ServiceTableSeeder extends Seeder
             
         }//end of foreach
 
+        $categorSexy13 = ['فريق تنظيم','فريق تنظيم'];
+
+        foreach ($categorSexy13 as $key => $service) {
+
+            \App\Models\Service::create([
+                'name'                  => $service,
+                'price'                 => '200',
+                'banner_id'             => 1,
+                'service_categorie_id'  => 3,
+            ]);
+            
+        }//end of foreach
+
 
         $categorfor = ['المدخل عادي','المدخل للعروسه'];
 
@@ -109,7 +122,6 @@ class ServiceTableSeeder extends Seeder
             
         }//end of foreach
 
-
         $categorTow = ['فريق تصوير كامل','فريق تصوير عادي'];
 
         foreach ($categorTow as $key => $service) {
@@ -123,6 +135,18 @@ class ServiceTableSeeder extends Seeder
             
         }//end of foreach
 
+        $categorSexy13 = ['فريق تنظيم','فريق تنظيم'];
+
+        foreach ($categorSexy13 as $key => $service) {
+
+            \App\Models\Service::create([
+                'name'                  => $service,
+                'price'                 => '200',
+                'banner_id'             => 1,
+                'service_categorie_id'  => 3,
+            ]);
+            
+        }//end of foreach
 
         $categorfor = ['المدخل عادي','المدخل للعروسه'];
 
