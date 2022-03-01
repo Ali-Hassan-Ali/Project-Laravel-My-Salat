@@ -13,35 +13,62 @@ class OrderTableSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Order::create([
-            'name'              => 'name 1',
-            'description'       => 'deprecation 1',
-            'packages_id'       => 1,
-            'bookings_id'       => 1,
-            'owners_id'         => 1,
-            'users_id'          => 1,
-            'order_statuses_id' => 1,
-        ]);
+        $orders = ['العريس الاول','العريس الثاني','العريس الثالث'];
 
-        \App\Models\Order::create([
-            'name'              => 'name 2',
-            'description'       => 'deprecation 2',
-            'packages_id'       => 1,
-            'bookings_id'       => 1,
-            'owners_id'         => 1,
-            'users_id'          => 1,
-            'order_statuses_id' => 1,
-        ]);
+        foreach ($orders as $order) {
 
-        \App\Models\Order::create([
-            'name'              => 'name 3',
-            'description'       => 'deprecation 3',
-            'packages_id'       => 1,
-            'bookings_id'       => 1,
-            'owners_id'         => 1,
-            'users_id'          => 1,
-            'order_statuses_id' => 1,
-        ]);
+            \App\Models\Order::create([
+                'groom_name'        => $order,
+                'event_data'        => now()->toDateString(),
+                'event_time'        => now()->toTimeString(),
+                'event_sort'        => 1,
+                'primary_key_type'  => 1,
+                'primary_key_number'=> 1,
+                'note'              => 1,
+                'order_statuses_id' => 1,
+                'banner_id'         => 1,
+                'user_id'           => 1,
+            ]);
+            
+        }//end of each
+
+        $orders1 = ['العريس الاول','العريس الثاني','العريس الثالث','العريس الاول','العريس الثاني','العريس الثالث'];
+
+        foreach ($orders1 as $order) {
+
+            \App\Models\Order::create([
+                'groom_name'        => $order,
+                'event_data'        => now()->toDateString(),
+                'event_time'        => now()->toTimeString(),
+                'event_sort'        => 1,
+                'primary_key_type'  => 1,
+                'primary_key_number'=> 1,
+                'note'              => 1,
+                'order_statuses_id' => 2,
+                'banner_id'         => 1,
+                'user_id'           => 1,
+            ]);
+            
+        }//end of each
+
+        $orders2 = ['العريس الاول','العريس الثاني','العريس الثالث',];
+
+        foreach ($orders2 as $order) {
+
+            \App\Models\Order::create([
+                'groom_name'        => $order,
+                'event_data'        => now()->toDateString(),
+                'event_time'        => now()->toTimeString(),
+                'event_sort'        => 1,
+                'primary_key_type'  => 1,
+                'primary_key_number'=> 1,
+                'note'              => 1,
+                'order_statuses_id' => 3,
+                'banner_id'         => 1,
+                'user_id'           => 1,
+            ]);
+            
+        }//end of each
 
     }//end of run
 

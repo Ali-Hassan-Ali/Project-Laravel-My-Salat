@@ -9,8 +9,8 @@ use App\Http\Controllers\Dashboard\Admin\AdminController;
 use App\Http\Controllers\Dashboard\Admin\OwnerController;
 use App\Http\Controllers\Dashboard\Admin\CategoreyController;
 use App\Http\Controllers\Dashboard\Admin\BookingController;
-
 use App\Http\Controllers\Dashboard\Admin\ServiceCategoryController;
+use App\Http\Controllers\Dashboard\Admin\PaymentAdminController;
 
 
 Route::get('dashboard/login', [AuthController::class,'index'])->name('dashboard.admin.login');
@@ -30,5 +30,7 @@ Route::prefix('dashboard/admin')->name('dashboard.admin.')->middleware('auth:adm
         Route::resource('categoreys', CategoreyController::class)->except('show');
 
         Route::resource('bookings', BookingController::class)->except('show');
+
+        Route::resource('payment_admins', PaymentAdminController::class)->except('show');
 
 });//group(function

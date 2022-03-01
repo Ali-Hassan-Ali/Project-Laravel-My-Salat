@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', [\App\Http\Controllers\Api\WelcomeController::class,'index']);
 
 Route::get('/', function () {
-    
+    return now()->toTimeString();  
     return \App\Models\PaymentAdmin::all();
     
     return $banners = App\Models\Banner::all();

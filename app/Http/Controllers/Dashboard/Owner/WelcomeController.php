@@ -10,7 +10,11 @@ class WelcomeController extends Controller
 {
     public function index()
     {
-        return view('dashboard_owner.welcome');
+        $completed_order = Order::where('order_statuses_id', 1)->count();// completed
+        $waiting_order   = Order::where('order_statuses_id', 2)->count();// waiting
+        $cancel_order    = Order::where('order_statuses_id', 3)->count();// cancel
+
+        return view('dashboard_owner.welcome', compact('completed_order','waiting_order','cancel_order'));
            
     }//end of index
 

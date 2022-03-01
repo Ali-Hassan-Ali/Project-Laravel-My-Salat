@@ -2,8 +2,13 @@
 
 return [
 
-    'dashboard'     => 'الرئسية',
-    'Upload_multe_image'     => 'يمكنك رفع اكثر من صوره',
+    'dashboard'          => 'الرئسية',
+    'monthly_statistics' => 'الاحصائيات الشهرية',
+    'completed_orders'   => 'الطلبات المكتملة',
+    'waiting_order'      => 'الطلبات المعلقة',
+    'cancel_order'       => 'الطلبات المرفوضة',
+
+    'Upload_multe_image' => 'يمكنك رفع اكثر من صوره',
 
     'the_banners'   => 'البيانات الاساسية',
     'exterior'      => 'المظهر الخارجي',
