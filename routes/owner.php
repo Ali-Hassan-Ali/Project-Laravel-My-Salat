@@ -11,6 +11,7 @@ use App\Http\Controllers\Dashboard\Owner\BannerController;
 use App\Http\Controllers\Dashboard\Owner\GalleryController;
 use App\Http\Controllers\Dashboard\Owner\PackageController;
 use App\Http\Controllers\Dashboard\Owner\ServiceController;
+use App\Http\Controllers\Dashboard\Owner\PaymentClientController;
 
 
 Route::get('dashboard/owner/login', [AuthController::class,'index'])->name('dashboard.owner.login');
@@ -36,5 +37,7 @@ Route::prefix('dashboard/owner')->name('dashboard.owner.')->middleware('auth:own
         Route::resource('packages', PackageController::class)->except('show');
 
         Route::resource('services', ServiceController::class)->except('show');
+        
+        Route::resource('payment_clients', PaymentClientController::class)->except('show');
 
 });//group(function

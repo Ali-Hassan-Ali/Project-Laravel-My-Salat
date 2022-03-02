@@ -28,5 +28,11 @@ return [
     
     'services'  => 'الخدمات',
     'service'   => 'خدمة',
+    
+    'payment_clients'   => 'الحسابات البنكية',
+    'number_acount'     => 'رقم الحساب',
+    'name_acount'       => 'اسم صاحب الحساب',
+    'payment_admins_id' => 'اسم البنك',
+    'note'              => 'ملاحظة',
 
 ];
