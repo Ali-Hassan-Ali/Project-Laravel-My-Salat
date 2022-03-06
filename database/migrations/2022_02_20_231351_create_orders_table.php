@@ -20,8 +20,9 @@ class CreateOrdersTable extends Migration
             $table->time('event_time');
             $table->string('event_sort');
             $table->string('primary_key_type');
-            $table->integer('primary_key_number');
-            $table->longText('note');
+            $table->string('primary_key_number');
+            $table->longText('note')->nullable();
+            $table->string('bill')->nullable();
             
             // $table->foreignId('packages_id')->constrained()->onDelete('cascade');
             // $table->foreignId('bookings_id')->constrained()->onDelete('cascade');

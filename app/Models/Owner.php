@@ -31,6 +31,7 @@ class Owner extends Authenticatable
 
     }//end of get image path
 
+    //relation----------------------------------
     public function banner()
     {
         return $this->hasOne(Banner::class);

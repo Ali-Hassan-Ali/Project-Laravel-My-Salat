@@ -62,17 +62,44 @@
                                     <div class="row">
 
                                         <div class="col-md-12">
-                                            <label for="start-date">@lang('dashboard.name')</label>
+                                            <label for="start-date">@lang('owner.groom_name')</label>
                                             <div class="d-flex event-title">
-                                                <input name="name" type="text" placeholder="Enter Title" class="form-control" name="task">
+                                                <input name="groom_name" type="text" placeholder="Enter Title" class="form-control" name="task">
                                             </div>
                                         </div>
 
                                         <div class="col-md-6 col-sm-6 col-12">
                                             <div class="form-group start-date">
-                                                <label for="start-date">@lang('statics.created_at_order')</label>
+                                                <label for="start-data">@lang('statics.event_data')</label>
                                                 <div class="d-flex">
-                                                    <input name="history" placeholder="Start Date" class="form-control" type="date">
+                                                    <input name="event_data" placeholder="Start Date" class="form-control" type="date">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 col-sm-6 col-12">
+                                            <div class="form-group start-date">
+                                                <label for="start-date">@lang('statics.event_time')</label>
+                                                <div class="d-flex">
+                                                    <input name="event_time" placeholder="Start Date" class="form-control" type="time">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 col-sm-6 col-12">
+                                            <div class="form-group start-date">
+                                                <label for="start-date">@lang('statics.primary_key_type')</label>
+                                                <div class="d-flex">
+                                                    <input name="primary_key_type" placeholder="Start Date" class="form-control" type="text">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 col-sm-6 col-12">
+                                            <div class="form-group start-date">
+                                                <label for="start-date">@lang('statics.primary_key_number')</label>
+                                                <div class="d-flex">
+                                                    <input name="primary_key_number" placeholder="Start Date" class="form-control" type="text">
                                                 </div>
                                             </div>
                                         </div>
@@ -93,14 +120,14 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-12">
+                                        <div class="col-12 mt-3">
                                             <div class="form-group end-date">
                                                 <label>@lang('admin.bookings')</label>
-                                                <select name="bookings_id" class="selectpicker form-control">
+                                                <select name="event_sort" class="selectpicker form-control">
                                                     <option value="">@lang('owner.no_categorey')</option>
                                                     @foreach ($bookings as $booking)
                                                         
-                                                        <option value="{{ $booking->id }}">
+                                                        <option value="{{ $booking->name }}">
                                                             {{ $booking->name }}
                                                         </option>
 
@@ -143,7 +170,7 @@
                                         <div class="col-md-12">
                                             <label for="start-date" class="">@lang('dashboard.description')</label>
                                             <div class="d-flex event-description">
-                                                <textarea id="taskdescription" name="description" placeholder="Enter Description" rows="3" class="form-control" name="taskdescription"></textarea>
+                                                <textarea id="taskdescription" name="note" placeholder="Enter Description" rows="3" class="form-control" name="taskdescription"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -157,22 +184,22 @@
 
                                                     <div class="n-chk">
                                                         <label class="new-control new-radio radio-warning">
-                                                          <input type="radio" class="new-control-input" value="2" name="order_statuses_id" value="bg-warning">
-                                                          <span class="new-control-indicator"></span>@lang('admin.waiting')
+                                                            <input type="radio" class="new-control-input" value="2" name="order_statuses_id" value="bg-warning" required>
+                                                            <span class="new-control-indicator"></span>@lang('admin.waiting')
                                                         </label>
                                                     </div>
 
                                                     <div class="n-chk">
                                                         <label class="new-control new-radio radio-success">
-                                                          <input type="radio" class="new-control-input" value="1" name="order_statuses_id" value="bg-success">
-                                                          <span class="new-control-indicator"></span>@lang('admin.completed')
+                                                            <input type="radio" class="new-control-input" value="1" name="order_statuses_id" value="bg-success" required>
+                                                            <span class="new-control-indicator"></span>@lang('admin.completed')
                                                         </label>
                                                     </div>
 
                                                     <div class="n-chk">
                                                         <label class="new-control new-radio radio-danger">
-                                                          <input type="radio" class="new-control-input" value="3" name="order_statuses_id" value="bg-danger">
-                                                          <span class="new-control-indicator"></span>@lang('admin.cancel')
+                                                            <input type="radio" class="new-control-input" value="3" name="order_statuses_id" value="bg-danger" required>
+                                                            <span class="new-control-indicator"></span>@lang('admin.cancel')
                                                         </label>
                                                     </div>
                                                 </div>
@@ -346,11 +373,11 @@
             @foreach ($orders as $order)
                 {
                     id: 'event-' + "{{ $order->id }}",
-                    title: '{{ $order->name }}',
-                    start: "{{ date('Y', strtotime($order->history)) }}" + '-'+ "{{ date('m', strtotime($order->history)) }}",
-                    end: "{{ date('Y', strtotime($order->history)) }}" + '-'+ "{{ date('m', strtotime($order->history)) }}",
+                    title: '{{ $order->groom_name }}',
+                    start: "{{ date('Y', strtotime($order->event_data)) }}" + '-'+ "{{ date('m', strtotime($order->event_data)) }}"  +'-{{ date('d', strtotime($order->event_data)) }}T{{ $order->event_time }}',
+                    end: "{{ date('Y', strtotime($order->event_data)) }}" + '-'+ "{{ date('m', strtotime($order->event_data)) }}"  +'-{{ date('d', strtotime($order->event_data)) }}T{{ $order->event_time }}',
                     className: "{{ $order->status }}",
-                    description: '{{ $order->description }}'
+                    description: '{{ $order->note }}'
                 },
             @endforeach
             

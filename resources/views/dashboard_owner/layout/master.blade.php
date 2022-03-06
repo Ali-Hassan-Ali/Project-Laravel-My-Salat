@@ -55,7 +55,7 @@
 
 </head>
 {{-- alt-menu open meun --}}
-<body class="sidebar-noneoverflow">
+<body class="alt-menu sidebar-noneoverflow">
 
     <!-- BEGIN LOADER -->
     {{-- @include('dashboard_owner.Layout.include._loader') --}}

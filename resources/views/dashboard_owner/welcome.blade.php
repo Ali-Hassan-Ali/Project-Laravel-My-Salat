@@ -1,6 +1,6 @@
 @extends('dashboard_owner.layout.master')
 
-@section('title', __('dashboard.home'))
+@section('title', __('dashboard.dashboard') . ' | ' . __('dashboard.statistics'))
 
 @section('content')
 

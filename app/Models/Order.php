@@ -29,6 +29,14 @@ class Order extends Model
 
     }//end of get status coloor
 
+    //relation----------------------------------
+
+    public function payment_order()
+    {
+        return $this->hasOne(PaymentOrder::class,'order_id');
+
+    }//end of order
+
     public function order_statuses()
     {
         return $this->belongsTo(OrderStatus::class,'order_statuses_id');

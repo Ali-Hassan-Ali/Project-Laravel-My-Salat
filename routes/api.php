@@ -31,13 +31,15 @@ Route::get('owner/{id}', [OwnerController::class,'index']);
 Route::get('banners/{id}', [BannerController::class,'index']);
 
 Route::post('order/store', [OrderController::class,'store']);
-Route::get('order/show/{order}', [OrderController::class,'show']);
+Route::get('order/show/{order}', [OrderController::class,'show'])->name('order.show');
+Route::post('order/payment', [OrderController::class,'payment_order']);
 
 Route::post('login', [AuthController::class,'login']);
 Route::post('register', [AuthController::class,'register']);
     
 Route::middleware('auth:sanctum')->group(function () {
-
+    
+    Route::get('/show_order', [OrderController::class,'show_order']);
     Route::get('/user', [AuthController::class,'user']);
     
 });

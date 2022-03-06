@@ -21,7 +21,9 @@ class ServiceController extends Controller
     
     public function create()
     {
-        $sub_category = ServiceCategory::latest()->get();
+        $sub_category = ServiceCategory::where('categoreys_id', 
+                                                 auth()->guard('owner')->user()->banner->categoreys_id)
+                                                ->latest()->get();
 
         return view('dashboard_owner.services.create', compact('sub_category'));
 
@@ -57,7 +59,9 @@ class ServiceController extends Controller
 
     public function edit(Service $service)
     {
-        $sub_category = ServiceCategory::latest()->get();
+        $sub_category = ServiceCategory::where('categoreys_id', 
+                                                 auth()->guard('owner')->user()->banner->categoreys_id)
+                                                ->latest()->get();
 
         return view('dashboard_owner.services.edit', compact('service','sub_category'));
 

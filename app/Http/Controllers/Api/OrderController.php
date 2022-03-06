@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\UserResource;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use App\Models\PaymentOrder;
 use App\Models\Order;
 use App\Models\OrderItem;
 
@@ -12,7 +14,6 @@ class OrderController extends Controller
 {
     public function store(Request $request)
     {
-        return $request->all();
 
         $validator = Validator::make($request->all(), [
             'banner_id'   => ['required'],
@@ -71,10 +72,65 @@ class OrderController extends Controller
 
     public function show(Order $order)
     {
-        $order = Order::with('order_item')->find($order->id);
+        $order = Order::with('order_item','payment_order')->find($order->id);
 
         return response()->api($order);
         
     }//end of show
+
+    public function payment_order(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'payment_name'  => ['required'],
+            'payment_number'     => ['required','numeric'],
+            'noteice_image'  => ['required'],
+            'receipt_image'     => ['required','image'],
+            'order_id'        => ['required','numeric'],
+        ]);
+
+        if ($validator->fails()) {
+
+            return response()->api([], 1, $validator->errors()->first());
+
+        }//end of if
+
+        $order = PaymentOrder::where('order_id', $request->order_id)->first();
+
+        if ($order) {
+
+            return response()->api([], 1, __('owner.this_order'));
+
+        }//end of order
+
+        $request_data = $request->except('noteice_image','receipt_image');
+
+        if ($request->noteice_image) {
+
+            $request_data['noteice_image'] = $request->file('noteice_image')->store('noteice_image','public');
+            
+        }//end of noteice_image
+
+        if ($request->receipt_image) {
+
+            $request_data['receipt_image'] = $request->file('receipt_image')->store('receipt_image','public');
+            
+        }//end of noteice_image
+
+        $PaymentOrder = PaymentOrder::create($request_data);
+        
+        return redirect()->route('order.show', $request->order_id);
+        // return response()->api($PaymentOrder);
+
+    }//end of payment_order
+
+    public function show_order()
+    {
+        $data['user'] = new UserResource(auth()->user('sanctum'));
+
+        $order = Order::with('order_item')->where('user_id', $data['user']->id)->get();
+        
+        return response()->api($order);
+
+    }//end of show order
 
 }//end of controller
