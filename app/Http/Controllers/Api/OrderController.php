@@ -130,4 +130,12 @@ class OrderController extends Controller
 
     }//end of show order
 
+    public function show_all_order($id)
+    {
+        $order = Order::with('order_item')->where('user_id', $id)->get();
+
+        return response()->api($order);
+
+    }//end of order
+
 }//end of controller
