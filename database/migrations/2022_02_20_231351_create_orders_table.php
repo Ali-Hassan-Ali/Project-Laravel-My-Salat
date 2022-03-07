@@ -23,6 +23,7 @@ class CreateOrdersTable extends Migration
             $table->string('primary_key_number');
             $table->longText('note')->nullable();
             $table->string('bill')->nullable();
+            $table->string('token')->nullable();
             
             // $table->foreignId('packages_id')->constrained()->onDelete('cascade');
             // $table->foreignId('bookings_id')->constrained()->onDelete('cascade');

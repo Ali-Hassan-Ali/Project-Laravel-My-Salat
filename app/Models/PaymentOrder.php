@@ -11,14 +11,9 @@ class PaymentOrder extends Model
 
     protected $guarded = [];
 
-    protected $appends  = ['noteice_path','receipt_path'];
+    protected $appends  = ['receipt_path'];
 
      //attributes----------------------------------
-    public function getNoteicePathAttribute()
-    {
-        return asset('storage/' . $this->noteice_image);
-
-    }//end of get image path
 
     public function getReceiptPathAttribute()
     {

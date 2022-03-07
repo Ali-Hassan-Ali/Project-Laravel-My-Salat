@@ -18,7 +18,6 @@ class OrderController extends Controller
         $validator = Validator::make($request->all(), [
             'banner_id'   => ['required'],
             'user_id'     => ['required'],
-            'services'    => ['required','array'],
         ]);
 
         if ($validator->fails()) {
@@ -32,14 +31,19 @@ class OrderController extends Controller
 
         $order = Order::create($request_data);
 
-        foreach ($request->services as $key => $service) {
-            
-            OrderItem::create([
-                'order_id'   => $order->id,
-                'service_id' => $service,
-            ]);
+        if ($request->services) {
 
-        }//end of each
+            foreach ($request->services as $key => $service) {
+                
+                OrderItem::create([
+                    'order_id'   => $order->id,
+                    'service_id' => $service,
+                ]);
+
+            }//end of each
+
+        }//end of if services
+
 
         if ($request->imaging_group) {
 
@@ -81,10 +85,9 @@ class OrderController extends Controller
     public function payment_order(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'payment_name'  => ['required'],
-            'payment_number'     => ['required','numeric'],
-            'noteice_image'  => ['required'],
-            'receipt_image'     => ['required','image'],
+            'payment_name'    => ['required'],
+            'payment_number'  => ['required','numeric'],
+            'receipt_image'   => ['required','image'],
             'order_id'        => ['required','numeric'],
         ]);
 
@@ -102,13 +105,7 @@ class OrderController extends Controller
 
         }//end of order
 
-        $request_data = $request->except('noteice_image','receipt_image');
-
-        if ($request->noteice_image) {
-
-            $request_data['noteice_image'] = $request->file('noteice_image')->store('noteice_image','public');
-            
-        }//end of noteice_image
+        $request_data = $request->except('receipt_image');
 
         if ($request->receipt_image) {
 

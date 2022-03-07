@@ -18,8 +18,7 @@ class CreatePaymentOrdersTable extends Migration
             $table->string('payment_name');
             $table->string('payment_number');
             $table->string('precess_number');
-            $table->string('noteice_image');
-            $table->string('receipt_image');
+            $table->string('receipt_image')->nullable();
             // $table->string('total_price');
 
             $table->foreignId('order_id')->constrained()->onDelete('cascade');
