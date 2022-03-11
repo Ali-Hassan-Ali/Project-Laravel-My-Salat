@@ -91,4 +91,32 @@ class AuthController extends Controller
 
     }// end of user
 
+    public function update(Request $request)
+    {
+        $data['user'] = new UserResource(auth()->user('sanctum'));
+
+        $user = User::find($data['user']->id);
+
+        $user->update([
+            'username' => $request->username,
+            'region'   => $request->region,
+        ]);
+
+        return response()->api($data);
+
+    }//end of update user
+
+    public function update_user(User $user, Request $request)
+    {
+        $user = User::find($request->id);
+
+        $user->update([
+            'username' => $request->username,
+            'region'   => $request->region,
+        ]);
+
+        return response()->api($user);
+
+    }//end of update user
+
 }//end of controller

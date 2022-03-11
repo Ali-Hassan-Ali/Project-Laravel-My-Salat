@@ -14,7 +14,7 @@ class OwnerController extends Controller
     public function index()
     {
         $owners = Owner::all();
-
+        
         return view('dashboard_admin.owners.index',compact('owners'));
 
     }//end of index

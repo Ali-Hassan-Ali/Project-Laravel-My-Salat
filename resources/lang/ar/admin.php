@@ -2,7 +2,7 @@
 
 return [
 
-    'dashboard'     => 'الرئسية',
+    'dashboard'     => 'لوحة التحكم',
     'salats'        => 'الصلات',
 
     'the_banners'   => 'البيانات الاساسية',
@@ -24,5 +24,6 @@ return [
     'cancel'    => 'إلغاء',
     
     'payment_admins'    => 'وسائل الدفع',
+    'support'           => 'التبليغ عن مشكلة',
 
 ];

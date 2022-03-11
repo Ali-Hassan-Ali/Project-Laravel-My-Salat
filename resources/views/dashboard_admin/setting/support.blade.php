@@ -1,6 +1,6 @@
 @extends('dashboard_admin.layout.master')
 
-@section('title', __('dashboard.dashboard') . ' | ' .  __('dashboard.add') . ' | ' . __('admin.bookings'))
+@section('title', __('dashboard.dashboard') . ' | ' . __('dashboard.setting')  . ' | ' . __('admin.support'))
 
 @section('content')
 
@@ -18,7 +18,7 @@
                     <polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
                 </a>
             </li>
-            <li class="breadcrumb-item"><a href="{{ route('dashboard.admin.bookings.index') }}">@lang('admin.bookings')</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('dashboard.admin.setting.support') }}">@lang('admin.support')</a></li>
             <li class="breadcrumb-item active" aria-current="page"><span>@lang('dashboard.add')</span></li>
         </ol>
     </nav>
@@ -34,7 +34,7 @@
             <div class="row">
                 
                 <div class="col-xl-12 col-lg-12 col-md-12 layout-spacing">
-                    <form action="{{ route('dashboard.admin.bookings.store') }}" method="POST" class="section general-info">
+                    <form action="{{ route('dashboard.admin.setting.store') }}" method="POST" class="section general-info">
                         @csrf
                         @method('post')
 
@@ -47,26 +47,13 @@
                                                 <div class="row">
                                                     <div class="col-12">
                                                         <div class="form-group">
-                                                            <label>@lang('dashboard.name')</label>
-                                                            <input type="text" name="name" class="form-control mb-4 @error('name') is-invalid @enderror" placeholder="@lang('dashboard.name')" value="{{ old('name') }}">
-                                                            @error('name')
+                                                            <label>@lang('admin.setting')</label>
+                                                            <textarea type="text" name="support" class="ckeditor form-control @error('setting') is-invalid @enderror">{{ setting('support') }}</textarea>
+                                                            @error('setting')
                                                                 <p class="text-danger">{{ $message }}</p>
                                                             @enderror
                                                         </div>
                                                     </div>
-                                                    <div class="col-12">
-                                                        <div class="form-group">
-                                                            <label>@lang('owner.sub_category')</label>
-                                                            <select name="categoreys_id" class="selectpicker form-control">
-                                                                <option value="">@lang('owner.no_categorey')</option>
-                                                                @foreach ($categoreys as $categorey)
-                                                                    
-                                                                    <option value="{{ $categorey->id }}">{{ $categorey->name }}</option>
-
-                                                                @endforeach
-                                                            </select>
-                                                        </div>
-                                                    </div>{{-- col-12 --}}
                                                 </div>
                                             </div>
                                             <button class="btn btn-primary col-12">@lang('dashboard.add')</button>

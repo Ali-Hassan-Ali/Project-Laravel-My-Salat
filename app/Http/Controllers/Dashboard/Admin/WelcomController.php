@@ -4,13 +4,17 @@ namespace App\Http\Controllers\Dashboard\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Categorey;
+use App\Models\Owner;
 
 class WelcomController extends Controller
 {
     
     public function index()
     {
-        return view('dashboard_admin.welcome');
+        $min_categorys = Categorey::all();
+
+        return view('dashboard_admin.welcome', compact('min_categorys'));
 
     }//end of index
 

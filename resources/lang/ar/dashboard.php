@@ -6,6 +6,7 @@ return [
     'my_salat'     => 'صالتي',
     'calendar'     => 'تقويم',
     'statistics'   => 'الاحصائيات',
+    'setting'      => 'الاعدادات',
 
     'confirm_delete'       => '!تأكيد الحذف',
     'added_successfully'   => 'تم اضافه البيانات بنجاح',

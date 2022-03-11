@@ -38,7 +38,8 @@ class AuthController extends Controller
             $auth = auth()->guard('admin')->attempt($credentials);
 
             if ($auth) {
-
+                
+                session()->flash('success', __('dashboard.login_successfully'));
                 return redirect()->route('dashboard.admin.welcome');
 
             }//end of auth

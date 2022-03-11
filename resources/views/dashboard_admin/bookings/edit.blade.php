@@ -1,4 +1,4 @@
-@extends('dashboard_owner.layout.master')
+@extends('dashboard_admin.layout.master')
 
 @section('title', __('dashboard.dashboard') . ' | ' .  __('dashboard.edit') . ' | ' . __('admin.bookings'))
 

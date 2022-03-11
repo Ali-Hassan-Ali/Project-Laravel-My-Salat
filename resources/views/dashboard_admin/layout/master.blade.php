@@ -44,7 +44,7 @@
 
 </head>
 {{-- alt-menu open meun --}}
-<body class="sidebar-noneoverflow">
+<body class="alt-menu sidebar-noneoverflow">
 
     <!-- BEGIN LOADER -->
     {{-- @include('dashboard_admin.Layout.include._loader') --}}

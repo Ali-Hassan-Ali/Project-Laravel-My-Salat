@@ -9,7 +9,9 @@
                 </a>
             </li>
             <li class="nav-item theme-text">
-                <a href="index.html" class="nav-link"> CORK </a>
+                <a href="index.html" class="nav-link">
+                    @lang('admin.dashboard')
+                </a>
             </li>
         </ul>
 
@@ -18,7 +20,7 @@
                 <a href="#dashboard" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">
                     <div class="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-                        <span>Dashboard</span>
+                        <span>@lang('dashboard.dashboard')</span>
                     </div>
                     <div>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
@@ -27,12 +29,12 @@
                 <ul class="collapse submenu recent-submenu mini-recent-submenu list-unstyled show" id="dashboard" data-parent="#accordionExample">
                     <li class="active">
                         <a href="{{ route('dashboard.admin.welcome') }}">
-                            stitc
+                            @lang('dashboard.statistics')
                         </a>
                     </li>
                     <li>
                         <a href="index2.html">
-                            Sales
+                            @lang('dashboard.calendar')
                         </a>
                     </li>
                 </ul>
@@ -89,22 +91,22 @@
                 </ul>
             </li>
 
-            <li class="menu active">
+            <li class="menu {{ request()->segment(3) == 'owners' ? 'active' : '' }}">
                 <a href="#Owner" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">
-                    <div class="{{ request()->segment(2) == 'owners' ? 'active' : '' }}">
+                    <div class="{{ request()->segment(3) == 'owners' ? 'active' : '' }}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
                         <span>@lang('admin.owners')</span>
                     </div>
-                    <div class="{{ request()->segment(2) == 'owners' ? 'active' : '' }}">
+                    <div class="{{ request()->segment(3) == 'owners' ? 'active' : '' }}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
                     </div>
                 </a>
                 <ul class="collapse submenu recent-submenu mini-recent-submenu list-unstyled
-                        {{ request()->segment(2) == 'owners' ? 'show' : '' }}" id="Owner" data-parent="#accordionExample">
-                    <li class="{{ request()->segment(2) == 'owners' ? 'active' : '' }}">
+                        {{ request()->segment(3) == 'owners' ? 'show' : '' }}" id="Owner" data-parent="#accordionExample">
+                    <li class="{{ request()->segment(3) == 'owners' ? 'active' : '' }}">
                         <a href="{{ route('dashboard.admin.owners.index') }}">@lang('dashboard.list') @lang('admin.owners')</a>
                     </li>
-                    <li class="{{ request()->segment(2) == 'owners' ? 'active' : '' }}">
+                    <li class="{{ request()->segment(3) == 'owners' ? 'active' : '' }}">
                         <a href="{{ route('dashboard.admin.owners.create') }}">@lang('dashboard.create') @lang('admin.owners')</a>
                     </li>
                 </ul>
@@ -183,6 +185,33 @@
                             @lang('dashboard.list') @lang('admin.payment_admins')
                         </a>
                     </li>
+                </ul>
+            </li>
+
+            <li class="menu {{ request()->segment(3) == 'setting' ? 'active' : '' }}">
+                <a href="#payment-admins" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">
+                    <div class="">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                        </svg>
+                        <span>@lang('dashboard.setting')</span>
+                    </div>
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </div>
+                </a>
+                <ul class="collapse submenu recent-submenu mini-recent-submenu list-unstyled {{ request()->segment(4) == 'support' ? 'show' : '' }}" id="payment-admins" data-parent="#accordionExample">
+                    <li class="{{ request()->segment(4) == 'support' ? 'active' : '' }}">
+                        <a href="{{ route('dashboard.admin.setting.support') }}">
+                            @lang('admin.support')
+                        </a>
+                    </li>
+                    {{-- <li class="{{ request()->segment(3) == 'payment_admins' ? 'active' : '' }}">
+                        <a href="{{ route('dashboard.admin.payment_admins.index') }}">
+                            @lang('dashboard.list') @lang('admin.payment_admins')
+                        </a>
+                    </li> --}}
                 </ul>
             </li>
 

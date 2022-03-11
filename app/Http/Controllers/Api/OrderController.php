@@ -14,10 +14,18 @@ class OrderController extends Controller
 {
     public function store(Request $request)
     {
-
         $validator = Validator::make($request->all(), [
-            'banner_id'   => ['required'],
-            'user_id'     => ['required'],
+            'groom_name'        => ['required'],
+            'event_data'        => ['required'],
+            'event_time'        => ['required'],
+            'event_sort'        => ['required'],
+            'primary_key_type'  => ['required'],
+            'primary_key_number'=> ['required','numeric'],
+            'note'              => ['required'],
+            'token'             => ['required'],
+            'order_statuses_id' => ['required','numeric'],
+            'banner_id'         => ['required','numeric'],
+            'user_id'           => ['required','numeric'],
         ]);
 
         if ($validator->fails()) {
@@ -28,6 +36,8 @@ class OrderController extends Controller
         
         $request_data = $request->except('services','dish','imaging_group');
         $request_data['order_statuses_id'] = 1;
+        // $request_data['event_data']        = now()->toDateString();
+        // $request_data['event_time']        = now()->toTimeString();
 
         $order = Order::create($request_data);
 

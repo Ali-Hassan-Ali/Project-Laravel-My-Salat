@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\MainCategoryController;
 use App\Http\Controllers\Api\OwnerController;
 use App\Http\Controllers\Api\BannerController;
 use App\Http\Controllers\Api\OrderController;
+use App\Http\Controllers\Api\SettingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,10 +38,14 @@ Route::post('order/payment', [OrderController::class,'payment_order']);
 
 Route::post('login', [AuthController::class,'login']);
 Route::post('register', [AuthController::class,'register']);
+Route::post('/user_update', [AuthController::class,'update_user']);
     
+Route::get('settings', [SettingController::class,'index']);
+
 Route::middleware('auth:sanctum')->group(function () {
     
     Route::get('/show_order', [OrderController::class,'show_order']);
     Route::get('/user', [AuthController::class,'user']);
+    Route::post('/user/update', [AuthController::class,'update']);
     
 });

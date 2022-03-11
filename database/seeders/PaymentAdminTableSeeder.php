@@ -13,7 +13,8 @@ class PaymentAdminTableSeeder extends Seeder
      */
     public function run()
     {
-        $payments = ['بنك الخرطوم','بنك امدرمان الوطني','','بنك الخليج','بنك النليلين','بنك الثواب'];
+        // $payments = ['بنك الخرطوم','بنك امدرمان الوطني','','بنك الخليج','بنك النليلين','بنك الثواب'];
+        $payments = ['Bank of Khartoum', 'Omdurman National Bank', 'Gulf Bank', 'Nilelain Bank', 'Thawab Bank'];
 
         foreach ($payments as $index => $payment) {
 
