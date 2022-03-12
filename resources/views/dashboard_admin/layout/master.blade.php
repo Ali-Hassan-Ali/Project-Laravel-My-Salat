@@ -47,11 +47,11 @@
 <body class="alt-menu sidebar-noneoverflow">
 
     <!-- BEGIN LOADER -->
-    {{-- @include('dashboard_admin.Layout.include._loader') --}}
+    {{-- @include('dashboard_admin.layout.include._loader') --}}
     <!--  END LOADER -->
 
     <!--  BEGIN NAVBAR  -->
-    @include('dashboard_admin.Layout.include._header')
+    @include('dashboard_admin.layout.include._header')
     <!--  END NAVBAR  -->
 
 
@@ -62,7 +62,7 @@
         <div class="search-overlay"></div>
 
         <!--  BEGIN SIDEBAR  -->
-        @include('dashboard_admin.Layout.include._sidebar')
+        @include('dashboard_admin.layout.include._sidebar')
         <!--  END SIDEBAR  -->
         
         <!--  BEGIN CONTENT AREA  -->
