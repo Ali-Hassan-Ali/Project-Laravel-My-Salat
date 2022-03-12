@@ -12,10 +12,10 @@ class SettingResource extends JsonResource
      * @param  \Illuminate\Http\Request  $request
      * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
      */
-    public function toArray($request)
+    public function toArray()
     {
         return [
-            // 'support' => setting('support'),
+            'support' => setting('support'),
         ];    
 
     }//end if toarray

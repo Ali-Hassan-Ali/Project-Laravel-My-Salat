@@ -15,7 +15,7 @@ class CreatePaymentClientsTable extends Migration
     {
         Schema::create('payment_clients', function (Blueprint $table) {
             $table->id();
-            $table->double('number_acount');
+            $table->string('number_acount');
             $table->string('name_acount');
             $table->string('note')->default('note');
             $table->foreignId('banner_id')->constrained()->onDelete('cascade');

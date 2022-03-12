@@ -11,9 +11,7 @@ class SettingController extends Controller
 {
     public function index()
     {
-        $categoreys = User::all();
-
-        return response()->api(SettingResource::collection($categoreys));
+        return response()->api(setting('support'));
 
     }//end of index
 
