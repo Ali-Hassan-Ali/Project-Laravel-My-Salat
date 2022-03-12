@@ -11,6 +11,7 @@ class SettingController extends Controller
 {
     public function support()
     {
+        return 'gf';
         return response()->api(setting('support'));
 
     }//end of support
