@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Resources\UserResource;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use App\Models\User;
 
@@ -93,16 +94,52 @@ class AuthController extends Controller
 
     public function update(Request $request)
     {
+
+        $validator = Validator::make($request->all(), [
+            'username' => ['required'],
+            'region'   => ['required'],
+            // 'phone'    => ['required','unique:users'],
+            // 'image'    => ['required','image'],
+            // 'password' => ['required','min:6'],
+        ]);
+
+
+        if ($validator->fails()) {
+            return response()->api([], 1, $validator->errors()->first());
+        }
+        
         $data['user'] = new UserResource(auth()->user('sanctum'));
 
         $user = User::find($data['user']->id);
 
-        $user->update([
-            'username' => $request->username,
-            'region'   => $request->region,
-        ]);
+        if ($request->image) {
 
-        return response()->api($data);
+            if ($user->image != 'user_images/default.png') {
+
+                Storage::disk('local')->delete('public/'. $user->image);
+
+            } //end of if
+
+            $request_data['image'] = $request->file('image')->store('user_images','public');
+
+            $user->update([
+                'username' => $request->username,
+                'region'   => $request->region,
+                'image'    => $request_data['image'],
+            ]);
+            
+        } else {
+
+            $user->update([
+                'username' => $request->username,
+                'region'   => $request->region,
+            ]);
+
+        }//end of if
+
+        $user = User::find($data['user']->id);
+
+        return response()->api($user);
 
     }//end of update user
 
