@@ -9,10 +9,10 @@ use App\Http\Resources\SettingResource;
 
 class SettingController extends Controller
 {
-    public function index()
+    public function support()
     {
         return response()->api(setting('support'));
 
-    }//end of index
+    }//end of support
 
-}//end of index
+}//end of controller
