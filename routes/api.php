@@ -41,7 +41,7 @@ Route::post('login', [AuthController::class,'login']);
 Route::post('register', [AuthController::class,'register']);
 Route::post('/user_update', [AuthController::class,'update_user']);
     
-Route::get('/settings/support', [SettingController::class,'support']);
+Route::post('/settings/support', [SettingController::class,'support']);
 
 Route::middleware('auth:sanctum')->group(function () {
     
