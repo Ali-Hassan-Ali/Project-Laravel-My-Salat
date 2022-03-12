@@ -50,7 +50,7 @@ class AuthController extends Controller
             'username' => ['required'],
             'region'   => ['required'],
             'phone'    => ['required','unique:users'],
-            // 'image'    => ['required','image'],
+            'image'    => ['required','image'],
             // 'password' => ['required','min:6'],
         ]);
 
@@ -58,17 +58,16 @@ class AuthController extends Controller
         if ($validator->fails()) {
             return response()->api([], 1, $validator->errors()->first());
         }
-        $request['password'] = '123123123';
-        $request->merge([
-            'password' => bcrypt($request->password),
-        ]);
+        $request_data = $request->except('image');
+        $request_data['password'] = bcrypt('123123123');
+        $request_data['image']    = $request->file('image')->store('user_images','public');
 
-        $user = User::create($request->all());
+        $user = User::create($request_data);
 
         $request['password'] = '123123123';
         $credentials = $request->only('phone', 'password');
 
-        if (Auth::attempt($credentials)) {
+        if (auth()->attempt($credentials)) {
 
             $user          = auth()->user();
             $data['user']  = new UserResource($user);
