@@ -21,6 +21,7 @@ use App\Http\Controllers\Api\SettingController;
 */
 Route::post('/test', function (Request $request) {
     
+    return App\Models\User::all();
     return $request->all();
 
 });

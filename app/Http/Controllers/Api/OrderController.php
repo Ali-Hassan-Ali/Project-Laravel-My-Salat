@@ -97,7 +97,7 @@ class OrderController extends Controller
         $validator = Validator::make($request->all(), [
             'payment_name'    => ['required'],
             'payment_number'  => ['required'],
-            'receipt_image'   => ['required','image'],
+            'receipt_image'   => ['required'],
             'order_id'        => ['required'],
         ]);
 
