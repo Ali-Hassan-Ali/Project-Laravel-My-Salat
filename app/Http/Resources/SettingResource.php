@@ -15,7 +15,7 @@ class SettingResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'support' => setting('support'),
+            // 'support' => setting('support'),
         ];    
 
     }//end if toarray
