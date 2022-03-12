@@ -109,11 +109,11 @@ class OrderController extends Controller
 
         $order = PaymentOrder::where('order_id', $request->order_id)->first();
 
-        // if ($order) {
+        if ($order) {
 
-            // return response()->api([], 1, __('owner.this_order'));
+            return response()->api([], 1, __('owner.this_order'));
 
-        // }//end of order
+        }//end of order
 
         $request_data = $request->except('receipt_image');
 

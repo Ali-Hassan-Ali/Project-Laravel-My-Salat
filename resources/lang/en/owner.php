@@ -14,5 +14,6 @@ return [
 
     'packages'   => 'packages',
     'package'    => 'package',
+    'this_order' => 'used by payment order',
 
 ];
