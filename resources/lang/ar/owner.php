@@ -37,7 +37,7 @@ return [
     
     'groom_name'        => 'اسم العريس',
     'event_data'        => 'اسم العريس',
-    
-    'this_order'        => 'لقم قمت بنفس العمليه علي نفس الاوردر من قبل',
+    'this_order'        => 'used by payment order',
+    // 'this_order'        => 'لقم قمت بنفس العمليه علي نفس الاوردر من قبل',
 
 ];

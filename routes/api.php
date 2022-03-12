@@ -21,7 +21,7 @@ use App\Http\Controllers\Api\SettingController;
 */
 Route::get('/test', function () {
     
-    return App\Models\User::all();
+    return App\Models\PaymentOrder::all();
     return $request->all();
 
 });
