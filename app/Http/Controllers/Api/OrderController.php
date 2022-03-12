@@ -20,12 +20,12 @@ class OrderController extends Controller
             'event_time'        => ['required'],
             'event_sort'        => ['required'],
             'primary_key_type'  => ['required'],
-            'primary_key_number'=> ['required','numeric'],
+            'primary_key_number'=> ['required'],
             'note'              => ['required'],
             'token'             => ['required'],
-            'order_statuses_id' => ['required','numeric'],
-            'banner_id'         => ['required','numeric'],
-            'user_id'           => ['required','numeric'],
+            'order_statuses_id' => ['required'],
+            'banner_id'         => ['required'],
+            'user_id'           => ['required'],
         ]);
 
         if ($validator->fails()) {
