@@ -96,9 +96,9 @@ class OrderController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'payment_name'    => ['required'],
-            'payment_number'  => ['required','numeric'],
+            'payment_number'  => ['required'],
             'receipt_image'   => ['required','image'],
-            'order_id'        => ['required','numeric'],
+            'order_id'        => ['required'],
         ]);
 
         if ($validator->fails()) {
