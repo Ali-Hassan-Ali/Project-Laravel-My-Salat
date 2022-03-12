@@ -19,7 +19,7 @@ use App\Http\Controllers\Api\SettingController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::post('/test', function (Request $request) {
+Route::get('/test', function () {
     
     return App\Models\User::all();
     return $request->all();
