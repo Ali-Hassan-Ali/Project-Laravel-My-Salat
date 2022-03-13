@@ -148,4 +148,10 @@ class OrderController extends Controller
 
     }//end of order
 
+    public function payment_order_status(Order $order)
+    {
+        return $order;
+        
+    }//end of fun
+
 }//end of controller

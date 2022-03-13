@@ -21,7 +21,7 @@ use App\Http\Controllers\Api\SettingController;
 */
 Route::get('/test', function () {
     
-    return App\Models\User::all();
+    return App\Models\PaymentOrder::all();
     return $request->all();
 
 });
@@ -35,13 +35,15 @@ Route::get('banners/{id}', [BannerController::class,'index']);
 Route::post('order/store', [OrderController::class,'store']);
 Route::get('order/show/{order}', [OrderController::class,'show'])->name('order.show');
 Route::get('order/user/{id}', [OrderController::class,'show_all_order']);
-Route::post('order/payment', [OrderController::class,'payment_order']);
+Route::get('/order/payment/{order}', [OrderController::class,'payment_order_status']);
+Route::post('/order/payment', [OrderController::class,'payment_order']);
 
 Route::post('login', [AuthController::class,'login']);
 Route::post('register', [AuthController::class,'register']);
 Route::post('/user_update', [AuthController::class,'update_user']);
     
-Route::post('/settings/support', [SettingController::class,'support']);
+Route::post('/settings/support', [SettingController::class,'store']);
+Route::get('/settings/support/{id}', [SettingController::class,'show']);
 
 Route::middleware('auth:sanctum')->group(function () {
     

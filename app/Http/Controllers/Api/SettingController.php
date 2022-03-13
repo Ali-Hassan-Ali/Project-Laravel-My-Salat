@@ -9,7 +9,7 @@ use App\Models\Support;
 
 class SettingController extends Controller
 {
-    public function support(Request $request)
+    public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'title'        => ['required'],
@@ -28,6 +28,14 @@ class SettingController extends Controller
 
         return response()->api($support);
 
-    }//end of support
+    }//end of store
+
+    public function show($id)
+    {
+        $support = Support::where('user_id', $id)->get();
+
+        return response()->api($support);
+
+    }//end of show
 
 }//end of controller

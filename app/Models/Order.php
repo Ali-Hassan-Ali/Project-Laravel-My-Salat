@@ -11,7 +11,7 @@ class Order extends Model
 
     protected $guarded = [];
 
-    protected $appends = ['status'];
+    protected $appends = ['status','hall_name','hall_image','payment_client'];
 
     public function getStatusAttribute()
     {
@@ -27,7 +27,41 @@ class Order extends Model
             return 'bg-danger';
         }
 
+        if ($this->order_statuses_id == '4') {
+            return 'bg-danger';
+            // witing time
+        }
+
     }//end of get status coloor
+
+
+    //Attribute----------------------------------
+
+    // public function getPaymentOrderAttribute()
+    // {
+    //     return PaymentOrder::where('order_id', $this->id)->latest()->first();
+
+    // }//end of payment_order
+
+    public function getPaymentClientAttribute()
+    {
+        return PaymentClient::where('banner_id', $this->banner_id)->latest()->first();
+
+    }//end of payment_order
+
+
+    public function getHallNameAttribute()
+    {
+        return Banner::find($this->banner_id)->name;
+
+    }//end of Hall Name
+
+    public function getHallImageAttribute()
+    {
+        return Banner::find($this->banner_id)->image_path;
+
+    }//end of Hall Name
+
 
     //relation----------------------------------
 
@@ -36,6 +70,7 @@ class Order extends Model
         return $this->hasOne(PaymentOrder::class,'order_id');
 
     }//end of order
+
 
     public function order_statuses()
     {
