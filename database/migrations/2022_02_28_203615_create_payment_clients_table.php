@@ -17,6 +17,7 @@ class CreatePaymentClientsTable extends Migration
             $table->id();
             $table->string('number_acount');
             $table->string('name_acount');
+            $table->string('cost')->default('100');
             $table->string('note')->default('note');
             $table->foreignId('banner_id')->constrained()->onDelete('cascade');
             $table->foreignId('payment_admins_id')->constrained()->onDelete('cascade');
