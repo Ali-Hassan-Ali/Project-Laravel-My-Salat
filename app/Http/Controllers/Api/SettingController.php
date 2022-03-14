@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Models\Support;
+use App\Models\Banner;
 
 class SettingController extends Controller
 {
@@ -37,5 +38,18 @@ class SettingController extends Controller
         return response()->api($support);
 
     }//end of show
+
+    public function search($search)
+    {
+        $banners = Banner::WhenSearch($search)->latest()->get();
+
+        if ($search) {
+            
+            return response()->api($banners);
+        }
+
+        return response()->api([]);
+
+    }//end of search
 
 }//end of controller
