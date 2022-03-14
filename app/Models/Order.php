@@ -45,7 +45,7 @@ class Order extends Model
 
     public function getPaymentClientAttribute()
     {
-        return PaymentClient::where('banner_id', $this->banner_id)->latest()->first();
+        return PaymentClient::where('banner_id', $this->banner_id)->latest()->get();
 
     }//end of payment_order
 
@@ -58,7 +58,7 @@ class Order extends Model
 
     public function getHallImageAttribute()
     {
-        return Banner::find($this->banner_id)->image_path;
+        return Gallery::where('banner_id', $this->banner_id)->select('image')->get();
 
     }//end of Hall Name
 

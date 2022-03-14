@@ -23,7 +23,6 @@ class OrderController extends Controller
             'primary_key_number'=> ['required'],
             'note'              => ['required'],
             'token'             => ['required'],
-            'order_statuses_id' => ['required'],
             'banner_id'         => ['required'],
             'user_id'           => ['required'],
         ]);
@@ -35,7 +34,7 @@ class OrderController extends Controller
         }//end of if
         
         $request_data = $request->except('services','dish','imaging_group');
-        $request_data['order_statuses_id'] = 1;
+        $request_data['order_statuses_id'] = 2;
         // $request_data['event_data']        = now()->toDateString();
         // $request_data['event_time']        = now()->toTimeString();
 
