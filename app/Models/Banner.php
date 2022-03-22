@@ -11,12 +11,23 @@ class Banner extends Model
 
     protected $guarded = [];
 
-    protected $appends  = ['image_path','category_service','images','payment'];
+    protected $appends  = ['image_path','category_service','images','payment','package'];
 
      //attributes----------------------------------
     public function getImagePathAttribute()
     {
         return asset('storage/' . $this->image);
+
+    }//end of get image path
+
+    public function getPackageAttribute()
+    {
+        if ($this->id == '1') {
+            
+            return Package::where('owner_id', $this->owner_id)->get();
+        }
+
+        return [];
 
     }//end of get image path
 
