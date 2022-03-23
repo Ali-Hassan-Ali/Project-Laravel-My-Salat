@@ -26,7 +26,7 @@ class OwnerTableSeedeHistoryCompanies extends Seeder
                 'password' => bcrypt('123123123'),
             ]);
 
-            $onner = $new_owner->banner()->create(['categoreys_id'=>3]);
+            $onner = $new_owner->banner()->create(['categoreys_id'=>6]);
 
             $interiors = ['History companies 1','History companies 2','History companies 3','History companies 4'];
 

@@ -25,7 +25,7 @@ class OwnerTableSeedConferenceRooms extends Seeder
                 'password' => bcrypt('123123123'),
             ]);
 
-            $onner = $new_owner->banner()->create(['categoreys_id'=>3]);
+            $onner = $new_owner->banner()->create(['categoreys_id'=>7]);
 
             $interiors = ['conference rooms 1','conference rooms 2','conference rooms 3','conference rooms 4'];
 

@@ -25,7 +25,7 @@ class OwnerTableSeedCar extends Seeder
                 'password' => bcrypt('123123123'),
             ]);
 
-            $onner = $new_owner->banner()->create(['categoreys_id'=>3]);
+            $onner = $new_owner->banner()->create(['categoreys_id'=>8]);
 
             $interiors = ['wedding car 1','wedding car 2','wedding car 3','wedding car 4'];
 
