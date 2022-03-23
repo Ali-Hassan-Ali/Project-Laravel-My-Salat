@@ -19,7 +19,7 @@ class CreatePackagesTable extends Migration
             $table->string('price')->default(200);
             $table->time('form');
             $table->time('to');
-            $table->foreignId('owner_id')->constrained()->onDelete('cascade');
+            $table->foreignId('banner_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

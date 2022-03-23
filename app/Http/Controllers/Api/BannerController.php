@@ -11,7 +11,7 @@ class BannerController extends Controller
 {
     public function index($id)
     {
-        $banners = Banner::all();
+        $banners = Banner::where('categoreys_id',$id)->get();
 
         return response()->api($banners);
 

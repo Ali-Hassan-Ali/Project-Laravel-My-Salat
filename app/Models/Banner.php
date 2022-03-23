@@ -22,12 +22,7 @@ class Banner extends Model
 
     public function getPackageAttribute()
     {
-        if ($this->id == '1') {
-            
-            return Package::where('owner_id', $this->owner_id)->get();
-        }
-
-        return [];
+        return Package::where('banner_id', $this->id)->get();
 
     }//end of get image path
 

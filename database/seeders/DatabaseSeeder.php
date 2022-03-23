@@ -25,6 +25,14 @@ class DatabaseSeeder extends Seeder
         $this->call(OrderTableSeeder::class);
         $this->call(GalleryTableSeeder::class);
         $this->call(PaymentClientTableSeeder::class);
+
+        $this->call(OwnerTableSeederMove::class);
+        $this->call(OwnerTableSeederArtist::class);
+        $this->call(OwnerTableSeederHotels::class);
+        $this->call(OwnerTableSeederFarms::class);
+        $this->call(OwnerTableSeedeHistoryCompanies::class);
+        $this->call(OwnerTableSeedConferenceRooms::class);
+        $this->call(OwnerTableSeedCar::class);
         
     }//end of run
 

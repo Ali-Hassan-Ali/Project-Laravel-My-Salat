@@ -21,10 +21,11 @@ class PaymentClientTableSeeder extends Seeder
                 'number_acount'     => '1234567',
                 'name_acount'       => $name,
                 'note'              => 'ملحوظه',
-                'banner_id'         => $key == 0 ? '1' : $key,
+                'banner_id'         => 1,
                 'payment_admins_id' => $key == 0 ? '1' : $key,
             ]);
-        }
+
+        }//end if each
 
     }//end of run
     

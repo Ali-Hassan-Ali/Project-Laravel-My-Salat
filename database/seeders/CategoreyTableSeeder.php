@@ -20,7 +20,6 @@ class CategoreyTableSeeder extends Seeder
             'logo' => 'categorey_images/halls.png',
         ]);
 
-
         \App\Models\Categorey::create([
             'name'  => 'صالات متحركة',
             'slug'  => str::slug('صالات متحركة', '_'),
@@ -51,11 +50,11 @@ class CategoreyTableSeeder extends Seeder
             'logo' => 'categorey_images/graduating.png',
         ]);
         
-        \App\Models\Categorey::create([
-            'name'  => 'رحلات السفاري السياحية',
-            'slug'  => str::slug('رحلات السفاري السياحية', '_'),
-            'logo' => 'categorey_images/garden.png',
-        ]);
+        // \App\Models\Categorey::create([
+        //     'name'  => 'رحلات السفاري السياحية',
+        //     'slug'  => str::slug('رحلات السفاري السياحية', '_'),
+        //     'logo' => 'categorey_images/garden.png',
+        // ]);
 
         \App\Models\Categorey::create([
             'name'  => 'قاعات المؤتمرات',
