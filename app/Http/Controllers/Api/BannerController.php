@@ -22,9 +22,7 @@ class BannerController extends Controller
 
         if ($id == '10') {
             
-            $products = Banner::where('categoreys_id', $id)->with('product')->get();
-
-            $products = ProductCategory::with('product')->get();
+            $products = Banner::where('categoreys_id', $id)->get();
 
             return response()->api($products);
         }

@@ -3,12 +3,12 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Http;
-
+use App\Models\Banner;
 
 // Route::get('/', [\App\Http\Controllers\Api\WelcomeController::class,'index']);
 
 Route::get('/', function () {
-    return;
+    return $collection = collect([$products = Banner::where('categoreys_id', 10)->get()]);
     $response = Http::firebase()->post('/')->throw('{
  
  "to" :"esSIQrVDRBaqzgl-XJYvex:APA91bF_lLJXclR_m3mxiif2aZho6jPUbSN_Oqwg2zL12U_XRvbOcv9r8-YQRD38mftPCCjAm0B9DDyzGPzWDNYYU-fF8512agDtPLYoyxjmyAxWg9IG6e1D4fy439znZXbdIClyEDPe",

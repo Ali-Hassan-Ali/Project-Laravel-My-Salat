@@ -11,7 +11,7 @@ class Banner extends Model
 
     protected $guarded = [];
 
-    protected $appends  = ['image_path','category_service','images','payment','package'];
+    protected $appends  = ['image_path','category_service','images','payment','package','categorey_products'];
 
      //attributes----------------------------------
     public function getImagePathAttribute()
@@ -23,6 +23,19 @@ class Banner extends Model
     public function getPackageAttribute()
     {
         return Package::where('banner_id', $this->id)->get();
+
+    }//end of get image path
+
+    public function getCategoreyProductsAttribute()
+    {
+        if ($this->categoreys_id == 10) {
+            
+            return $products = ProductCategory::with('product')->get();
+            
+        } else {
+
+            return [];
+        }
 
     }//end of get image path
 
@@ -57,6 +70,7 @@ class Banner extends Model
         
     }//end of owner
 
+    //relationsheep----------------------------------
     public function category()
     {
         return $this->belongsTo(Categorey::class,'categoreys_id');
