@@ -35,9 +35,19 @@ class SuitTableSeeder extends Seeder
                 $product = \App\Models\Product::create([
                     'name'     => $data,
                     'price'    => '240',
-                    'tages'    => "[{'id':'1','value':'XL'},{'id':'2','value':'Lg'},{'id':'3','value':'SM'}]",
                     'banner_id'=> $onner->id,
                 ]);
+
+                $tages = ['XXL','LG','EL','LM','XL'];
+
+                foreach ($tages as $data) {
+
+                     \App\Models\Tage::create([
+                        'name'       => $data,
+                        'product_id' => $product->id,
+                    ]);
+                    
+                }//end of each
 
                 $images = ['black','red','green','ylou','blue'];
 

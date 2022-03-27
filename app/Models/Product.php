@@ -11,34 +11,32 @@ class Product extends Model
 
     protected $guarded = [];
 
-    protected $casts = ['tages' => 'array'];
+    protected $appends  = ['image_path','tages'];
 
+     //relationshep----------------------------------
     public function images()
     {
         return $this->hasMany(ProductImage::class);
 
     }//end if hasMany imaged
 
-    protected $appends  = ['image_path'];
+    public function tages()
+    {
+        return $this->hasMany(Tage::class);
+
+    }//end if hasMany imaged
 
      //attributes----------------------------------
     public function getImagePathAttribute()
     {
         return asset('storage/' . $this->image);
 
-    }//end of get image path  
+    }//end of get image path
 
-    // public function setTagesAttribute($value)
-    // {
-    //     $tages = [];
+    public function getTagesAttribute()
+    {
+        return Tage::where('product_id',$this->id)->get();
 
-    //     foreach ($value as $array_item) {
-    //         if (!is_null($array_item['key'])) {
-    //             $tages[] = $array_item;
-    //         }
-    //     }
-
-    //     $this->attributes['tages'] = json_encode($tages);
-    // } 
+    }//end of get image path
 
 }//end of model

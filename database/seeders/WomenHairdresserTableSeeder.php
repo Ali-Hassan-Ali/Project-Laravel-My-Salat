@@ -46,10 +46,20 @@ class WomenHairdresserTableSeeder extends Seeder
                     'name'     => $data,
                     'price'    => '240',
                     'image'    => 'dresses_images/default-dresses.png',
-                    'tages'    => "[{'id':'1','value':'XL'},{'id':'2','value':'Lg'},{'id':'3','value':'SM'}]",
                     'banner_id'=> $onner->id,
                     'product_categories_id'=> $categorey_id->id,
                 ]);
+
+                $tages = ['XXL','LG','EL','LM','XL'];
+
+                foreach ($tages as $data) {
+
+                     \App\Models\Tage::create([
+                        'name'       => $data,
+                        'product_id' => $product->id,
+                    ]);
+                    
+                }//end of each
                 
             }//end of each
 
