@@ -30,7 +30,7 @@ class Banner extends Model
     {
         if ($this->categoreys_id == 10) {
             
-            return $products = ProductCategory::with('product')->get();
+            return $products = ProductCategory::with('product')->whereRelation('product','banner_id',$this->id)->get();
             
         } else {
 
