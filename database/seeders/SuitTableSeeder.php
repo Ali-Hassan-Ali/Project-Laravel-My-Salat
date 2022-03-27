@@ -32,7 +32,7 @@ class SuitTableSeeder extends Seeder
 
             foreach ($products as $data) {
 
-                $product = \App\Models\product::create([
+                $product = \App\Models\Product::create([
                     'name'     => $data,
                     'price'    => '240',
                     'tages'    => 'xxl ml lg sm',

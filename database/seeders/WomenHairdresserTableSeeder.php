@@ -42,7 +42,7 @@ class WomenHairdresserTableSeeder extends Seeder
 
             foreach ($products as $data) {
 
-                $product = \App\Models\product::create([
+                $product = \App\Models\Product::create([
                     'name'     => $data,
                     'price'    => '240',
                     'image'    => 'dresses_images/default-dresses.png',
