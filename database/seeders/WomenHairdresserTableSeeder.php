@@ -46,7 +46,7 @@ class WomenHairdresserTableSeeder extends Seeder
                     'name'     => $data,
                     'price'    => '240',
                     'image'    => 'dresses_images/default-dresses.png',
-                    'tages'    => '[{"id":"1","value":"XL"},{"id":"2","value":"Lg"},{"id":"3","value":"SM"},]',
+                    'tages'    => "[{'id':'1','value':'XL'},{'id':'2','value':'Lg'},{'id':'3','value':'SM'}]",
                     'banner_id'=> $onner->id,
                     'product_categories_id'=> $categorey_id->id,
                 ]);

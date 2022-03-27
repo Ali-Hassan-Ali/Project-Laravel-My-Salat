@@ -35,7 +35,7 @@ class SuitTableSeeder extends Seeder
                 $product = \App\Models\Product::create([
                     'name'     => $data,
                     'price'    => '240',
-                    'tages'    => '[{"id":"1","value":"XL"},{"id":"2","value":"Lg"},{"id":"3","value":"SM"},]',
+                    'tages'    => "[{'id':'1','value':'XL'},{'id':'2','value':'Lg'},{'id':'3','value':'SM'}]",
                     'banner_id'=> $onner->id,
                 ]);
 
