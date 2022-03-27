@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\BannerResource;
 use App\Models\Banner;
 use App\Models\Product;
+use App\Models\ProductCategory;
 use Illuminate\Http\Request;
 
 class BannerController extends Controller
@@ -17,6 +18,15 @@ class BannerController extends Controller
             $banners = Banner::where('categoreys_id', $id)->pluck('id');
 
             $products = Product::whereIn('banner_id', $banners)->with('images')->get();
+
+            return response()->api($products);
+        }
+
+        if ($id == '10') {
+            
+            $banners = Banner::where('categoreys_id', $id)->pluck('id');
+
+            $products = ProductCategory::with('product')->get();
 
             return response()->api($products);
         }

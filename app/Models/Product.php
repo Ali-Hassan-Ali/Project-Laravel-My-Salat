@@ -17,4 +17,13 @@ class Product extends Model
 
     }//end if hasMany imaged
 
+    protected $appends  = ['image_path'];
+
+     //attributes----------------------------------
+    public function getImagePathAttribute()
+    {
+        return asset('storage/' . $this->image);
+
+    }//end of get image path   
+
 }//end of model

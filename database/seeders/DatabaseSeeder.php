@@ -35,6 +35,7 @@ class DatabaseSeeder extends Seeder
         $this->call(OwnerTableSeedCar::class);
         
         $this->call(SuitTableSeeder::class);
+        $this->call(WomenHairdresserTableSeeder::class);
         
     }//end of run
 

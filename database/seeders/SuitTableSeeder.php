@@ -39,12 +39,13 @@ class SuitTableSeeder extends Seeder
                     'banner_id'=> $onner->id,
                 ]);
 
-                $images = ['1','2','3','4','5'];
+                $images = ['black','red','green','ylou','blue'];
 
                 foreach ($images as $data) {
 
                     \App\Models\ProductImage::create([
-                        'product_id'     => $product->id,
+                        'color'      => $data,
+                        'product_id' => $product->id,
                     ]);
                     
                 }//end of each

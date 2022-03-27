@@ -17,9 +17,11 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('price');
+            $table->string('image')->default('dresses_images/default-dresses.png');
             $table->longText('tages');
 
             $table->foreignId('banner_id')->constrained()->onDelete('cascade');
+            $table->foreignId('product_categories_id')->nullable()->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
