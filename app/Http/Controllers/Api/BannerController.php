@@ -13,6 +13,7 @@ class BannerController extends Controller
 {
     public function index($id)
     {
+
         if ($id == '9') {
             
             $banners = Banner::where('categoreys_id', $id)->pluck('id');

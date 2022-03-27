@@ -18,7 +18,7 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->string('price');
             $table->string('image')->default('dresses_images/default-dresses.png');
-            $table->longText('tages');
+            $table->json('tages');
 
             $table->foreignId('banner_id')->constrained()->onDelete('cascade');
             $table->foreignId('product_categories_id')->nullable()->constrained()->onDelete('cascade');
