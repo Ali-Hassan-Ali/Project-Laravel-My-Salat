@@ -19,9 +19,9 @@ use App\Http\Controllers\Api\SettingController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::get('/test', function () {
+Route::get('/', function () {
     
-    return App\Models\PaymentOrder::all();
+    return App\Models\Categorey::all();
     return $request->all();
 
 });

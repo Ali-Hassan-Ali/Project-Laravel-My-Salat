@@ -34,6 +34,8 @@ class DatabaseSeeder extends Seeder
         $this->call(OwnerTableSeedConferenceRooms::class);
         $this->call(OwnerTableSeedCar::class);
         
+        $this->call(SuitTableSeeder::class);
+        
     }//end of run
 
 }//end of seede
