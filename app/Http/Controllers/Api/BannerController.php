@@ -15,16 +15,14 @@ class BannerController extends Controller
     {
         if ($id == '9') {
             
-            $banners = Banner::where('categoreys_id', $id)->pluck('id');
+            $banners = Banner::where('categoreys_id', $id)->with('product')->get();
 
-            $products = Product::whereIn('banner_id', $banners)->with('images')->get();
-
-            return response()->api($products);
+            return response()->api($banners);
         }
 
         if ($id == '10') {
             
-            $banners = Banner::where('categoreys_id', $id)->pluck('id');
+            $products = Banner::where('categoreys_id', $id)->with('product')->get();
 
             $products = ProductCategory::with('product')->get();
 

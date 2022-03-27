@@ -57,7 +57,6 @@ class Banner extends Model
         
     }//end of owner
 
-    //relationsheep----------------------------------
     public function category()
     {
         return $this->belongsTo(Categorey::class,'categoreys_id');
@@ -73,6 +72,12 @@ class Banner extends Model
     public function payment_clients()
     {
         return $this->hasMany(PaymentClient::class,'payment_admins_id');
+        
+    }//end of service
+
+    public function product()
+    {
+        return $this->hasMany(Product::class);
         
     }//end of service
 
