@@ -26,7 +26,7 @@ class SuitTableSeeder extends Seeder
                 'password' => bcrypt('123123123'),
             ]);
 
-            $onner = $new_owner->banner()->create(['categoreys_id' => 9]);
+            $onner = $new_owner->banner()->create(['categoreys_id' => 7]);
 
             $products = ['Suit 1','Suit 2','Suit 3','Suit 4','Suit 5'];
 

@@ -17,8 +17,8 @@ class DatabaseSeeder extends Seeder
         $this->call(CategoreyTableSeeder::class);
         $this->call(UserTableSeeder::class);
         $this->call(PaymentAdminTableSeeder::class);
-        $this->call(OwnerTableSeeder::class);
         $this->call(ServiceCategoryTableSeeder::class);
+        $this->call(OwnerTableSeeder::class);
         $this->call(ServiceTableSeeder::class);
         $this->call(BookingTableSeeder::class);
         $this->call(OrderStatusesTableSeeder::class);
@@ -27,15 +27,14 @@ class DatabaseSeeder extends Seeder
         $this->call(PaymentClientTableSeeder::class);
 
         $this->call(OwnerTableSeederMove::class);
-        $this->call(OwnerTableSeederArtist::class);
         $this->call(OwnerTableSeederHotels::class);
-        $this->call(OwnerTableSeederFarms::class);
-        $this->call(OwnerTableSeedeHistoryCompanies::class);
-        $this->call(OwnerTableSeedConferenceRooms::class);
+        $this->call(OwnerTableSeederHotelAppartment::class);
+        $this->call(OwnerTableSeederArtist::class);
         $this->call(OwnerTableSeedCar::class);
-        
         $this->call(SuitTableSeeder::class);
         $this->call(WomenHairdresserTableSeeder::class);
+        $this->call(OwnerTableSeederFarms::class);
+        $this->call(OwnerTableSeedConferenceRooms::class);        
         
     }//end of run
 

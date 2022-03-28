@@ -13,14 +13,14 @@ class BannerController extends Controller
 {
     public function index($id)
     {
-        if ($id == '9') {
+        if ($id == '7') {
             
             $banners = Banner::where('categoreys_id', $id)->with('product')->get();
 
             return response()->api($banners);
         }
 
-        if ($id == '10') {
+        if ($id == '8') {
             
             $products = Banner::where('categoreys_id', $id)->get();
 

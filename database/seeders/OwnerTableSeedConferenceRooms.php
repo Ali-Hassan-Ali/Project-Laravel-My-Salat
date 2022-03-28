@@ -25,7 +25,7 @@ class OwnerTableSeedConferenceRooms extends Seeder
                 'password' => bcrypt('123123123'),
             ]);
 
-            $onner = $new_owner->banner()->create(['categoreys_id'=>7]);
+            $onner = $new_owner->banner()->create(['categoreys_id'=>10]);
 
             $interiors = ['conference rooms 1','conference rooms 2','conference rooms 3','conference rooms 4'];
 
@@ -33,7 +33,7 @@ class OwnerTableSeedConferenceRooms extends Seeder
 
                 \App\Models\Gallery::create([
                     'title'     => $interior,
-                    'banner_id' => $new_owner->id,
+                    'banner_id' => $onner->id,
                 ]);            
                 
             }//end of foreach
@@ -44,7 +44,7 @@ class OwnerTableSeedConferenceRooms extends Seeder
 
                 \App\Models\Package::create([
                     'name'      => $package,
-                    'banner_id' => $new_owner->id,
+                    'banner_id' => $onner->id,
                     'form'      => now()->toTimeString(),
                     'to'        => now()->toTimeString(),
                 ]);            

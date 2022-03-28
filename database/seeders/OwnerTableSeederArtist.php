@@ -13,11 +13,6 @@ class OwnerTableSeederArtist extends Seeder
      */
     public function run()
     {
-
-        ////////////////////////////////////////////////////////////////////////////////////////////
-        //////////////////////////////////////////// category 1 ////////////////////////////////////
-        ////////////////////////////////////////////////////////////////////////////////////////////
-
         $owners = ['saluhs Artist 1','saluhs Artist 2','saluhs Artist 3','saluhs Artist 4','saluhs Artist 5'];
 
         foreach ($owners as $index=>$owner) {
@@ -30,7 +25,7 @@ class OwnerTableSeederArtist extends Seeder
                 'password' => bcrypt('123123123'),
             ]);
 
-            $onner = $new_owner->banner()->create(['categoreys_id'=>3]);
+            $onner = $new_owner->banner()->create(['categoreys_id'=>5]);
 
             $interiors = ['interior 1','interior 2','interior 3','interior 4'];
 
@@ -71,8 +66,6 @@ class OwnerTableSeederArtist extends Seeder
             }//end if each
             
         }//end of foreach
-
-        ###################################################################3
 
     }//end of run
     

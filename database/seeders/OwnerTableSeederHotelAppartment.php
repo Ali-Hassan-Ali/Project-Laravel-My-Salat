@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
-class OwnerTableSeedeHistoryCompanies extends Seeder
+class OwnerTableSeederHotelAppartment extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,9 +14,13 @@ class OwnerTableSeedeHistoryCompanies extends Seeder
     public function run()
     {
 
-        $owners = ['History companies 1','History companies 2','History companies 3','History companies 4','History companies 5'];
+        ////////////////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////// category 1 ////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////
 
-        foreach ($owners as $index=>$owner) {
+            $owners = ['Furnished Apartments 1','Furnished Apartments 2','Furnished Apartments 3','Furnished Apartments 4','Furnished Apartments 5'];
+
+            foreach ($owners as $index=>$owner) {
 
             $new_owner = \App\Models\Owner::create([
                 'name'     => $owner,
@@ -26,9 +30,9 @@ class OwnerTableSeedeHistoryCompanies extends Seeder
                 'password' => bcrypt('123123123'),
             ]);
 
-            $onner = $new_owner->banner()->create(['categoreys_id'=>6]);
+            $onner = $new_owner->banner()->create(['categoreys_id'=>4]);
 
-            $interiors = ['History companies 1','History companies 2','History companies 3','History companies 4'];
+            $interiors = ['Furnished Apartments 1','Furnished Apartments 2','Furnished Apartments 3','Furnished Apartments 4'];
 
             foreach ($interiors as $interior) {
 
@@ -39,7 +43,7 @@ class OwnerTableSeedeHistoryCompanies extends Seeder
                 
             }//end of foreach
 
-            $packages = ['اسره','شركة','طلاب'];
+            $packages = ['عرسان','اسره','عزابة','طلاب'];
 
             foreach ($packages as $package) {
 

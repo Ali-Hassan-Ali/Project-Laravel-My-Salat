@@ -14,13 +14,9 @@ class OwnerTableSeederFarms extends Seeder
     public function run()
     {
 
-        ////////////////////////////////////////////////////////////////////////////////////////////
-        //////////////////////////////////////////// category 1 ////////////////////////////////////
-        ////////////////////////////////////////////////////////////////////////////////////////////
+        $owners = ['Farms 1','Farms 2','Farms 3','Farms 4','Farms 5'];
 
-            $owners = ['Farms 1','Farms 2','Farms 3','Farms 4','Farms 5'];
-
-            foreach ($owners as $index=>$owner) {
+        foreach ($owners as $index=>$owner) {
 
             $new_owner = \App\Models\Owner::create([
                 'name'     => $owner,
@@ -30,7 +26,7 @@ class OwnerTableSeederFarms extends Seeder
                 'password' => bcrypt('123123123'),
             ]);
 
-            $onner = $new_owner->banner()->create(['categoreys_id'=>5]);
+            $onner = $new_owner->banner()->create(['categoreys_id'=>9]);
 
             $interiors = ['Farms 1','Farms 2','Farms 3','Farms 4'];
 
@@ -38,7 +34,7 @@ class OwnerTableSeederFarms extends Seeder
 
                 \App\Models\Gallery::create([
                     'title'     => $interior,
-                    'banner_id' => $new_owner->id,
+                    'banner_id' => $onner->id,
                 ]);            
                 
             }//end of foreach
@@ -49,7 +45,7 @@ class OwnerTableSeederFarms extends Seeder
 
                 \App\Models\Package::create([
                     'name'      => $package,
-                    'banner_id' => $new_owner->id,
+                    'banner_id' => $onner->id,
                     'form'      => now()->toTimeString(),
                     'to'        => now()->toTimeString(),
                 ]);            
@@ -71,8 +67,6 @@ class OwnerTableSeederFarms extends Seeder
             }//end if each
             
         }//end of foreach
-
-        ###################################################################3
 
     }//end of run
     

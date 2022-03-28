@@ -36,7 +36,7 @@ class WomenHairdresserTableSeeder extends Seeder
 
             }//end of each
 
-            $onner = $new_owner->banner()->create(['categoreys_id' => 10]);
+            $onner = $new_owner->banner()->create(['categoreys_id' => 8]);
 
             $products = ['Suit 1','Suit 2','Suit 3','Suit 4','Suit 5'];
 

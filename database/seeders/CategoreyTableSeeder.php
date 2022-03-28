@@ -14,6 +14,7 @@ class CategoreyTableSeeder extends Seeder
      */
     public function run()
     {
+        
         \App\Models\Categorey::create([
             'name'  => 'صالات الافراح',
             'slug'  => str::slug('صالات الافراح', '_'),
@@ -21,9 +22,21 @@ class CategoreyTableSeeder extends Seeder
         ]);
 
         \App\Models\Categorey::create([
-            'name'  => 'صالات متحركة',
-            'slug'  => str::slug('صالات متحركة', '_'),
+            'name'  => 'الصالات متحركة',
+            'slug'  => str::slug('الصالات متحركة', '_'),
             'logo' => 'categorey_images/movedhalls.png',
+        ]);
+
+        \App\Models\Categorey::create([
+            'name'  => 'فنادق',
+            'slug'  => str::slug('فنادق', '_'),
+            'logo' => 'categorey_images/hotels.png',
+        ]);
+
+        \App\Models\Categorey::create([
+            'name'  => 'شقق مفروشة',
+            'slug'  => str::slug('شقق مفروشة', '_'),
+            'logo' => 'categorey_images/graduating.png',
         ]);
 
         \App\Models\Categorey::create([
@@ -32,36 +45,7 @@ class CategoreyTableSeeder extends Seeder
             'logo' => 'categorey_images/singer.png',
         ]);
 
-        \App\Models\Categorey::create([
-            'name'  => 'فنادق',
-            'slug'  => str::slug('فنادق', '_'),
-            'logo' => 'categorey_images/hotels.png',
-        ]);
-        ///////////////////////////////
-        \App\Models\Categorey::create([
-            'name'  => 'مزارع للحفلات و الرحلات',
-            'slug'  => str::slug('مزارع للحفلات و الرحلات', '_'),
-            'logo' => 'categorey_images/appartments.png',
-        ]);
 
-        \App\Models\Categorey::create([
-            'name'  => 'شركات التخاريخ',
-            'slug'  => str::slug('شركات التخاريخ', '_'),
-            'logo' => 'categorey_images/graduating.png',
-        ]);
-        
-        // \App\Models\Categorey::create([
-        //     'name'  => 'رحلات السفاري السياحية',
-        //     'slug'  => str::slug('رحلات السفاري السياحية', '_'),
-        //     'logo' => 'categorey_images/garden.png',
-        // ]);
-
-        \App\Models\Categorey::create([
-            'name'  => 'قاعات المؤتمرات',
-            'slug'  => str::slug('قاعات المؤتمرات', '_'),
-            'logo' => 'categorey_images/meeting.png',
-        ]);
-        //////////////////////////////
         \App\Models\Categorey::create([
             'name'  => 'سيارة زفة',
             'slug'  => str::slug('سيارة زفة', '_'),
@@ -75,9 +59,21 @@ class CategoreyTableSeeder extends Seeder
         ]);
 
         \App\Models\Categorey::create([
-            'name'  => 'كوفير',
-            'slug'  => str::slug('كوفير', '_'),
+            'name'  => 'زفاف - كوافير',
+            'slug'  => str::slug('زفاف - كوافير', '_'),
             'logo' => 'categorey_images/beauty.png',
+        ]);
+
+        \App\Models\Categorey::create([
+            'name'  => 'منتجعات ومزارع للحفلات',
+            'slug'  => str::slug('منتجعات ومزارع للحفلات','_'),
+            'logo' => 'categorey_images/appartments.png',
+        ]);
+
+        \App\Models\Categorey::create([
+            'name'  => 'قاعات المؤتمرات',
+            'slug'  => str::slug('قاعات المؤتمرات', '_'),
+            'logo' => 'categorey_images/meeting.png',
         ]);
 
     }//end of run

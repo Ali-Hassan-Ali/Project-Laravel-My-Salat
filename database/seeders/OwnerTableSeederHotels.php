@@ -14,13 +14,9 @@ class OwnerTableSeederHotels extends Seeder
     public function run()
     {
 
-        ////////////////////////////////////////////////////////////////////////////////////////////
-        //////////////////////////////////////////// category 1 ////////////////////////////////////
-        ////////////////////////////////////////////////////////////////////////////////////////////
+        $owners = ['Hotels 1','Hotels 2','Hotels 3','Hotels 4','Hotels 5'];
 
-            $owners = ['Hotels 1','Hotels 2','Hotels 3','Hotels 4','Hotels 5'];
-
-            foreach ($owners as $index=>$owner) {
+        foreach ($owners as $index=>$owner) {
 
             $new_owner = \App\Models\Owner::create([
                 'name'     => $owner,
@@ -30,7 +26,7 @@ class OwnerTableSeederHotels extends Seeder
                 'password' => bcrypt('123123123'),
             ]);
 
-            $onner = $new_owner->banner()->create(['categoreys_id'=>4]);
+            $onner = $new_owner->banner()->create(['categoreys_id'=>3]);
 
             $interiors = ['Hotels 1','Hotels 2','Hotels 3','Hotels 4'];
 
