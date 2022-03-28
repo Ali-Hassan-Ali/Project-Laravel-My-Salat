@@ -28,7 +28,7 @@ class Banner extends Model
 
     public function getCategoreyProductsAttribute()
     {
-        if ($this->categoreys_id == 10) {
+        if ($this->categoreys_id == 8) {
             
             return $products = ProductCategory::with('product')->whereRelation('product','banner_id',$this->id)->get();
             
