@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 use App\Models\Owner;
+use App\Models\Categorey;
 use Illuminate\Http\Request;
 
 class OwnerController extends Controller
@@ -22,24 +23,28 @@ class OwnerController extends Controller
     
     public function create()
     {
-        return view('dashboard_admin.owners.create');
+        $categoreys = Categorey::all();
+
+        return view('dashboard_admin.owners.create', compact('categoreys'));
 
     }//endof create
 
 
     public function store(Request $request)
     {
+
         $request->validate([
-            'name'        => ['required','max:255'],
-            'email'       => ['required','unique:users'],
-            'image'       => ['required','image'],
-            'phone'       => ['required','max:11','min:8'],
-            'password'    => ['required','confirmed'],
+            'name'          => ['required','max:255'],
+            // 'email'         => ['required','unique:users'],
+            // 'image'         => ['required','image'],
+            'phone'         => ['required','max:11','min:8'],
+            'password'      => ['required','confirmed'],
+            'categoreys_id' => ['required'],
         ]);
 
         try {
 
-            $request_data             = $request->except(['password', 'password_confirmation', 'image']);
+            $request_data             = $request->except(['password', 'password_confirmation', 'image','categoreys_id']);
             $request_data['password'] = bcrypt($request->password);
 
             if ($request->image) {
@@ -48,7 +53,9 @@ class OwnerController extends Controller
 
             } //end of if
 
-            Owner::create($request_data);
+            $owner = Owner::create($request_data);
+
+            $owner->banner()->create(['categoreys_id'=> $request->categoreys_id]);
 
             session()->flash('success', __('dashboard.added_successfully'));
             return redirect()->route('dashboard.admin.owners.index');
@@ -70,7 +77,9 @@ class OwnerController extends Controller
     
     public function edit(Owner $owner)
     {
-        return view('dashboard_admin.owners.edit', compact('owner'));
+        $categoreys = Categorey::all();
+
+        return view('dashboard_admin.owners.edit', compact('owner','categoreys'));
         
     }//end of edit
 
@@ -78,10 +87,11 @@ class OwnerController extends Controller
     public function update(Request $request, Owner $owner)
     {
         $request->validate([
-            'name'        => ['required','max:255'],
-            'email'       => ['required', Rule::unique('admins')->ignore($owner->id)],
-            'image'       => ['required','image'],
-            'phone'       => ['required','max:11','min:8'],
+            'name'          => ['required','max:255'],
+            'email'         => ['required', Rule::unique('owners')->ignore($owner->id)],
+            'image'         => ['required','image'],
+            'phone'         => ['required','max:11','min:8'],
+            'categoreys_id' => ['required'],
         ]);
 
         try {
@@ -102,6 +112,8 @@ class OwnerController extends Controller
             } //end of if
 
             $owner->update($request_data);
+            banner::where('owner_id', $owner->id)->first()->update(['categoreys_id'=> $request->categoreys_id]);
+            // $owner->banner()->update(['categoreys_id'=> $request->categoreys_id]);
 
             session()->flash('success', __('dashboard.added_successfully'));
             return redirect()->route('dashboard.admin.owners.index');

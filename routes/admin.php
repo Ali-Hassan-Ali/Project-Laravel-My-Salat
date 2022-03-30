@@ -12,6 +12,10 @@ use App\Http\Controllers\Dashboard\Admin\BookingController;
 use App\Http\Controllers\Dashboard\Admin\ServiceCategoryController;
 use App\Http\Controllers\Dashboard\Admin\PaymentAdminController;
 use App\Http\Controllers\Dashboard\Admin\SettingController;
+use App\Http\Controllers\Dashboard\Admin\ProductCategoryController;
+use App\Http\Controllers\Dashboard\Admin\ProductController;
+
+use App\Http\Controllers\Dashboard\Admin\SupportController;
 
 
 Route::get('dashboard/login', [AuthController::class,'index'])->name('dashboard.admin.login');
@@ -34,10 +38,15 @@ Route::prefix('dashboard/admin')->name('dashboard.admin.')->middleware('auth:adm
 
         Route::resource('payment_admins', PaymentAdminController::class)->except('show');
 
+        Route::resource('product_categorys', ProductCategoryController::class)->except('show');
+        
+        Route::resource('products', ProductController::class)->except('show');
+
         Route::prefix('setting')->name('setting.')->group(function () {
 
-                Route::get('support', [SettingController::class, 'support'])->name('support');
+                Route::resource('suppors', SupportController::class)->except('show');
 
+                Route::get('support', [SettingController::class, 'support'])->name('support');
                 Route::post('/settings', [SettingController::class,'store'])->name('store');
 
         });//group(function

@@ -26,4 +26,8 @@ return [
     'payment_admins'    => 'وسائل الدفع',
     'support'           => 'التبليغ عن مشكلة',
 
+    'product_categorys'=> 'اقسام المنتجات',
+
+    'supports'        => 'رسائل الدعم',
+
 ];

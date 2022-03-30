@@ -4,12 +4,17 @@ namespace App\Http\Controllers\Dashboard\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Support;
 
 class SettingController extends Controller
 {
     public function support()
     {
-        return view('dashboard_admin.setting.support');
+        $supports = Support::all();
+
+        return view('dashboard_admin.settings.supports.index', compact('supports'));
+
+        return view('dashboard_admin.settings.support');
         
     }//end if support
 

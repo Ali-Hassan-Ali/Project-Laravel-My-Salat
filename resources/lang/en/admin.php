@@ -9,4 +9,6 @@ return [
     'interior'      => 'interior',
 
     'bookings'      => 'bookings type',
+
+    'product_categorys'=> 'product categories',
 ];

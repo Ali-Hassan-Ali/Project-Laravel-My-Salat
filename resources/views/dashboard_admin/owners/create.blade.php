@@ -6,7 +6,7 @@
 
     <div class="page-header">
         <div class="page-title">
-            <h3>Dashboard</h3>
+            <h3>@lang('dashboard.dashboard')</h3>
         </div>
 
         <nav class="breadcrumb-one" aria-label="breadcrumb">
@@ -18,8 +18,8 @@
                         <polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
                     </a>
                 </li>
-                <li class="breadcrumb-item"><a href="{{ route('dashboard.admin.owners.index') }}">owner</a></li>
-                <li class="breadcrumb-item active" aria-current="page"><span>create</span></li>
+                <li class="breadcrumb-item"><a href="{{ route('dashboard.admin.owners.index') }}">@lang('admin.owner')</a></li>
+                <li class="breadcrumb-item active" aria-current="page"><span>@lang('dashboard.create')</span></li>
             </ol>
         </nav>
 
@@ -39,7 +39,6 @@
                             @method('post')
 
                         <div class="info">
-                            <h6 class="">create new owner</h6>
                             <div class="row">
                                 <div class="col-lg-11 mx-auto">
                                     <div class="row">
@@ -99,6 +98,19 @@
                                                             <input type="password" name="password_confirmation" class="form-control mb-4" placeholder="enter Name">
                                                         </div>
                                                     </div>
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <label>@lang('owner.sub_category')</label>
+                                                            <select name="categoreys_id" class="selectpicker form-control">
+                                                                <option value="">@lang('owner.no_categorey')</option>
+                                                                @foreach ($categoreys as $categorey)
+                                                                    
+                                                                    <option value="{{ $categorey->id }}">{{ $categorey->name }}</option>
+
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                    </div>{{-- col-12 --}}
                                                 </div>
                                             </div>
                                             <button class="btn btn-primary col-lg-11">add</button>
