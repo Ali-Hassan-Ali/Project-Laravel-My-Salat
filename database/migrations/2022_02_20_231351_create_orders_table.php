@@ -25,6 +25,11 @@ class CreateOrdersTable extends Migration
             $table->string('bill')->nullable();
             $table->string('token')->nullable();
             
+            $table->string('count_time_car')->default(0);
+
+            $table->string('lat')->default(0);
+            $table->string('lng')->default(0);
+            
             // $table->foreignId('packages_id')->constrained()->onDelete('cascade');
             // $table->foreignId('bookings_id')->constrained()->onDelete('cascade');
             $table->foreignId('order_statuses_id')->constrained()->onDelete('cascade')->default(2);
