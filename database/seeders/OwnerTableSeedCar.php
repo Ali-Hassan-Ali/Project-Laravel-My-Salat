@@ -33,7 +33,7 @@ class OwnerTableSeedCar extends Seeder
 
                 \App\Models\Gallery::create([
                     'title'     => $interior,
-                    'banner_id' => $new_owner->id,
+                    'banner_id' => $onner->id,
                 ]);            
                 
             }//end of foreach

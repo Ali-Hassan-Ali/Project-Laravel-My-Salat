@@ -16,10 +16,11 @@ class WomenHairdresserTableSeeder extends Seeder
 
         $categoreys = ['Dresses 1','hairdresser 2','pedicure 3','wig 4'];
 
-        foreach ($categoreys as $categorey) {
+        foreach ($categoreys as $key=>$categorey) {
 
             $categorey_id = \App\Models\ProductCategory::create([
                 'name' => $categorey,
+                'size' => $key == 1 ? 'small' : 'larg',
             ]);
 
             $owners = ['Owner Suit 1','Owner Suit 2','Owner Suit 3','Owner Suit 4','Owner Suit 5'];
@@ -34,36 +35,48 @@ class WomenHairdresserTableSeeder extends Seeder
                     'password' => bcrypt('123123123'),
                 ]);
 
-            }//end of each
+                $onner = $new_owner->banner()->create(['categoreys_id' => 8]);
 
-            $onner = $new_owner->banner()->create(['categoreys_id' => 8]);
+                $makeups = ['Makeup 1','Makeup 2','Makeup 3','Makeup 4'];
 
-            $products = ['Suit 1','Suit 2','Suit 3','Suit 4','Suit 5'];
+                foreach ($makeups as $makeup) {
 
-            foreach ($products as $data) {
-
-                $product = \App\Models\Product::create([
-                    'name'     => $data,
-                    'price'    => '240',
-                    'image'    => 'dresses_images/default-dresses.png',
-                    'banner_id'=> $onner->id,
-                    'product_categories_id'=> $categorey_id->id,
-                ]);
-
-                $tages = ['XXL','LG','EL','LM','XL'];
-
-                foreach ($tages as $data) {
-
-                     \App\Models\Tage::create([
-                        'name'       => $data,
-                        'product_id' => $product->id,
-                    ]);
+                    \App\Models\Makeup::create([
+                        'name'      => $makeup,
+                        'price'     => 1,
+                        'banner_id' => $onner->id,
+                    ]);            
                     
-                }//end of each
+                }//end of foreach makeups
                 
-            }//end of each
+                $products = ['Suit 1','Suit 2','Suit 3','Suit 4','Suit 5'];
 
-        }//edn fo each
+                foreach ($products as $data) {
+
+                    $product = \App\Models\Product::create([
+                        'name'     => $data,
+                        'price'    => '240',
+                        'image'    => 'dresses_images/default-dresses.png',
+                        'banner_id'=> $onner->id,
+                        'product_categories_id'=> $categorey_id->id,
+                    ]);
+
+                    $tages = ['XXL','LG','EL','LM','XL'];
+
+                    foreach ($tages as $data) {
+
+                         \App\Models\Tage::create([
+                            'name'       => $data,
+                            'product_id' => $product->id,
+                        ]);
+                        
+                    }//end of each tages
+                    
+                }//end of each products
+
+            }//end of each owners
+
+        }//edn fo each categoreys
 
     }//edn fo run
 

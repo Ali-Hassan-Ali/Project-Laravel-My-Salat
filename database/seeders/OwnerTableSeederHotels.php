@@ -34,7 +34,7 @@ class OwnerTableSeederHotels extends Seeder
 
                 \App\Models\Gallery::create([
                     'title'     => $interior,
-                    'banner_id' => $new_owner->id,
+                    'banner_id' => $onner->id,
                 ]);            
                 
             }//end of foreach
@@ -45,7 +45,7 @@ class OwnerTableSeederHotels extends Seeder
 
                 \App\Models\Package::create([
                     'name'      => $package,
-                    'banner_id' => $new_owner->id,
+                    'banner_id' => $onner->id,
                     'form'      => now()->toTimeString(),
                     'to'        => now()->toTimeString(),
                 ]);            

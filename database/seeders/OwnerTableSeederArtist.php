@@ -33,7 +33,18 @@ class OwnerTableSeederArtist extends Seeder
 
                 \App\Models\Gallery::create([
                     'title'     => $interior,
-                    'banner_id' => $new_owner->id,
+                    'banner_id' => $onner->id,
+                ]);            
+                
+            }//end of foreach
+
+            $videos = ['video 1','video 2','video 3','video 4'];
+
+            foreach ($videos as $video) {
+
+                \App\Models\Video::create([
+                    'title'     => $video,
+                    'banner_id' => $onner->id,
                 ]);            
                 
             }//end of foreach
@@ -44,7 +55,7 @@ class OwnerTableSeederArtist extends Seeder
 
                 \App\Models\Package::create([
                     'name'      => $package,
-                    'banner_id' => $new_owner->id,
+                    'banner_id' => $onner->id,
                     'form'      => now()->toTimeString(),
                     'to'        => now()->toTimeString(),
                 ]);            

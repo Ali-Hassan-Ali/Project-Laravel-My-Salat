@@ -14,13 +14,9 @@ class OwnerTableSeederHotelAppartment extends Seeder
     public function run()
     {
 
-        ////////////////////////////////////////////////////////////////////////////////////////////
-        //////////////////////////////////////////// category 1 ////////////////////////////////////
-        ////////////////////////////////////////////////////////////////////////////////////////////
+        $owners = ['Furnished Apartments 1','Furnished Apartments 2','Furnished Apartments 3','Furnished Apartments 4','Furnished Apartments 5'];
 
-            $owners = ['Furnished Apartments 1','Furnished Apartments 2','Furnished Apartments 3','Furnished Apartments 4','Furnished Apartments 5'];
-
-            foreach ($owners as $index=>$owner) {
+        foreach ($owners as $index=>$owner) {
 
             $new_owner = \App\Models\Owner::create([
                 'name'     => $owner,
@@ -38,7 +34,7 @@ class OwnerTableSeederHotelAppartment extends Seeder
 
                 \App\Models\Gallery::create([
                     'title'     => $interior,
-                    'banner_id' => $new_owner->id,
+                    'banner_id' => $onner->id,
                 ]);            
                 
             }//end of foreach
@@ -49,7 +45,7 @@ class OwnerTableSeederHotelAppartment extends Seeder
 
                 \App\Models\Package::create([
                     'name'      => $package,
-                    'banner_id' => $new_owner->id,
+                    'banner_id' => $onner->id,
                     'form'      => now()->toTimeString(),
                     'to'        => now()->toTimeString(),
                 ]);            
@@ -69,7 +65,7 @@ class OwnerTableSeederHotelAppartment extends Seeder
                 ]);
 
             }//end if each
-            
+        
         }//end of foreach
 
     }//end of run

@@ -11,7 +11,7 @@ class Banner extends Model
 
     protected $guarded = [];
 
-    protected $appends  = ['image_path','category_service','images','payment','package','categorey_products'];
+    protected $appends  = ['image_path','category_service','images','payment','package','categorey_products','makeups','videos'];
 
      //attributes----------------------------------
     public function getImagePathAttribute()
@@ -30,12 +30,35 @@ class Banner extends Model
     {
         if ($this->categoreys_id == 8) {
             
-            return $products = ProductCategory::with('product')->whereRelation('product','banner_id',$this->id)->get();
+            return $products = ProductCategory::orderBy('size')->with('product')->whereRelation('product','banner_id',$this->id)->get();
             
-        } else {
+        }//en dof if
 
-            return [];
-        }
+        return [];
+
+    }//end of get image path
+
+    public function getMakeupsAttribute()
+    {
+        if ($this->categoreys_id == 8) {
+            
+            return Makeup::where('banner_id',$this->id)->get();
+
+        }//end of if
+
+        return [];
+
+    }//end of get image path
+
+    public function getVideosAttribute()
+    {
+        if ($this->categoreys_id == 5) {
+            
+            return Video::where('banner_id',$this->id)->get();
+
+        }//end of if
+
+        return [];
 
     }//end of get image path
 
