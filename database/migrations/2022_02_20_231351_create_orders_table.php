@@ -29,6 +29,7 @@ class CreateOrdersTable extends Migration
 
             $table->string('lat')->default(0);
             $table->string('lng')->default(0);
+            $table->string('makeup')->default('makeup');
             
             // $table->foreignId('packages_id')->constrained()->onDelete('cascade');
             // $table->foreignId('bookings_id')->constrained()->onDelete('cascade');

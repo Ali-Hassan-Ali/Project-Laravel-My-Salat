@@ -21,8 +21,8 @@ use App\Http\Controllers\Api\SettingController;
 */
 Route::get('/', function () {
     
+    return;
     return App\Models\ProductCategory::all();
-    return $request->all();
 
 });
 
