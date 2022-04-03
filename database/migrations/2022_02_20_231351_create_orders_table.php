@@ -29,7 +29,15 @@ class CreateOrdersTable extends Migration
 
             $table->string('lat')->default(0);
             $table->string('lng')->default(0);
-            $table->string('makeup')->default('makeup');
+
+            $table->string('product_id')->nullable();
+
+            $table->string('count_people')->nullable();
+            $table->string('count_days')->nullable();
+            $table->string('size')->nullable();
+            $table->string('start_time')->nullable();
+            $table->string('type_hotel')->nullable();
+            $table->string('count_days_hotel')->nullable();
             
             // $table->foreignId('packages_id')->constrained()->onDelete('cascade');
             // $table->foreignId('bookings_id')->constrained()->onDelete('cascade');
