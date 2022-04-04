@@ -33,6 +33,7 @@ class CreateOrdersTable extends Migration
             $table->string('product_id')->nullable();
 
             $table->string('count_people')->nullable();
+            $table->string('count_time')->nullable();
             $table->string('count_days')->nullable();
             $table->string('size')->nullable();
             $table->string('start_time')->nullable();
