@@ -44,6 +44,7 @@ class CreateOrdersTable extends Migration
             $table->string('type_hotel')->nullable();
             $table->string('count_days_hotel')->nullable();
             $table->string('count_people_hotel')->nullable();
+            $table->string('start_time_hotel')->nullable();
             
             // $table->foreignId('packages_id')->constrained()->onDelete('cascade');
             // $table->foreignId('bookings_id')->constrained()->onDelete('cascade');
