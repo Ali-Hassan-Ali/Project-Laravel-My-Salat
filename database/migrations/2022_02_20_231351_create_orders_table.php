@@ -34,12 +34,16 @@ class CreateOrdersTable extends Migration
 
             $table->string('count_people')->nullable();
             $table->string('count_time')->nullable();
+
             $table->string('count_days')->nullable();
             $table->string('size')->nullable();
+            
             $table->string('start_time')->nullable();
             $table->string('car_decoration')->nullable();
+
             $table->string('type_hotel')->nullable();
             $table->string('count_days_hotel')->nullable();
+            $table->string('count_people_hotel')->nullable();
             
             // $table->foreignId('packages_id')->constrained()->onDelete('cascade');
             // $table->foreignId('bookings_id')->constrained()->onDelete('cascade');
