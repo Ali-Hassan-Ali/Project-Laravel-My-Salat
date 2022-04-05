@@ -50,7 +50,6 @@ class AuthController extends Controller
             'username' => ['required'],
             'region'   => ['required'],
             'phone'    => ['required','unique:users'],
-            'image'    => ['required','image'],
             // 'password' => ['required','min:6'],
         ]);
 
