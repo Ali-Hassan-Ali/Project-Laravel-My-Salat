@@ -20,8 +20,6 @@ class OrderController extends Controller
         $validator = Validator::make($request->all(), [
             'groom_name'        => ['required'],
             'event_data'        => ['required'],
-            'event_time'        => ['required'],
-            'event_sort'        => ['required'],
             'primary_key_type'  => ['required'],
             'primary_key_number'=> ['required'],
             'note'              => ['required'],

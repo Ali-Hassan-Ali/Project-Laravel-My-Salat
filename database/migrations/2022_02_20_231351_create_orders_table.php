@@ -17,8 +17,8 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->string('groom_name');
             $table->string('event_data');
-            $table->string('event_time');
-            $table->string('event_sort');
+            $table->string('event_time')->nullable();
+            $table->string('event_sort')->nullable();
             $table->string('primary_key_type');
             $table->string('primary_key_number');
             $table->longText('note')->nullable();
