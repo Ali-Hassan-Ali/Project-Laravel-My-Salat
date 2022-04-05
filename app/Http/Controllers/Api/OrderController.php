@@ -8,12 +8,15 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Models\PaymentOrder;
 use App\Models\Order;
+use App\Models\Product;
 use App\Models\OrderItem;
+use App\Models\OrderProduct;
 
 class OrderController extends Controller
 {
     public function store(Request $request)
     {
+
         $validator = Validator::make($request->all(), [
             'groom_name'        => ['required'],
             'event_data'        => ['required'],
@@ -33,12 +36,29 @@ class OrderController extends Controller
 
         }//end of if
         
-        $request_data = $request->except('services','dish','imaging_group');
+        // return $request->all();
+        $request_data = $request->except('services','dish','imaging_group','products_id');
         $request_data['order_statuses_id'] = 2;
         // $request_data['event_data']        = now()->toDateString();
         // $request_data['event_time']        = now()->toTimeString();
 
         $order = Order::create($request_data);
+
+        if ($request->products_id) {
+
+            foreach ($request->products_id as $key => $product) {
+
+                $price = Product::find($product);
+
+                OrderProduct::create([
+                    'order_id'   => $order->id,
+                    'product_id' => $product,
+                    'price'      => $price->price,
+                ]);
+
+            }//end of each
+
+        }//end of if product_id
 
         if ($request->services) {
 
