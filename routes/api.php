@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\MainCategoryController;
 use App\Http\Controllers\Api\OwnerController;
@@ -32,6 +33,7 @@ Route::get('owner/{id}', [OwnerController::class,'index']);
 Route::get('banners/{id}', [BannerController::class,'index']);
 
 Route::post('order/store', [OrderController::class,'store']);
+Route::post('order_store', [OrderController::class,'store']);
 Route::get('order/show/{order}', [OrderController::class,'show'])->name('order.show');
 Route::get('order/user/{id}', [OrderController::class,'show_all_order']);
 // Route::get('order/payment_user/{order}', [OrderController::class,'payment_order_status']);
