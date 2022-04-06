@@ -2,8 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\Dashboard\OWner\Auth\AuthController;
-use App\Http\Controllers\Dashboard\OWner\Auth\RegisterController;
+use App\Http\Controllers\Dashboard\Owner\Auth\AuthController;
+use App\Http\Controllers\Dashboard\Owner\Auth\RegisterController;
 
 use App\Http\Controllers\Dashboard\Owner\WelcomeController;
 use App\Http\Controllers\Dashboard\Owner\StaticController;
