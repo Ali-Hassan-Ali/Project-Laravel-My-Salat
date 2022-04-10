@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\OwnerController;
 use App\Http\Controllers\Api\BannerController;
 use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\SettingController;
+use App\Http\Controllers\Api\FavoredController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,7 +34,6 @@ Route::get('owner/{id}', [OwnerController::class,'index']);
 Route::get('banners/{id}', [BannerController::class,'index']);
 
 Route::post('order/store', [OrderController::class,'store']);
-Route::post('order_store', [OrderController::class,'store']);
 Route::get('order/show/{order}', [OrderController::class,'show'])->name('order.show');
 Route::get('order/user/{id}', [OrderController::class,'show_all_order']);
 // Route::get('order/payment_user/{order}', [OrderController::class,'payment_order_status']);
@@ -46,6 +46,8 @@ Route::post('/user_update', [AuthController::class,'update_user']);
 Route::get('search/{search}', [SettingController::class,'search']);
 Route::post('/settings/support', [SettingController::class,'store']);
 Route::get('/settings/support/{id}', [SettingController::class,'show']);
+
+Route::post('favored/store', [FavoredController::class,'store']);
 
 Route::middleware('auth:sanctum')->group(function () {
     
