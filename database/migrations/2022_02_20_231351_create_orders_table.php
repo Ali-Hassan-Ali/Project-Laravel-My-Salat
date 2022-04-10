@@ -24,6 +24,7 @@ class CreateOrdersTable extends Migration
             $table->longText('note')->nullable();
             $table->string('bill')->nullable();
             $table->string('token')->nullable();
+            $table->string('makeup')->nullable();
             
             $table->string('count_time_car')->default(0);
 
