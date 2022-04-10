@@ -11,7 +11,7 @@ class Order extends Model
 
     protected $guarded = [];
 
-    protected $appends = ['status','hall_name','hall_image','payment_client'];
+    protected $appends = ['status','hall_name','hall_image','payment_client','category'];
 
     public function getStatusAttribute()
     {
@@ -37,11 +37,15 @@ class Order extends Model
 
     //Attribute----------------------------------
 
-    // public function getPaymentOrderAttribute()
-    // {
-    //     return PaymentOrder::where('order_id', $this->id)->latest()->first();
+    public function getCategoryAttribute()
+    {
+        $banner = Banner::find($this->banner_id);
 
-    // }//end of payment_order
+        $category = Categorey::find($banner->categoreys_id);
+
+        return $category->name;
+
+    }//end of payment_order
 
     public function getPaymentClientAttribute()
     {

@@ -23,7 +23,7 @@ use App\Http\Controllers\Api\FavoredController;
 */
 Route::get('/', function () {
     
-    return App\Models\Categorey::all();
+    return App\Models\Order::first();
 
 });
 
