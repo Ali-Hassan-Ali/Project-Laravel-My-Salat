@@ -12,14 +12,13 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-
     protected $guarded  = [];
     
     protected $hidden   = ['password','remember_token'];
     
     protected $casts    = ['email_verified_at' => 'datetime'];
 
-    protected $appends  = ['image_path'];
+    protected $appends  = ['image_path','favoreds'];
 
     //attributes----------------------------------
     public function getImagePathAttribute()
@@ -28,6 +27,11 @@ class User extends Authenticatable
 
     }//end of get image path
 
+    public function getFavoredsAttribute()
+    {
+        return $this->favoreds();
+
+    }//end of fun
 
     //scopes -------------------------------------
     public function scopeWhenSearch($query , $search) 
@@ -41,5 +45,12 @@ class User extends Authenticatable
     }//end o fscopeWhenSearch`
 
     //relations ----------------------------------
+
+
+    public function favoreds()
+    {
+        return $this->hasMany(Favored::class);
+
+    }//end of favoreds
     
 }//end of model

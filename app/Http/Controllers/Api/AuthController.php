@@ -86,6 +86,8 @@ class AuthController extends Controller
     {
         $data['user'] = new UserResource(auth()->user('sanctum'));
 
+        $data = User::with('favoreds')->find($data['user']->id);
+
         return response()->api($data);
 
     }// end of user

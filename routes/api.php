@@ -23,7 +23,7 @@ use App\Http\Controllers\Api\FavoredController;
 */
 Route::get('/', function () {
     
-    return App\Models\Favored::first();
+    return App\Models\User::with('favoreds')->find(1);
 
 });
 
