@@ -23,7 +23,7 @@ use App\Http\Controllers\Api\FavoredController;
 */
 Route::get('/', function () {
     
-    return App\Models\Order::first();
+    return App\Models\Favored::first();
 
 });
 
@@ -43,7 +43,7 @@ Route::post('login', [AuthController::class,'login']);
 Route::post('register', [AuthController::class,'register']);
 Route::post('/user_update', [AuthController::class,'update_user']);
     
-Route::get('search/{search}', [SettingController::class,'search']);
+Route::get('search/{id}/{search}', [SettingController::class,'search']);
 Route::post('/settings/support', [SettingController::class,'store']);
 Route::get('/settings/support/{id}', [SettingController::class,'show']);
 

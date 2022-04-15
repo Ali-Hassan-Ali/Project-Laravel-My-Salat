@@ -36,6 +36,8 @@ class DatabaseSeeder extends Seeder
         $this->call(OwnerTableSeederFarms::class);
         $this->call(OwnerTableSeedConferenceRooms::class);
         
+        $this->call(FavoredTableSeeder::class);
+        
     }//end of run
 
 }//end of seede

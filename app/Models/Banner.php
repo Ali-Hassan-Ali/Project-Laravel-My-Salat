@@ -11,7 +11,14 @@ class Banner extends Model
 
     protected $guarded = [];
 
-    protected $appends  = ['image_path','category_service','images','payment','package','categorey_products','makeups','videos'];
+    protected $appends  = ['image_path',
+                           'category_service',
+                           'images',
+                           'payment',
+                           'package',
+                           'categorey_products',
+                           'makeups',
+                           'videos'];
 
      //attributes----------------------------------
     public function getImagePathAttribute()
@@ -30,7 +37,10 @@ class Banner extends Model
     {
         if ($this->categoreys_id == 8) {
             
-            return $products = ProductCategory::orderBy('size')->with('product')->whereRelation('product','banner_id',$this->id)->get();
+            return $products = ProductCategory::orderBy('size')
+                                                ->with('product')
+                                                ->whereRelation('product','banner_id',$this->id)
+                                                ->get();
             
         }//en dof if
 
@@ -64,7 +74,9 @@ class Banner extends Model
 
     public function getCategoryServiceAttribute()
     {
-        $categoreys = ServiceCategory::with('service')->whereRelation('service','banner_id', $this->id)->get();
+        $categoreys = ServiceCategory::with('service')
+                                        ->whereRelation('service','banner_id', $this->id)
+                                        ->get();
 
         return $categoreys;
 
@@ -86,7 +98,7 @@ class Banner extends Model
 
     }//end of get image path
 
-     //relationsheep----------------------------------
+    //relationsheep----------------------------------
     public function owner()
     {
         return $this->belongsTo(Owner::class);
@@ -128,6 +140,6 @@ class Banner extends Model
                      ->orWhere('description', 'like', "%$search%");
         });
 
-    }// end of scopeWhenSearch
+    }//end of scopeWhenSearch
 
 }//end of model

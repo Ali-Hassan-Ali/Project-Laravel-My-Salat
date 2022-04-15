@@ -39,14 +39,15 @@ class SettingController extends Controller
 
     }//end of show
 
-    public function search($search)
+    public function search($id, $search)
     {
-        $banners = Banner::WhenSearch($search)->latest()->get();
+        $banners = Banner::WhenSearch($search)->where('categoreys_id', $id)->latest()->get();
 
         if ($search) {
             
             return response()->api($banners);
-        }
+
+        }//end of if
 
         return response()->api([]);
 
