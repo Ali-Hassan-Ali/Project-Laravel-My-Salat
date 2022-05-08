@@ -32,8 +32,8 @@ class AdminController extends Controller
 
          $request->validate([
             'name'        => ['required','max:255'],
-            'email'       => ['required','unique:users'],
-            'image'       => ['required','image'],
+            'email'       => ['required','unique:admins'],
+            // 'image'       => ['required','image'],
             'phone'       => ['required','max:11','min:8'],
             'password'    => ['required','confirmed'],
         ]);
@@ -48,7 +48,7 @@ class AdminController extends Controller
                 $request_data['image'] = $request->file('image')->store('admin_images','public');
 
             } //end of if
-            // return $request_data;
+            
             $user = Admin::create($request_data);
             
             // $user->attachRole('admin');

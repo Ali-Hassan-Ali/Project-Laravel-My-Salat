@@ -18,7 +18,7 @@
                         <polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
                     </a>
                 </li>
-                <li class="breadcrumb-item"><a href="{{ route('dashboard.admin.admins.index') }}">@lang('dashboard.admin')</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('dashboard.admin.admins.index') }}">@lang('admin.admin')</a></li>
                 <li class="breadcrumb-item active" aria-current="page"><span>@lang('dashboard.create')</span></li>
             </ol>
         </nav>
@@ -49,8 +49,8 @@
                                                 data-default-file="{{ asset('uploads/default.png') }}" 
                                                 data-max-file-size="2M"/>
                                                 <p class="mt-2">
-                                                    <i class="flaticon-cloud-upload mr-1"></i> 
-                                                    Upload Picture
+                                                    <i class="flaticon-cloud-upload mr-1"></i>
+                                                    @lang('dashboard.upload_picture')
                                                 </p>
                                             </div>
                                         </div>
@@ -59,8 +59,8 @@
                                                 <div class="row">
                                                     <div class="col-sm-6">
                                                         <div class="form-group">
-                                                            <label for="fullName">Full Name</label>
-                                                            <input type="text" name="name" class="form-control @error('name') is-invalid @enderror mb-4" placeholder="Full Name" value="{{ old('name') }}">
+                                                            <label>@lang('dashboard.name')</label>
+                                                            <input type="text" name="name" class="form-control @error('name') is-invalid @enderror mb-4" value="{{ old('name') }}">
                                                             @error('name')
                                                                 <p class="text-danger">{{ $message }}</p>
                                                             @enderror
@@ -68,8 +68,8 @@
                                                     </div>
                                                     <div class="col-sm-6">
                                                         <div class="form-group">
-                                                            <label for="fullName">email</label>
-                                                            <input type="email" name="email" class="form-control @error('email') is-invalid @enderror mb-4" placeholder="enter email" value="{{ old('email') }}">
+                                                            <label>@lang('dashboard.email')</label>
+                                                            <input type="email" name="email" class="form-control @error('email') is-invalid @enderror mb-4" value="{{ old('email') }}">
                                                             @error('email')
                                                                 <p class="text-danger">{{ $message }}</p>
                                                             @enderror
@@ -77,8 +77,8 @@
                                                     </div>
                                                     <div class="col-12">
                                                         <div class="form-group">
-                                                            <label for="fullName">phone</label>
-                                                            <input type="number" name="phone" class="form-control @error('phone') is-invalid @enderror mb-4" placeholder="enter phone" value="{{ old('phone') }}">
+                                                            <label>@lang('dashboard.phone')</label>
+                                                            <input type="number" name="phone" class="form-control @error('phone') is-invalid @enderror mb-4" value="{{ old('phone') }}">
                                                             @error('phone')
                                                                 <p class="text-danger">{{ $message }}</p>
                                                             @enderror
@@ -86,8 +86,8 @@
                                                     </div>
                                                     <div class="col-sm-6">
                                                         <div class="form-group">
-                                                            <label for="fullName">password</label>
-                                                            <input type="password" name="password" class="form-control @error('password') is-invalid @enderror mb-4" placeholder="enter Name" value="{{ old('password') }}">
+                                                            <label>@lang('dashboard.password')</label>
+                                                            <input type="password" name="password" class="form-control @error('password') is-invalid @enderror mb-4" value="{{ old('password') }}">
                                                             @error('password')
                                                                 <p class="text-danger">{{ $message }}</p>
                                                             @enderror
@@ -95,13 +95,18 @@
                                                     </div>
                                                     <div class="col-sm-6">
                                                         <div class="form-group">
-                                                            <label for="fullName">password confirmation</label>
-                                                            <input type="password" name="password_confirmation" class="form-control mb-4" placeholder="enter Name">
+                                                            <label>@lang('dashboard.password_confirmation')</label>
+                                                            <input type="password" name="password_confirmation" class="form-control mb-4">
                                                         </div>
                                                     </div>
+
+                                                    <div class="col-12">
+                                                        <button class="btn btn-primary col-12">@lang('dashboard.add')</button>
+                                                    </div>
+
                                                 </div>
                                             </div>
-                                            <button class="btn btn-primary col-lg-11">add</button>
+                                            
                                         </div>
                                     </div>{{-- row --}}
                                 </div>{{-- col mx-auto --}}

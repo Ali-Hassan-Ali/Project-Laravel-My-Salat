@@ -16,6 +16,7 @@ return [
     'login_successfully'   => 'تم تسجيل الدخول بنجاح',
     'created_at'           => 'تاريخ الانشاء',
     'no_data_found'        => 'للاسف لايوجد اي بينات',
+    'upload_picture'       => 'رفغ صوره',
 
     'add'     => 'إضافة',
     'create'  => 'انشاء',
@@ -24,10 +25,12 @@ return [
     'delete'  => 'حذف',
     'list'    => 'قائمة',
     'action'  => 'الاحداث',
+    'search'  => 'بحث',
     
     'name'    => 'الاسم',
     'email'   => 'الاميل',
     'password'=> 'كلمه المرور',
+    'password_confirmation'=> 'اعاده كتابة كلمة المرور',
     'phone'   => 'الهاتف',
     'image'   => 'الصوة',
     'title'   => 'العنوان',

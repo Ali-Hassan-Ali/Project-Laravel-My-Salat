@@ -6,7 +6,7 @@
 
     <div class="page-header">
         <div class="page-title">
-            <h3>Dashboard</h3>
+            <h3>@lang('dashboard.dashboard')</h3>
         </div>
 
         <nav class="breadcrumb-one" aria-label="breadcrumb">
@@ -18,8 +18,8 @@
                         <polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
                     </a>
                 </li>
-                <li class="breadcrumb-item"><a href="{{ route('dashboard.admin.owners.index') }}">owner</a></li>
-                <li class="breadcrumb-item active" aria-current="page"><span>create</span></li>
+                <li class="breadcrumb-item"><a href="{{ route('dashboard.admin.owners.index') }}">@lang('admin.owner')</a></li>
+                <li class="breadcrumb-item active" aria-current="page"><span>@lang('dashboard.edit')</span></li>
             </ol>
         </nav>
 
@@ -38,7 +38,6 @@
                           @method('put')
 
                         <div class="info">
-                            <h6 class="">create new owner</h6>
                             <div class="row">
                                 <div class="col-lg-11 mx-auto">
                                     <div class="row">
@@ -49,58 +48,82 @@
                                                 data-max-file-size="2M"/>
                                                 <p class="mt-2">
                                                     <i class="flaticon-cloud-upload mr-1"></i> 
-                                                    Upload Picture
+                                                    @lang('dashboard.upload_picture')
                                                 </p>
                                             </div>
                                         </div>
                                         <div class="col-xl-10 col-lg-12 col-md-8 mt-md-0 mt-4">
-                                            <div class="form">
-                                                <div class="row">
-                                                    <div class="col-sm-6">
-                                                        <div class="form-group">
-                                                            <label for="fullName">Full Name</label>
-                                                            <input type="text" name="name" class="form-control @error('name') is-invalid @enderror mb-4" placeholder="Full Name" value="{{ $owner->name }}">
-                                                            @error('name')
-                                                                <p class="text-danger">{{ $message }}</p>
-                                                            @enderror
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-6">
-                                                        <div class="form-group">
-                                                            <label for="fullName">Full email</label>
-                                                            <input type="email" name="email" class="form-control @error('email') is-invalid @enderror mb-4" placeholder="enter email" value="{{ $owner->email }}">
-                                                            @error('email')
-                                                                <p class="text-danger">{{ $message }}</p>
-                                                            @enderror
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-12">
-                                                        <div class="form-group">
-                                                            <label for="fullName">phone</label>
-                                                            <input type="number" name="phone" class="form-control @error('phone') is-invalid @enderror mb-4" placeholder="enter phone" value="{{ $owner->phone }}">
-                                                            @error('phone')
-                                                                <p class="text-danger">{{ $message }}</p>
-                                                            @enderror
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-6">
-                                                        <div class="form-group">
-                                                            <label for="fullName">password</label>
-                                                            <input type="password" name="password" class="form-control @error('password') is-invalid @enderror mb-4" placeholder="enter Name" value="{{ old('password') }}">
-                                                            @error('password')
-                                                                <p class="text-danger">{{ $message }}</p>
-                                                            @enderror
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-6">
-                                                        <div class="form-group">
-                                                            <label for="fullName">password confirmation</label>
-                                                            <input type="password" name="password_confirmation" class="form-control mb-4" placeholder="enter Name">
-                                                        </div>
+                                            
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label>@lang('dashboard.name')</label>
+                                                        <input type="text" name="name" class="form-control @error('name') is-invalid @enderror mb-4" value="{{ $owner->name }}">
+                                                        @error('name')
+                                                            <p class="text-danger">{{ $message }}</p>
+                                                        @enderror
                                                     </div>
                                                 </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label>@lang('dashboard.email')</label>
+                                                        <input type="email" name="email" class="form-control @error('email') is-invalid @enderror mb-4" value="{{ $owner->email }}">
+                                                        @error('email')
+                                                            <p class="text-danger">{{ $message }}</p>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="form-group">
+                                                        <label>@lang('dashboard.phone')</label>
+                                                        <input type="number" name="phone" class="form-control @error('phone') is-invalid @enderror mb-4" value="{{ $owner->phone }}">
+                                                        @error('phone')
+                                                            <p class="text-danger">{{ $message }}</p>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label>@lang('dashboard.password')</label>
+                                                        <input type="password" name="password" class="form-control @error('password') is-invalid @enderror mb-4" value="{{ old('password') }}">
+                                                        @error('password')
+                                                            <p class="text-danger">{{ $message }}</p>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label>@lang('dashboard.password_confirmation')</label>
+                                                        <input type="password" name="password_confirmation" class="form-control mb-4">
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-12">
+                                                <div class="form-group">
+                                                    <label>@lang('owner.sub_category')</label>
+                                                    <select name="categoreys_id" class="selectpicker form-control @error('categoreys_id') is-invalid @enderror">
+                                                        <option value="">@lang('owner.no_categorey')</option>
+                                                        @foreach ($categoreys as $categorey)
+                                                            
+                                                            <option value="{{ $categorey->id }}"
+                                                                {{ $categorey->id == $categoreys_id ? 'selected' : '' }}>
+                                                                {{ $categorey->name }}
+                                                            </option>
+
+                                                        @endforeach
+                                                    </select>
+                                                    @error('categoreys_id')
+                                                        <p class="text-danger">{{ $message }}</p>
+                                                    @enderror
+                                                </div>
+                                            </div>{{-- col-12 --}}
+
+                                            <div class="col-12">
+                                                <button class="btn btn-primary col-12">@lang('dashboard.add')</button>
                                             </div>
-                                            <button class="btn btn-primary col-lg-11">add</button>
+
+                                            </div>
+
                                         </div>
                                     </div>{{-- row --}}
                                 </div>{{-- col mx-auto --}}

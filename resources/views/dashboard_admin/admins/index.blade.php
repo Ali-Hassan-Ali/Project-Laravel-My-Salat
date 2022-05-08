@@ -6,7 +6,7 @@
 
     <div class="page-header">
         <div class="page-title">
-            <h3>Dashboard</h3>
+            <h3>@lang('dashboard.dashboard')</h3>
         </div>
 
         <nav class="breadcrumb-one" aria-label="breadcrumb">
@@ -18,7 +18,7 @@
 	                	<polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
                 	</a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page"><span>admin</span></li>
+                <li class="breadcrumb-item active" aria-current="page"><span>@lang('admin.admin')</span></li>
             </ol>
         </nav>
 
@@ -30,9 +30,9 @@
             	<div class="table-form">
                     <div class="form-group row">
                         <div class="col-8 col-md-4">
-                            <input type="text" class="form-control form-control-sm" name="min" id="min" placeholder="">
+                            <input type="text" class="form-control form-control-sm" name="min" id="min" placeholder="@lang('dashboard.search')">
                         </div>
-                        <a href="{{ route('dashboard.admin.admins.create') }}" class="btn btn-primary">add</a>
+                        <a href="{{ route('dashboard.admin.admins.create') }}" class="btn btn-primary">@lang('dashboard.add')</a>
                     </div>
                 </div>
             </div>
@@ -48,12 +48,12 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Name</th>
-                                <th>email</th>
-                                <th>phone</th>
-                                <th>image</th>
-                                <th>create at</th>
-                                <th class="no-content">Action</th>
+                                <th>@lang('dashboard.name')</th>
+                                <th>@lang('dashboard.email')</th>
+                                <th>@lang('dashboard.phone')</th>
+                                <th>@lang('dashboard.image')</th>
+                                <th>@lang('dashboard.created_at')</th>
+                                <th>@lang('dashboard.action')</th>
                             </tr>
                         </thead>
                         <tbody>

@@ -14,7 +14,7 @@ class OwnerController extends Controller
 
     public function index()
     {
-        $owners = Owner::all();
+        $owners = Owner::latest()->limit(10)->get();
         
         return view('dashboard_admin.owners.index',compact('owners'));
 
@@ -35,8 +35,7 @@ class OwnerController extends Controller
 
         $request->validate([
             'name'          => ['required','max:255'],
-            // 'email'         => ['required','unique:users'],
-            // 'image'         => ['required','image'],
+            'email'         => ['required','unique:owners'],
             'phone'         => ['required','max:11','min:8'],
             'password'      => ['required','confirmed'],
             'categoreys_id' => ['required'],
@@ -77,9 +76,11 @@ class OwnerController extends Controller
     
     public function edit(Owner $owner)
     {
+
+        $categoreys_id = $owner->banner()->first()->categoreys_id;
         $categoreys = Categorey::all();
 
-        return view('dashboard_admin.owners.edit', compact('owner','categoreys'));
+        return view('dashboard_admin.owners.edit', compact('owner','categoreys','categoreys_id'));
         
     }//end of edit
 
@@ -89,15 +90,26 @@ class OwnerController extends Controller
         $request->validate([
             'name'          => ['required','max:255'],
             'email'         => ['required', Rule::unique('owners')->ignore($owner->id)],
-            'image'         => ['required','image'],
             'phone'         => ['required','max:11','min:8'],
             'categoreys_id' => ['required'],
         ]);
 
+        if ($request->password) {
+
+            $request->validate([
+                'password'      => ['required','confirmed'],
+            ]);
+        }
+
         try {
 
-            $request_data             = $request->except(['password', 'password_confirmation', 'image']);
-            $request_data['password'] = bcrypt($request->password);
+            $request_data = $request->except(['image','password','password_confirmation','categoreys_id']);
+
+            if ($request->password) {
+
+                $request_data['password'] = bcrypt($request->password);
+
+            }//end of password
 
             if ($request->image) {
 
@@ -112,8 +124,7 @@ class OwnerController extends Controller
             } //end of if
 
             $owner->update($request_data);
-            banner::where('owner_id', $owner->id)->first()->update(['categoreys_id'=> $request->categoreys_id]);
-            // $owner->banner()->update(['categoreys_id'=> $request->categoreys_id]);
+            $owner->banner()->first()->update(['categoreys_id'=> $request->categoreys_id]);
 
             session()->flash('success', __('dashboard.added_successfully'));
             return redirect()->route('dashboard.admin.owners.index');
@@ -138,6 +149,7 @@ class OwnerController extends Controller
             } //end of inner if
 
             $owner->delete();
+            $owner->banner()->first()->delete();
 
             session()->flash('success', __('dashboard.added_successfully'));
             return redirect()->route('dashboard.admin.owners.index');

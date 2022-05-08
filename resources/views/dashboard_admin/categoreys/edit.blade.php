@@ -6,7 +6,7 @@
 
     <div class="page-header">
         <div class="page-title">
-            <h3>Dashboard</h3>
+            <h3>@lang('dashboard.dashboard')</h3>
         </div>
 
         <nav class="breadcrumb-one" aria-label="breadcrumb">
@@ -18,8 +18,8 @@
                         <polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
                     </a>
                 </li>
-                <li class="breadcrumb-item"><a href="{{ route('dashboard.admin.categoreys.index') }}">admin</a></li>
-                <li class="breadcrumb-item active" aria-current="page"><span>edit</span></li>
+                <li class="breadcrumb-item"><a href="{{ route('dashboard.admin.categoreys.index') }}">@lang('admin.categoreys')</a></li>
+                <li class="breadcrumb-item active" aria-current="page"><span>@lang('dashboard.edit')</span></li>
             </ol>
         </nav>
 
@@ -38,7 +38,6 @@
                           @method('put')
 
                         <div class="info">
-                            <h6 class="">create new admin</h6>
                             <div class="row">
                                 <div class="col-lg-11 mx-auto">
                                     <div class="row">
@@ -49,22 +48,27 @@
                                                 data-max-file-size="2M"/>
                                                 <p class="mt-2">
                                                     <i class="flaticon-cloud-upload mr-1"></i> 
-                                                    Upload Picture
+                                                    @lang('dashboard.upload_picture')
                                                 </p>
                                             </div>
                                         </div>
                                         <div class="col-xl-10 col-lg-12 col-md-8 mt-md-0 mt-4">
-                                            <div class="form">
-                                                <div class="row">
-                                                    <div class="col-sm-12">
-                                                        <div class="form-group">
-                                                            <label for="fullName">Name</label>
-                                                            <input type="text" name="name" class="form-control mb-4" placeholder="Full Name" value="{{ $categorey->name }}">
-                                                        </div>
+                                            
+                                            <div class="row">
+                                                
+                                                <div class="col-sm-12">
+                                                    <div class="form-group">
+                                                        <label for="fullName">@lang('dashboard.name')</label>
+                                                        <input type="text" name="name" class="form-control mb-4" placeholder="@lang('dashboard.name')" value="{{ $categorey->name }}">
                                                     </div>
                                                 </div>
+
+                                                <div class="col-12">
+                                                    <button class="btn btn-primary col-12">@lang('dashboard.add')</button>
+                                                </div>
+
                                             </div>
-                                            <button class="btn btn-primary col-lg-11">add</button>
+                                            
                                         </div>
                                     </div>{{-- row --}}
                                 </div>{{-- col mx-auto --}}

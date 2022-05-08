@@ -49,7 +49,8 @@
                 </div>
             </li>
 
-            <li class="menu {{ request()->segment(2) == 'admins' ? 'active' : '' }}">
+            {{-- admins --}}
+            <li class="menu {{ request()->segment(3) == 'admins' ? 'active' : '' }}">
                 <a href="#Admin" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">
                     <div class="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
@@ -60,32 +61,33 @@
                     </div>
                 </a>
                 <ul class="collapse submenu recent-submenu mini-recent-submenu list-unstyled 
-                        {{ request()->segment(2) == 'admins' ? 'show' : '' }}" id="Admin" data-parent="#accordionExample">
-                    <li class="{{ request()->segment(2) == 'admins' ? 'active' : '' }}">
+                        {{ request()->segment(3) == 'admins' ? 'show' : '' }}" id="Admin" data-parent="#accordionExample">
+                    <li class="{{ request()->segment(4) == '' ? 'active' : '' }}">
                         <a href="{{ route('dashboard.admin.admins.index') }}">@lang('dashboard.list') @lang('admin.admin')</a>
                     </li>
-                    <li class="{{ request()->segment(2) == 'admins' ? 'active' : '' }}">
+                    <li class="{{ request()->segment(4) == 'create' ? 'active' : '' }}">
                         <a href="{{ route('dashboard.admin.admins.create') }}">@lang('dashboard.create') @lang('admin.admin')</a>
                     </li>
                 </ul>
             </li>
 
-            <li class="menu {{ request()->segment(2) == 'categoreys' ? 'active' : '' }}">
+            {{-- categoreys --}}
+            <li class="menu {{ request()->segment(3) == 'categoreys' ? 'active' : '' }}">
                 <a href="#Category" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">
-                    <div class="">
+                    <div class="{{ request()->segment(3) == 'categoreys' ? 'active' : '' }}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
                         <span>@lang('admin.categoreys')</span>
                     </div>
-                    <div>
+                    <div class="{{ request()->segment(3) == 'categoreys' ? 'active' : '' }}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
                     </div>
                 </a>
                 <ul class="collapse submenu recent-submenu mini-recent-submenu list-unstyled 
-                        {{ request()->segment(2) == 'categoreys' ? 'show' : '' }}" id="Category" data-parent="#accordionExample">
-                    <li class="{{ request()->segment(2) == 'categoreys' ? 'active' : '' }}">
+                        {{ request()->segment(3) == 'categoreys' ? 'show' : '' }}" id="Category" data-parent="#accordionExample">
+                    <li class="{{ request()->segment(4) == 'categoreys' ? 'active' : '' }}">
                         <a href="{{ route('dashboard.admin.categoreys.index') }}">@lang('dashboard.list') @lang('admin.categoreys')</a>
                     </li>
-                    <li class="{{ request()->segment(2) == 'categoreys' ? 'active' : '' }}">
+                    <li class="{{ request()->segment(4) == 'categoreys' ? 'active' : '' }}">
                         <a href="{{ route('dashboard.admin.categoreys.create') }}">@lang('dashboard.create') @lang('admin.categoreys')</a>
                     </li>
                 </ul>
