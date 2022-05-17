@@ -48,6 +48,7 @@ Route::post('/settings/support', [SettingController::class,'store']);
 Route::get('/settings/support/{id}', [SettingController::class,'show']);
 
 Route::post('favored/store', [FavoredController::class,'store']);
+Route::get('favored/{favored}', [FavoredController::class,'get_favored']);
 
 Route::middleware('auth:sanctum')->group(function () {
     

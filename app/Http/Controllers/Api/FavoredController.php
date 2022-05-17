@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use App\Models\Banner;
 use App\Models\Favored;
 
 class FavoredController extends Controller
@@ -28,5 +29,13 @@ class FavoredController extends Controller
         return response()->api($favored);
 
     }//end of store
+
+    public function get_favored(Favored $favored)
+    {
+        $banner = Banner::find($favored->banner_id);
+
+        return response()->api($banner);
+
+    }//end of get get_favored
 
 }//end of controller

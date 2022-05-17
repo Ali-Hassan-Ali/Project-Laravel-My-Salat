@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Http;
 
 Route::get('/', function () {
     return;
+    return \App\Models\Banner::first();
     $response = Http::firebase()->post('/')->throw('{
  
  "to" :"esSIQrVDRBaqzgl-XJYvex:APA91bF_lLJXclR_m3mxiif2aZho6jPUbSN_Oqwg2zL12U_XRvbOcv9r8-YQRD38mftPCCjAm0B9DDyzGPzWDNYYU-fF8512agDtPLYoyxjmyAxWg9IG6e1D4fy439znZXbdIClyEDPe",

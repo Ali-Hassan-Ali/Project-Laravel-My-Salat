@@ -24,5 +24,11 @@ class Favored extends Model
         return Banner::find($this->banner_id)->category->name;
 
     }//end of fun get name category
+
+    public function banner()
+    {
+        return $this->belongsTo(Banner::class);
+
+    }//end of 
     
 }//end of model

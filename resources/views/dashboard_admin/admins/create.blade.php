@@ -39,7 +39,6 @@
                             @method('post')
 
                         <div class="info">
-                            <h6 class="">create new admin</h6>
                             <div class="row">
                                 <div class="col-lg-11 mx-auto">
                                     <div class="row">
