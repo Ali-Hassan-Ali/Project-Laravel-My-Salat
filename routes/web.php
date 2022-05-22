@@ -8,6 +8,33 @@ use Illuminate\Support\Facades\Http;
 // Route::get('/', [\App\Http\Controllers\Api\WelcomeController::class,'index']);
 
 Route::get('/', function () {
+
+    $data = [
+        [
+            'name' => ' متحركه',
+            'categories_id'   => '1',
+            'number'   => '3',//count banner favored
+        ],
+
+        [
+            'name' => 'صلات متحركه',
+            'categories_id'   => '2',
+            'number'   => '3',//count banner favored
+        ],
+    ];
+
+    return response()->json($data);
+
+
+
+
+
+
+
+
+
+
+
     return;
     return \App\Models\Banner::first();
     $response = Http::firebase()->post('/')->throw('{

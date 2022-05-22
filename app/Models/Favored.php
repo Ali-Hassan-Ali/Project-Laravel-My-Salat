@@ -11,9 +11,9 @@ class Favored extends Model
 
     protected $guarded = [];
 
-    protected $appends = ['category','name'];
+    protected $appends = ['category_id','name'];
 
-    public function getCategoryAttribute()
+    public function getCategoryIdAttribute()
     {
         return Banner::find($this->banner_id)->categoreys_id;
 

@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use App\Models\User;
+use App\Models\Favored;
 
 class AuthController extends Controller
 {
@@ -59,7 +60,12 @@ class AuthController extends Controller
         }
         $request_data = $request->except('image');
         $request_data['password'] = bcrypt('123123123');
-        $request_data['image']    = $request->file('image')->store('user_images','public');
+
+        if($request->image) {
+
+            $request_data['image'] = $request->file('image')->store('user_images','public');
+
+        }//end of image
 
         $user = User::create($request_data);
 
@@ -86,7 +92,8 @@ class AuthController extends Controller
     {
         $data['user'] = new UserResource(auth()->user('sanctum'));
 
-        $data = User::with('favoreds')->find($data['user']->id);
+        $data['favoreds']      = User::with('favoreds')->find($data['user']->id);
+        $data['favored_count'] = Favored::where('user_id', $data['user']->id)->count();
 
         return response()->api($data);
 

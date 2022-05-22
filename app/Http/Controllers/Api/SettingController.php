@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Models\Support;
+use App\Models\Favored;
 use App\Models\Banner;
+use App\Models\User;
 
 class SettingController extends Controller
 {
@@ -39,17 +41,32 @@ class SettingController extends Controller
 
     }//end of show
 
-    public function search($id, $search)
+    public function search($categorey_id, $user_id, $search)
     {
-        $banners = Banner::WhenSearch($search)->where('categoreys_id', $id)->latest()->get();
 
-        if ($search) {
-            
+        $user = User::find($user_id);
+
+        if ($user) {
+
+            $favoredIds = Favored::where('user_id',$user_id)->pluck('banner_id');
+
+            $banners    = Banner::whereIn('id', $favoredIds)->where('categoreys_id', $categorey_id)->latest()->get();
+
             return response()->api($banners);
+            
+        } else {
 
-        }//end of if
+            $banners = Banner::WhenSearch($search)->where('categoreys_id', $categorey_id)->latest()->get();
 
-        return response()->api([]);
+            if ($search) {
+                
+                return response()->api($banners);
+
+            }//end of if
+
+            return response()->api([]);
+
+        }//end of  
 
     }//end of search
 

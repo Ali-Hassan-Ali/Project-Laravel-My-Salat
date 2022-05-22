@@ -30,11 +30,11 @@ class FavoredController extends Controller
 
     }//end of store
 
-    public function get_favored(Favored $favored)
-    {
-        $banner = Banner::find($favored->banner_id);
+    public function get_favored($user_id)
+    {   
+        $favoreds = Favored::where('user_id', $user_id)->get();
 
-        return response()->api($banner);
+        return response()->api($favoreds);
 
     }//end of get get_favored
 
