@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Models\Banner;
 use App\Models\Favored;
+use App\Models\Categorey;
 
 class FavoredController extends Controller
 {
@@ -21,9 +22,12 @@ class FavoredController extends Controller
             return response()->api([], 1, $validator->errors()->first());
         }
 
+        $categorey_id = Banner::find($request->banner_id)->categoreys_id;
+
         $favored = Favored::create([
-            'user_id'  => $request->user_id,
-            'banner_id'=> $request->banner_id,
+            'user_id'      => $request->user_id,
+            'banner_id'    => $request->banner_id,
+            'categoreys_id'=> $categorey_id,
         ]);
 
         return response()->api($favored);
@@ -32,7 +36,9 @@ class FavoredController extends Controller
 
     public function get_favored($user_id)
     {   
-        $favoreds = Favored::where('user_id', $user_id)->get();
+        $favoreds = Categorey::select('id','name')->withCount(['favoreds' => function($q) use ($user_id) {
+                        $q->where('user_id', $user_id);
+                    }])->get();
 
         return response()->api($favoreds);
 

@@ -18,8 +18,9 @@ class FavoredTableSeeder extends Seeder
         foreach ($banners as $banner) {
 
             \App\Models\Favored::create([
-                'banner_id' => $banner,
-                'user_id'   => 1,
+                'banner_id'    => $banner,
+                'user_id'      => 1,
+                'categorey_id' => 1,
             ]);
 
         }//end of each

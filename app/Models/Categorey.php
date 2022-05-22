@@ -18,6 +18,12 @@ class Categorey extends Model
     {
         return asset('storage/' . $this->logo);
 
-    }//end of get logo path : svg
+    }//end of get logo path
+
+    public function favoreds()
+    {
+        return $this->hasMany(Favored::class);
+
+    }//end of 
 
 }//end of model

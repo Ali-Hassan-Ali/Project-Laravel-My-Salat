@@ -15,8 +15,9 @@ class CreateFavoredsTable extends Migration
     {
         Schema::create('favoreds', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('banner_id')->constrained()->onDelete('cascade');
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignIdFor(\App\Models\Banner::class)->onDelete('cascade');
+            $table->foreignIdFor(\App\Models\User::class)->onDelete('cascade');
+            $table->foreignIdFor(\App\Models\Categorey::class)->onDelete('cascade');
             $table->timestamps();
         });
     }

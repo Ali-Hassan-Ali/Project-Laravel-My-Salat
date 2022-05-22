@@ -9,6 +9,17 @@ use Illuminate\Support\Facades\Http;
 
 Route::get('/', function () {
 
+    $myarray = [
+            ['name'=> 'one', 'email' => 'one@gmail.com'],
+            ['name'=> 'two', 'email' => 'two@gmail.com'],
+            ['name'=> 'three', 'email' => 'three@gmail.com'],
+        ];  
+        foreach ($myarray as $key => $value) {
+            return $id[] = \DB::table('users')->insertGetId(
+                ['email' => $value['email'],'name' => $value['name']]
+            );
+        }
+
     $data = [
         [
             'name' => ' متحركه',
@@ -24,17 +35,6 @@ Route::get('/', function () {
     ];
 
     return response()->json($data);
-
-
-
-
-
-
-
-
-
-
-
     return;
     return \App\Models\Banner::first();
     $response = Http::firebase()->post('/')->throw('{
