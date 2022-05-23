@@ -11,12 +11,18 @@ class Categorey extends Model
 
     protected $guarded = [];
 
-    protected $appends  = ['logo_path'];
+    protected $appends  = ['logo_path','category_id'];
 
      //attributes----------------------------------
     public function getLogoPathAttribute()
     {
         return asset('storage/' . $this->logo);
+
+    }//end of get logo path
+
+    public function getCategoryIdAttribute()
+    {
+        return $this->id;
 
     }//end of get logo path
 
