@@ -45,6 +45,7 @@
                                         <div class="col-xl-12 col-lg-12 col-md-8 mt-md-0 mt-4">
                                             <div class="col-12">
                                                 <div class="row">
+
                                                     <div class="col-12">
                                                         <div class="form-group">
                                                             <label>@lang('dashboard.name')</label>
@@ -54,23 +55,31 @@
                                                             @enderror
                                                         </div>
                                                     </div>
+
                                                     <div class="col-12">
                                                         <div class="form-group">
                                                             <label>@lang('owner.sub_category')</label>
-                                                            <select name="categoreys_id" class="selectpicker form-control">
+                                                            <select name="categoreys_id" class="selectpicker @error('categoreys_id') is-invalid @enderror form-control">
                                                                 <option value="">@lang('owner.no_categorey')</option>
                                                                 @foreach ($categoreys as $categorey)
                                                                     
-                                                                    <option value="{{ $categorey->id }}">{{ $categorey->name }}</option>
+                                                                    <option value="{{ $categorey->id }}" {{ $categorey->id == old('categoreys_id') ? 'selected' : '' }}>{{ $categorey->name }}</option>
 
                                                                 @endforeach
                                                             </select>
+                                                            @error('categoreys_id')
+                                                                <p class="text-danger">{{ $message }}</p>
+                                                            @enderror
                                                         </div>
                                                     </div>{{-- col-12 --}}
-                                                </div>
-                                            </div>
-                                            <button class="btn btn-primary col-12">@lang('dashboard.add')</button>
-                                        </div>
+
+                                                    <div class="col-12 mt-2">
+                                                        <button class="btn btn-primary col-12">@lang('dashboard.add')</button>
+                                                    </div>
+
+                                                </div>{{-- end of row --}}
+                                            </div>{{-- col-12 --}}
+                                        </div>{{-- col-xl-12 --}}
                                     </div>{{-- row --}}
                                 </div>{{-- col mx-auto --}}
                             </div>{{-- row --}}

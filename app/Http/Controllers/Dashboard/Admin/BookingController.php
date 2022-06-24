@@ -12,7 +12,7 @@ class BookingController extends Controller
 
     public function index()
     {
-        $bookings = Booking::all();
+        $bookings = Booking::latest()->get();
 
         return view('dashboard_admin.bookings.index', compact('bookings'));
 
@@ -32,7 +32,7 @@ class BookingController extends Controller
     {
         $request->validate([
             'name'          => ['required','max:255'],
-            'categoreys_id' => ['required'],
+            'categoreys_id' => ['required','numeric'],
         ]);
 
         try {
@@ -65,7 +65,7 @@ class BookingController extends Controller
     {
         $request->validate([
             'name'          => ['required','max:255'],
-            'categoreys_id' => ['required'],
+            'categoreys_id' => ['required','numeric'],
         ]);
 
         try {

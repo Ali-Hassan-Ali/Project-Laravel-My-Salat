@@ -50,7 +50,7 @@ class ProductCategoryController extends Controller
     
     public function show(ProductCategory $productCategory)
     {
-        //
+        return $productCategory;
     }
 
     
