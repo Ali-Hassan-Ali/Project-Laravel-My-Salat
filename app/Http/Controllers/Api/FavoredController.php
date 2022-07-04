@@ -27,7 +27,7 @@ class FavoredController extends Controller
         $favored = Favored::create([
             'user_id'      => $request->user_id,
             'banner_id'    => $request->banner_id,
-            'categoreys_id'=> $categorey_id,
+            'categorey_id' => $categorey_id,
         ]);
 
         return response()->api($favored);
