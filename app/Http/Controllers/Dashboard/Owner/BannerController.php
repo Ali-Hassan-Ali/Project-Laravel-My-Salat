@@ -60,13 +60,13 @@ class BannerController extends Controller
      */
     public function edit(Banner $banner)
     {   
-        if ($banner->owner_id == auth()->guard('owner')->user()->id) {
+        if ($banner->owner_id == auth('owner')->user()->id) {
 
             return view('dashboard_owner.banners.edit', compact('banner'));
             
         }//end of if auth
 
-        return view('404');
+        abort(404);
         
     }//end of edit
 
@@ -74,8 +74,10 @@ class BannerController extends Controller
     public function update(Request $request, Banner $banner)
     {
         $request->validate([
-            'name'  => ['required'],
-            'map'   => ['required'],
+            'name'        => ['required'],
+            'map'         => ['required'],
+            'cost'        => ['required'],
+            'description' => ['required'],
         ]);
 
         try {

@@ -18,8 +18,8 @@ use App\Http\Controllers\Dashboard\Admin\ProductController;
 use App\Http\Controllers\Dashboard\Admin\SupportController;
 
 
-Route::get('dashboard/login', [AuthController::class,'index'])->name('dashboard.admin.login');
-Route::post('/dashboard/store', [AuthController::class,'store'])->name('dashboard.admin.login.store');
+Route::get('dashboard/admin/login', [AuthController::class,'index'])->name('dashboard.admin.login');
+Route::post('/dashboard/admin/store', [AuthController::class,'store'])->name('dashboard.admin.login.store');
 Route::get('dashboard/admin/logout', [AuthController::class,'admin_logout'])->name('dashboard.admin.logout');
 
 Route::prefix('dashboard/admin')->name('dashboard.admin.')->middleware('auth:admin')->group(function () {

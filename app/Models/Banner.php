@@ -18,7 +18,8 @@ class Banner extends Model
                            'package',
                            'categorey_products',
                            'makeups',
-                           'videos'];
+                           'videos',
+                           'has_favored'];
 
      //attributes----------------------------------
     public function getImagePathAttribute()
@@ -97,6 +98,26 @@ class Banner extends Model
         return $payments;
 
     }//end of get image path
+
+    public function getHasFavoredAttribute()
+    {
+        $user = request()->hasHeader('user_id');
+
+        if ($user) {
+
+            $favored = Favored::where([
+                'banner_id' => $this->id,
+                'user_id'   => request()->header('user_id'),
+            ]);
+
+            return $favored ? true : false;
+
+        } else {
+
+            return 'no_auth';
+        }
+
+    }//end of get has favored
 
     //relationsheep----------------------------------
     public function owner()

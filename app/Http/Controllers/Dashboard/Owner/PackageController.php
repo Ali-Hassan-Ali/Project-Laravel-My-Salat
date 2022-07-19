@@ -11,7 +11,9 @@ class PackageController extends Controller
 
     public function index()
     {
-        $packages = Package::latest()->get();
+        $packages = Package::where('banner_id', auth('owner')->user()->banner->id)
+                           ->latest()
+                           ->get();
         
         return view('dashboard_owner.packages.index', compact('packages'));
 
@@ -31,11 +33,12 @@ class PackageController extends Controller
             'name'     => ['required','max:255'],
             'to'       => ['required'],
             'form'     => ['required'],
+            'price'    => ['required', 'numeric'],
         ]);
         
         try {
 
-            $request['owner_id'] = auth()->guard('owner')->user()->id;
+            $request['banner_id'] = auth('owner')->user()->banner->id;
 
             Package::create($request->all());
 
@@ -53,6 +56,11 @@ class PackageController extends Controller
 
     public function edit(Package $package)
     {
+        if ($package->banner_id != auth('owner')->user()->banner->id) {
+
+            return redirect()->route('dashboard.owner.packages.index');
+        }
+
         return view('dashboard_owner.packages.edit', compact('package'));
 
     }//end of edit
@@ -64,11 +72,12 @@ class PackageController extends Controller
             'name'     => ['required','max:255'],
             'to'       => ['required'],
             'form'     => ['required'],
+            'price'    => ['required', 'numeric'],
         ]);
 
         try {
 
-            $request['owner_id'] = auth()->guard('owner')->user()->id;
+            $request['banner_id'] = auth('owner')->user()->banner->id;
 
             $package->update($request->all());
 

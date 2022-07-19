@@ -48,7 +48,7 @@
                                                     <div class="col-12">
                                                         <div class="form-group">
                                                             <label>@lang('dashboard.name')</label>
-                                                            <input type="text" name="name" class="form-control mb-4 @error('name') is-invalid @enderror" placeholder="@lang('dashboard.name')" value="{{ $package->name }}">
+                                                            <input type="text" name="name" class="form-control mb-4 @error('name') is-invalid @enderror" placeholder="@lang('dashboard.name')" value="{{ old('name', $package->name) }}">
                                                             @error('name')
                                                                 <p class="text-danger">{{ $message }}</p>
                                                             @enderror
@@ -57,7 +57,7 @@
                                                     <div class="col-12">
                                                         <div class="form-group">
                                                             <label>@lang('dashboard.price')</label>
-                                                            <input type="text" name="price" class="form-control mb-4 @error('price') is-invalid @enderror" placeholder="@lang('dashboard.price')" value="{{ $package->price }}">
+                                                            <input type="number" name="price" class="form-control mb-4 @error('price') is-invalid @enderror" placeholder="@lang('dashboard.price')" value="{{ old('price', $package->price) }}">
                                                             @error('price')
                                                                 <p class="text-danger">{{ $message }}</p>
                                                             @enderror
@@ -66,7 +66,7 @@
                                                     <div class="col-6">
                                                         <div class="form-group">
                                                             <label>@lang('owner.form')</label>
-                                                            <input type="time" name="form" class="form-control mb-4 @error('name') is-invalid @enderror" placeholder="@lang('owner.form')" value="{{ $package->form }}">
+                                                            <input type="time" name="form" class="form-control mb-4 @error('name') is-invalid @enderror" placeholder="@lang('owner.form')" value="{{ old('form', $package->form) }}">
                                                             @error('form')
                                                                 <p class="text-danger">{{ $message }}</p>
                                                             @enderror
@@ -75,15 +75,19 @@
                                                     <div class="col-6">
                                                         <div class="form-group">
                                                             <label>@lang('owner.to')</label>
-                                                            <input type="time" name="to" class="form-control mb-4 @error('name') is-invalid @enderror" placeholder="@lang('owner.to')" value="{{ $package->to }}">
+                                                            <input type="time" name="to" class="form-control mb-4 @error('to') is-invalid @enderror" placeholder="@lang('owner.to')" value="{{ old('to', $package->to) }}">
                                                             @error('to')
                                                                 <p class="text-danger">{{ $message }}</p>
                                                             @enderror
                                                         </div>
                                                     </div>
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <button class="btn btn-primary col-12">@lang('dashboard.edit')</button>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <button class="btn btn-primary col-12">@lang('dashboard.edit')</button>
                                         </div>
                                     </div>{{-- row --}}
                                 </div>{{-- col mx-auto --}}

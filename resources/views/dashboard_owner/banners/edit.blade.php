@@ -28,7 +28,7 @@
     
         <div class="col-xl-12 col-lg-12 col-sm-12 layout-spacing">
             <div class="widget-content widget-content-area br-6">
-                <form action="{{ route('dashboard.owner.banners.update', auth()->guard('owner')->user()->banner->id) }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('dashboard.owner.banners.update', auth('owner')->user()->banner->id) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('put')
                     
@@ -36,17 +36,36 @@
                         <label class="text-success">@lang('dashboard.name')</label>
                         <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" 
                                placeholder="name" 
-                               value="{{ auth()->guard('owner')->user()->banner->name }}">
+                               value="{{ auth('owner')->user()->banner->name }}">
                         @error('name')
                             <p class="text-danger">{{ $message }}</p>
                         @enderror
                     </div>
 
                     <div class="form-group mb-4">
+                        <label class="text-success">@lang('dashboard.cost')</label>
+                        <input type="number" name="cost" class="form-control @error('cost') is-invalid @enderror" 
+                               placeholder="name" 
+                               value="{{ auth('owner')->user()->banner->cost }}">
+                        @error('cost')
+                            <p class="text-danger">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <div class="form-group mb-4">
+                        <label class="text-success">@lang('dashboard.description')</label>
+                        <textarea name="description" class="form-control @error('description') is-invalid @enderror" placeholder="description" >{{ auth('owner')->user()->banner->description }}</textarea>
+                        @error('description')
+                            <p class="text-danger">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+
+                    <div class="form-group mb-4">
                         <label class="text-success">@lang('owner.map')</label>
                         <input type="text" name="map" class="form-control @error('map') is-invalid @enderror" 
                                placeholder="map" 
-                               value="{{ auth()->guard('owner')->user()->banner->map }}">
+                               value="{{ auth('owner')->user()->banner->map }}">
                         @error('map')
                             <p class="text-danger">{{ $message }}</p>
                         @enderror
@@ -59,9 +78,9 @@
                                    oninput="bannerImage.src=window.URL.createObjectURL(this.files[0])" accept="image/*">
                             <span class="custom-file-container__custom-file__custom-file-control"></span>
                         </label>
-                        <img id="bannerImage" src="{{ auth()->guard('owner')->user()->banner->image_path }}" class="mt-5 my-auth">
+                        <img id="bannerImage" src="{{ auth('owner')->user()->banner->image_path }}" class="mt-5 my-auth">
                         {{-- <div class="custom-file-container__image-preview"
-                         style="background-image: url({{ auth()->guard('owner')->user()->banner->image_path }})"></div> --}}
+                         style="background-image: url({{ auth('owner')->user()->banner->image_path }})"></div> --}}
                     </div>
 
                     <div class="form-group my-5">

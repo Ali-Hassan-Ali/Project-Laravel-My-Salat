@@ -17,7 +17,7 @@ class CreateBannersTable extends Migration
             $table->id();
             $table->string('name')->default('owner name');
             $table->string('map')->default('owner map');
-            $table->string('cost')->default('500');
+            $table->string('cost')->default('0');
             $table->string('latitude')->default('15.508457');
             $table->string('longitude')->default('32.522854');
             $table->string('online')->default(true);

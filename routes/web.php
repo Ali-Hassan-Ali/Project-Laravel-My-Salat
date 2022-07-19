@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\Http;
 
 Route::get('/', function () {
 
+    dd(\Request::header('fsf'));
+
+    return \App\Models\Banner::first();
+
     $myarray = [
             ['name'=> 'one', 'email' => 'one@gmail.com'],
             ['name'=> 'two', 'email' => 'two@gmail.com'],
