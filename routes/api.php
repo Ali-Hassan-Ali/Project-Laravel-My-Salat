@@ -23,7 +23,9 @@ use App\Http\Controllers\Api\FavoredController;
 */
 Route::get('/', function () {
     
-    return App\Models\User::with('favoreds')->find(1);
+    return App\Models\Favored::first();
+    return App\Models\Banner::first();
+    return App\Models\Banner::latest()->first()->has_favored;
 
 });
 

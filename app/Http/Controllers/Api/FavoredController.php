@@ -24,13 +24,28 @@ class FavoredController extends Controller
 
         $categorey_id = Banner::find($request->banner_id)->categoreys_id;
 
-        $favored = Favored::create([
-            'user_id'      => $request->user_id,
-            'banner_id'    => $request->banner_id,
-            'categorey_id' => $categorey_id,
-        ]);
+        $has_favored = Favored::where([
+                        'banner_id' => $request->banner_id,
+                        'user_id'   => $request->user_id,
+                    ])->first();
 
-        return response()->api($favored);
+        if ($has_favored) {
+
+            $has_favored->delete();
+
+            return response()->api(false);
+
+        } else {
+
+            Favored::create([
+                'user_id'      => $request->user_id,
+                'banner_id'    => $request->banner_id,
+                'categorey_id' => $categorey_id,
+            ]);
+
+            return response()->api(true);
+
+        }//end of check
 
     }//end of store
 

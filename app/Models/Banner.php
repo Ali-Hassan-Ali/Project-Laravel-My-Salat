@@ -101,16 +101,23 @@ class Banner extends Model
 
     public function getHasFavoredAttribute()
     {
-        $user = request()->hasHeader('user_id');
+        $user_id = request()->hasHeader('user_id');
 
-        if ($user) {
+        if ($user_id) {
 
             $favored = Favored::where([
                 'banner_id' => $this->id,
                 'user_id'   => request()->header('user_id'),
-            ]);
+            ])->first();
 
-            return $favored ? true : false;
+            if ($favored) {
+                
+                return true;
+
+            } else {
+
+                return false;
+            }
 
         } else {
 
