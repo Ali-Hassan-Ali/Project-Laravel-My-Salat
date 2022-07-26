@@ -158,6 +158,12 @@ class Banner extends Model
         
     }//end of service
 
+    public function cars()
+    {
+        return $this->hasMany(Car::class);
+        
+    }//end of service
+
     //scopes --------------------------------------
     public function scopeWhenSearch($query, $search)
     {

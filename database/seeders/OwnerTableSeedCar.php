@@ -38,18 +38,28 @@ class OwnerTableSeedCar extends Seeder
                 
             }//end of foreach
 
-            // $packages = ['العصر','الليل'];
+            $cars = ['car one', 'car tow', 'car three', 'car for'];
 
-            // foreach ($packages as $package) {
+            foreach ($cars as $car) {
 
-            //     \App\Models\Package::create([
-            //         'name'      => $package,
-            //         'banner_id' => $new_owner->id,
-            //         'form'      => now()->toTimeString(),
-            //         'to'        => now()->toTimeString(),
-            //     ]);            
+                $car_id = \App\Models\Car::create([
+                    'name'      => $car,
+                    'price'     => '240',
+                    'banner_id' => $onner->id,
+                ]);          
+
+                $car_images = ['car image one', 'car image tow', 'car image three', 'car image for'];
+
+                foreach ($car_images as $image) {
+
+                    \App\Models\CarImage::create([
+                        'car_id'  => $car_id->id,
+                    ]);            
+                    
+                }//end of foreach
+
                 
-            // }//end of foreach
+            }//end of foreach
 
             $namesMove = ['اسم الحساب صالحب الصالة','اسم الحساب صالحب الصالة','اسم الحساب صالحب الصالة','اسم الحساب صالحب الصالة','اسم الحساب صالحب الصالة'];
 
