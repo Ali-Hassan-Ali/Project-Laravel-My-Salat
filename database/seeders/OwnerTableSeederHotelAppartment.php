@@ -19,7 +19,7 @@ class OwnerTableSeederHotelAppartment extends Seeder
         foreach ($owners as $index=>$owner) {
 
             $new_owner = \App\Models\Owner::create([
-                'name'     => $owner,
+                'name'     => 'شقق مفروشة   ',
                 'status'   => 1,
                 'phone'    => '+111111111111',
                 'email'    =>  $owner.'@move.com',
@@ -28,7 +28,7 @@ class OwnerTableSeederHotelAppartment extends Seeder
 
             $onner = $new_owner->banner()->create(['categoreys_id'=>4]);
 
-            $interiors = ['Furnished Apartments 1','Furnished Apartments 2','Furnished Apartments 3','Furnished Apartments 4'];
+            $interiors = ['صور شقق مفروشة 1','صور شقق مفروشة 2','صور شقق مفروشة 3','صور شقق مفروشة 4'];
 
             foreach ($interiors as $interior) {
 

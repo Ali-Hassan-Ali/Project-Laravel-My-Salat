@@ -19,7 +19,7 @@ class SuitTableSeeder extends Seeder
         foreach ($owners as $index=>$owner) {
 
             $new_owner = \App\Models\Owner::create([
-                'name'     => $owner,
+                'name'     => 'بدل',
                 'status'   => 1,
                 'phone'    => '+111111111111',
                 'email'    =>  $owner.'@move.com',
@@ -28,7 +28,7 @@ class SuitTableSeeder extends Seeder
 
             $onner = $new_owner->banner()->create(['categoreys_id' => 7]);
 
-            $products = ['Suit 1','Suit 2','Suit 3','Suit 4','Suit 5'];
+            $products = ['المنتج 1','المنتج 2','المنتج 3','المنتج 4','المنتج 5'];
 
             foreach ($products as $data) {
 
@@ -49,7 +49,7 @@ class SuitTableSeeder extends Seeder
                     
                 }//end of each
 
-                $images = ['black','red','green','ylou','blue'];
+                $images = ['black | اسود','red | احمر','green | اخضر','ylou | اصفر','blue | ازرق'];
 
                 foreach ($images as $data) {
 

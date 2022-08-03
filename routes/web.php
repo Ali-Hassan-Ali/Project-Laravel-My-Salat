@@ -9,47 +9,15 @@ use Illuminate\Support\Facades\Http;
 
 Route::get('/', function () {
 
-    dd(\Request::header('fsf'));
-
-    return \App\Models\Banner::first();
-
-    $myarray = [
-            ['name'=> 'one', 'email' => 'one@gmail.com'],
-            ['name'=> 'two', 'email' => 'two@gmail.com'],
-            ['name'=> 'three', 'email' => 'three@gmail.com'],
-        ];  
-        foreach ($myarray as $key => $value) {
-            return $id[] = \DB::table('users')->insertGetId(
-                ['email' => $value['email'],'name' => $value['name']]
-            );
-        }
-
-    $data = [
-        [
-            'name' => ' متحركه',
-            'categories_id'   => '1',
-            'number'   => '3',//count banner favored
-        ],
-
-        [
-            'name' => 'صلات متحركه',
-            'categories_id'   => '2',
-            'number'   => '3',//count banner favored
-        ],
-    ];
-
-    return response()->json($data);
-    return;
-    return \App\Models\Banner::first();
-    $response = Http::firebase()->post('/')->throw('{
+    $data = '{
  
- "to" :"esSIQrVDRBaqzgl-XJYvex:APA91bF_lLJXclR_m3mxiif2aZho6jPUbSN_Oqwg2zL12U_XRvbOcv9r8-YQRD38mftPCCjAm0B9DDyzGPzWDNYYU-fF8512agDtPLYoyxjmyAxWg9IG6e1D4fy439znZXbdIClyEDPe",
+ "to" :"cI5N-ExuTGStEagMOkB9Zp:APA91bFpbLE2-X7T8rIJizhScAl9xB1B-7HcF2iWVfOqnLDE9bTPKMqXPbkQQCNEuTNzXxTKeyay88aVZ1XiRx5duSGcpSp9rsLTc46qUvAYFakw7Xj-B5IWkgl8cudl20zUQJZKg0K3",
  "notification" : {
      "body" : "تم الحجز بنجاح يمكنك الدفع الآن",  "title":"تأكيد الحجز"},
  
 "data": {
     "click_action": "FLUTTER_NOTIFICATION_CLICK",
-    "order_id":"3",
+    "order_id":"15",
     "hall_name":"سبارك سيتي",
     "cost":"1245",
     "image":["https://egymerch.com//mysalat//storage//gallery_images//default.png","https://egymerch.com//mysalat//storage//gallery_images//default.png"],
@@ -63,19 +31,18 @@ Route::get('/', function () {
         "AcountName":"Ali", "name": "بنك فيصل الاسلامي"}
 
 ]}
-}');
-    return $response->failed();
-    return env("AUTHORIZATION_KEY");
-    return now()->toTimeString();  
-    return \App\Models\PaymentAdmin::all();
-    
-    return $banners = App\Models\Banner::all();
+}';
 
-    $categoreys = App\Models\ServiceCategory::with('service')->get();
+    $response = Http::withHeaders([
+        'Authorization'  => env("AUTHORIZATION_KEY"),
+        'Content-Type'   => 'application/json',
+    ])->withBody($data, 'application/json')
+      ->post('https://fcm.googleapis.com/fcm/send');
 
-    return response()->api(App\Http\Resources\CategoryResource::collection($categoreys));
 
+    return $response;
 });
+
 
 Route::get('Api/Banner', function () {
 

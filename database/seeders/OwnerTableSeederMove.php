@@ -18,7 +18,7 @@ class OwnerTableSeederMove extends Seeder
         foreach ($owners as $index=>$owner) {
 
             $new_owner = \App\Models\Owner::create([
-                'name'     => $owner,
+                'name'     => 'الصالات متحركة',
                 'status'   => 1,
                 'phone'    => '+111111111111',
                 'email'    =>  $owner.'@move.com',
@@ -27,7 +27,7 @@ class OwnerTableSeederMove extends Seeder
 
             $banner = $new_owner->banner()->create(['categoreys_id'=>2]);
 
-            $interiors = ['interior 1','interior 2','interior 3','interior 4'];
+            $interiors = ['الصالات متحركة 1','الصالات متحركة 2','الصالات متحركة 3','الصالات متحركة 4'];
 
             foreach ($interiors as $key=>$interior) {
 

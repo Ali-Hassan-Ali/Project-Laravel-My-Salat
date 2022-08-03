@@ -56,7 +56,7 @@ class OwnerTableSeeder extends Seeder
         foreach ($owners as $index=>$owner) {
 
             $new_owner = \App\Models\Owner::create([
-                'name'     => $owner,
+                'name'     => 'صاحب الصاله',
                 'status'   => 1,
                 'phone'    => '+2491149296'.$index,
                 'email'    =>  $owner.'@gmail.com',
@@ -70,7 +70,7 @@ class OwnerTableSeeder extends Seeder
             foreach ($interiors as $interior) {
 
                 \App\Models\Gallery::create([
-                    'title'     => $interior,
+                    'title'     => 'صور الصاله',
                     'banner_id' => $new_owner->id,
                 ]);            
                 

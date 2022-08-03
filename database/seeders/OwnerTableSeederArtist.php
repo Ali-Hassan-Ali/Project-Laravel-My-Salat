@@ -18,7 +18,7 @@ class OwnerTableSeederArtist extends Seeder
         foreach ($owners as $index=>$owner) {
 
             $new_owner = \App\Models\Owner::create([
-                'name'     => $owner,
+                'name'     => 'إختر فنانك',
                 'status'   => 1,
                 'phone'    => '+111111111111',
                 'email'    =>  $owner.'@move.com',
@@ -27,7 +27,7 @@ class OwnerTableSeederArtist extends Seeder
 
             $onner = $new_owner->banner()->create(['categoreys_id'=>5]);
 
-            $interiors = ['interior 1','interior 2','interior 3','interior 4'];
+            $interiors = ['إختر فنانك 1','إختر فنانك 2','إختر فنانك 3','إختر فنانك 4'];
 
             foreach ($interiors as $interior) {
 
@@ -38,7 +38,7 @@ class OwnerTableSeederArtist extends Seeder
                 
             }//end of foreach
 
-            $videos = ['video 1','video 2','video 3','video 4'];
+            $videos = ['فديوو إختر فنانك 1','فديوو إختر فنانك 2','فديوو إختر فنانك 3','فديوو إختر فنانك 4'];
 
             foreach ($videos as $video) {
 

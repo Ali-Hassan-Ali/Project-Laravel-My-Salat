@@ -40,8 +40,8 @@ class CategoreyTableSeeder extends Seeder
         ]);
 
         \App\Models\Categorey::create([
-            'name'  => 'أختار فنانك',
-            'slug'  => str::slug('أختار فنانك', '_'),
+            'name'  => 'إختر فنانك',
+            'slug'  => str::slug('إختر فنانك', '_'),
             'logo' => 'categorey_images/singer.png',
         ]);
 

@@ -18,16 +18,16 @@ class OwnerTableSeedCar extends Seeder
         foreach ($owners as $index=>$owner) {
 
             $new_owner = \App\Models\Owner::create([
-                'name'     => $owner,
+                'name'     => 'صاحب السيارة',
                 'status'   => 1,
                 'phone'    => '+111111111111',
                 'email'    =>  $owner.'@move.com',
                 'password' => bcrypt('123123123'),
             ]);
 
-            $onner = $new_owner->banner()->create(['categoreys_id'=>6]);
+            $onner = $new_owner->banner()->create(['categoreys_id' => 6 ]);
 
-            $interiors = ['wedding car 1','wedding car 2','wedding car 3','wedding car 4'];
+            $interiors = ['صوره سياره 1','صوره سياره 2','صوره سياره 3','صوره سياره 4'];
 
             foreach ($interiors as $interior) {
 
@@ -38,7 +38,7 @@ class OwnerTableSeedCar extends Seeder
                 
             }//end of foreach
 
-            $cars = ['car one', 'car tow', 'car three', 'car for'];
+            $cars = ['السيارات الزفه الاولي', 'السيارات الزفه الثانيه', 'السيارات الزفه الثالثه', 'السيارات الزفه رقم 4'];
 
             foreach ($cars as $car) {
 
@@ -48,7 +48,7 @@ class OwnerTableSeedCar extends Seeder
                     'banner_id' => $onner->id,
                 ]);          
 
-                $car_images = ['car image one', 'car image tow', 'car image three', 'car image for'];
+                $car_images = ['صوره  خاصة سياره 1', 'صوره  خاصة سياره 2', 'صوره  خاصة سياره 3', 'صوره  خاصة سياره 4'];
 
                 foreach ($car_images as $image) {
 

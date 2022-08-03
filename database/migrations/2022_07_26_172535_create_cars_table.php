@@ -17,6 +17,7 @@ class CreateCarsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('price');
+            $table->integer('cost')->default(20);
 
             $table->foreignId('banner_id')->constrained()->onDelete('cascade');
             $table->timestamps();
