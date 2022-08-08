@@ -11,7 +11,7 @@ class PaymentOrder extends Model
 
     protected $guarded = [];
 
-    protected $appends  = ['receipt_path'];
+    protected $appends  = ['receipt_path', 'pdf_path', 'image_path'];
 
      //attributes----------------------------------
 
@@ -20,6 +20,18 @@ class PaymentOrder extends Model
         return asset('storage/' . $this->receipt_image);
 
     }//end of get image path
+
+    public function getPdfPathAttribute()
+    {
+        return asset('storage/' . $this->pdf);
+
+    }//end of fun
+
+    public function getImagePathAttribute()
+    {
+        return asset('storage/' . $this->image);
+
+    }//end of fun
 
     //relation----------------------------------
 

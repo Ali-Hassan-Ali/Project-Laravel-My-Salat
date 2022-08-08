@@ -13,13 +13,13 @@ use App\Models\User;
 Route::get('/', function () {
 
     $order = Order::first();
-    return $order;
+    // return $order;
     $user  = User::find($order->user_id);
     // dd($orders);
 
     // dd($orders->payment_client->first()->name_acount);
 
-    // $pathToImage = view('dashboard_admin.invoice.order', compact('order', 'user'));
+    return view('dashboard_admin.invoice.order', compact('order', 'user'));
 
     // Browsershot::url('https://example.com')->save('example.pdf');
 

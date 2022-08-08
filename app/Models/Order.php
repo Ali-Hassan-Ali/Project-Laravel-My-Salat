@@ -11,7 +11,7 @@ class Order extends Model
 
     protected $guarded = [];
 
-    protected $appends = ['status','hall_name','hall_image','payment_client','category', 'pdf_path', 'image_path'];
+    protected $appends = ['status','hall_name','hall_image','payment_client','category'];
 
     public function getStatusAttribute()
     {
@@ -122,17 +122,5 @@ class Order extends Model
         return $this->hasMany(OrderItem::class,'order_id');
 
     }//end of item
-
-    public function getPdfPathAttribute()
-    {
-        return asset('storage/' . $this->pdf);
-
-    }//end of fun
-
-    public function getImagePathAttribute()
-    {
-        return asset('storage/' . $this->image);
-
-    }//end of fun
 
 }//end of model
