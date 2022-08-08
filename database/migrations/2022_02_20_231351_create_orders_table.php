@@ -31,6 +31,9 @@ class CreateOrdersTable extends Migration
             $table->string('lat')->default(0);
             $table->string('lng')->default(0);
 
+            $table->string('pdf')->default('order_pdf/default.pdf');
+            $table->string('image')->default('order_images/default.png');
+
             $table->string('product_id')->nullable();
 
             $table->string('count_people')->nullable();

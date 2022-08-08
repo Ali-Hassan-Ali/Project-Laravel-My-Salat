@@ -14,7 +14,8 @@ use App\Http\Controllers\Dashboard\Admin\PaymentAdminController;
 use App\Http\Controllers\Dashboard\Admin\SettingController;
 use App\Http\Controllers\Dashboard\Admin\ProductCategoryController;
 use App\Http\Controllers\Dashboard\Admin\ProductController;
-
+use App\Http\Controllers\Dashboard\Admin\OrderController;
+use App\Http\Controllers\Dashboard\Admin\OrderStatusController;
 use App\Http\Controllers\Dashboard\Admin\SupportController;
 
 
@@ -41,6 +42,9 @@ Route::prefix('dashboard/admin')->name('dashboard.admin.')->middleware('auth:adm
         Route::resource('product_categorys', ProductCategoryController::class)->except('show');
         
         Route::resource('products', ProductController::class)->except('show');
+
+        Route::resource('orders', OrderController::class)->except('show');
+        // Route::resource('orders.order_status', OrderStatusController::class)->except('show');
 
         Route::prefix('setting')->name('setting.')->group(function () {
 

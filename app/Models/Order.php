@@ -11,7 +11,7 @@ class Order extends Model
 
     protected $guarded = [];
 
-    protected $appends = ['status','hall_name','hall_image','payment_client','category'];
+    protected $appends = ['status','hall_name','hall_image','payment_client','category', 'pdf_path', 'image_path'];
 
     public function getStatusAttribute()
     {
@@ -69,12 +69,17 @@ class Order extends Model
 
     //relation----------------------------------
 
+    public function banner()
+    {
+        return $this->belongsTo(Banner::class);
+        
+    }//end of belongsTo owner
+
     public function payment_order()
     {
         return $this->hasOne(PaymentOrder::class,'order_id');
 
     }//end of order
-
 
     public function order_statuses()
     {
@@ -117,5 +122,17 @@ class Order extends Model
         return $this->hasMany(OrderItem::class,'order_id');
 
     }//end of item
+
+    public function getPdfPathAttribute()
+    {
+        return asset('storage/' . $this->pdf);
+
+    }//end of fun
+
+    public function getImagePathAttribute()
+    {
+        return asset('storage/' . $this->image);
+
+    }//end of fun
 
 }//end of model

@@ -3,10 +3,11 @@
 return [
 
     'dashboard'    => 'الرئسية',
-    'my_salat'     => 'صالتي',
+    'my_salat'     => 'تطبيق صالات',
     'calendar'     => 'تقويم',
     'statistics'   => 'الاحصائيات',
     'setting'      => 'الاعدادات',
+    'choose'       => 'اختر',
 
     'confirm_delete'       => '!تأكيد الحذف',
     'added_successfully'   => 'تم اضافه البيانات بنجاح',
