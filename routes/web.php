@@ -13,9 +13,9 @@ use App\Models\User;
 
 Route::get('/', function () {
 
-    $order = PaymentOrder::first();
+    return $order = PaymentOrder::first();
     // return $order;
-    $user  = User::find($order->user_id);
+    // $user  = User::find($order->user_id);
     // dd($orders);
 
     // dd($orders->payment_client->first()->name_acount);
