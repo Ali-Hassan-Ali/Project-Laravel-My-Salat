@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\Dashboard\Admin\Auth\AuthController;
+use app\Http\Controllers\Dashboard\Admin\Auth\AuthController;
 
 use App\Http\Controllers\Dashboard\Admin\WelcomController;
 use App\Http\Controllers\Dashboard\Admin\AdminController;
