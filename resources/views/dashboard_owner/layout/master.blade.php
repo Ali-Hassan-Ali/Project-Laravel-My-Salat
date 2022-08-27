@@ -65,7 +65,7 @@
     <!--  END LOADER -->
 
     <!--  BEGIN NAVBAR  -->
-    @include('dashboard_owner.Layout.include._header')
+    @include('dashboard_owner.layout.include._header')
     <!--  END NAVBAR  -->
 
     <!--  BEGIN MAIN CONTAINER  -->
