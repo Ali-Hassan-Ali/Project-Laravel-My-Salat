@@ -75,7 +75,7 @@
         <div class="search-overlay"></div>
 
         <!--  BEGIN SIDEBAR  -->
-        @include('dashboard_owner.Layout.include._sidebar')
+        @include('dashboard_owner.layout.include._sidebar')
         <!--  END SIDEBAR  -->
         
         <!--  BEGIN CONTENT AREA  -->
