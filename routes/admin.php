@@ -2,11 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 
-use app\Http\Controllers\Dashboard\Admin\Auth\AuthController;
+use App\Http\Controllers\Dashboard\Admin\Auth\AuthController;
 
 use App\Http\Controllers\Dashboard\Admin\WelcomController;
 use App\Http\Controllers\Dashboard\Admin\AdminController;
 use App\Http\Controllers\Dashboard\Admin\OwnerController;
+use App\Http\Controllers\Dashboard\Admin\UserController;
 use App\Http\Controllers\Dashboard\Admin\CategoreyController;
 use App\Http\Controllers\Dashboard\Admin\BookingController;
 use App\Http\Controllers\Dashboard\Admin\ServiceCategoryController;
@@ -25,11 +26,16 @@ Route::get('dashboard/admin/logout', [AuthController::class,'admin_logout'])->na
 
 Route::prefix('dashboard/admin')->name('dashboard.admin.')->middleware('auth:admin')->group(function () {
 
-        Route::get('/', [WelcomController::class,'index'])->name('welcome');
+        Route::get('/home', [WelcomController::class,'index'])->name('home');
 
+        Route::get('admins/data', [OwnerController::class, 'data'])->name('admins.data');
         Route::resource('admins', AdminController::class)->except('show');
 
+        Route::get('owners/data', [OwnerController::class, 'data'])->name('owners.data');
         Route::resource('owners', OwnerController::class)->except('show');
+
+        Route::get('users/data', [OwnerController::class, 'data'])->name('users.data');
+        Route::resource('users', UserController::class)->except('show');
 
         Route::resource('service_categorys', ServiceCategoryController::class)->except('show');
 

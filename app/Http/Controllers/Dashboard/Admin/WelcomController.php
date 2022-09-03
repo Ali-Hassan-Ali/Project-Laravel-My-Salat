@@ -14,7 +14,7 @@ class WelcomController extends Controller
     {
         $min_categorys = Categorey::all();
 
-        return view('dashboard_admin.welcome', compact('min_categorys'));
+        return view('dashboard.admin.home', compact('min_categorys'));
 
     }//end of index
 

@@ -14,11 +14,11 @@ class AuthController extends Controller
     {
         if (!auth()->guard('admin')->check()) {
             
-            return view('dashboard_admin.auth.login');
+            return view('dashboard.admin.auth.login');
 
         }//end of if
 
-        return redirect()->route('dashboard.admin.welcome');
+        return redirect()->route('dashboard.admin.home');
 
     }//end of index login function
     
@@ -40,16 +40,16 @@ class AuthController extends Controller
             if ($auth) {
                 
                 session()->flash('success', __('dashboard.login_successfully'));
-                return redirect()->route('dashboard.admin.welcome');
+                return redirect()->route('dashboard.admin.home');
 
             }//end of auth
 
             return back()->withErrors(['email' => 'The email is incorrect']);
 
 
-            if (auth()->guard('admin')->check()) {
+            if (auth('admin')->check()) {
 
-                return redirect()->route('dashboard.admin.welcome');
+                return redirect()->route('dashboard.admin.home');
                 
             } else {
 
@@ -92,7 +92,7 @@ class AuthController extends Controller
 
         // notify()->success( __('dashboard.login_successfully'));
         session()->flash('success', __('dashboard.login_successfully'));
-        return view('dashboard_admin.auth.login');
+        return redirect()->route('dashboard.admin.login');
 
     }//end of logout admin
 

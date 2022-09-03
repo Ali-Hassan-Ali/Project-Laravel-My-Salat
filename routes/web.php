@@ -7,13 +7,16 @@ use Illuminate\Support\Facades\Http;
 use App\Models\Order;
 use App\Models\PaymentOrder;
 use App\Models\User;
+use App\Models\Admin;
 
 // Route::get('/', [\App\Http\Controllers\Api\WelcomeController::class,'index']);
 
 
 Route::get('/', function () {
 
-    return $order = PaymentOrder::first();
+    $order = Admin::whereRoleIs('admin')->first();
+
+    dd(auth('admin')->user()->isAbleTo('admins-create'));
     // return $order;
     // $user  = User::find($order->user_id);
     // dd($orders);
