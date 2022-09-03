@@ -15,7 +15,7 @@ class AdminController extends Controller
 
     public function __construct()
     {
-        $this->middleware('permission:admins_read')->only(['index']);
+        $this->middleware('permission:admins_read')->only(['index','data']);
         $this->middleware('permission:admins_create')->only(['create', 'store']);
         $this->middleware('permission:admins_update')->only(['edit', 'update']);
         $this->middleware('permission:admins_delete')->only(['delete', 'bulk_delete']);

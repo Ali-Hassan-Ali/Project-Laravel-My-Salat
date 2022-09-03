@@ -9,7 +9,7 @@
         <img class="app-sidebar__user-avatar" src="{{ auth('admin')->user()->image_path }}" alt="User Image">
         <div>
             <p class="app-sidebar__user-name">{{ auth('admin')->user()->name }}</p>
-            {{-- <p class="app-sidebar__user-designation">{{ auth('admin')->user()->roles->first()->name }}</p> --}}
+            <p class="app-sidebar__user-designation">{{ auth('admin')->user()->roles->first()->name }}</p>
         </div>
     </div>
 
@@ -17,11 +17,17 @@
 
         <li><a class="app-menu__item {{ request()->is('*home*') ? 'active' : '' }}" href="{{ route('dashboard.admin.home') }}"><i class="app-menu__icon fa fa-home"></i> <span class="app-menu__label">@lang('site.home')</span></a></li>
 
+        {{--categoreys--}}
+        @if (auth()->user()->hasPermission('categories_read'))
+            <li><a class="app-menu__item {{ request()->segment(3) == 'categoreys' ? 'active' : '' }}" href="{{ route('dashboard.admin.categoreys.index') }}"><i class="app-menu__icon fas fa-tools"></i> <span class="app-menu__label">@lang('categoreys.categoreys')</span></a></li>
+        @endif
+
         {{--owners--}}
         @if (auth()->user()->hasPermission('owners_read'))
             <li><a class="app-menu__item {{ request()->segment(3) == 'owners' ? 'active' : '' }}" href="{{ route('dashboard.admin.owners.index') }}"><i class="app-menu__icon fas fa-tools"></i> <span class="app-menu__label">@lang('owners.owners')</span></a></li>
         @endif
 
+        {{--users--}}
         @if (auth()->user()->hasPermission('users_read'))
             <li><a class="app-menu__item {{ request()->segment(3) == 'users' ? 'active' : '' }}" href="{{ route('dashboard.admin.users.index') }}"><i class="app-menu__icon fas fa-tools"></i> <span class="app-menu__label">@lang('users.users')</span></a></li>
         @endif
@@ -39,8 +45,9 @@
             <ul class="treeview-menu">
                 <li><a class="treeview-item" href="{{ route('admin.profile.edit') }}"><i class="icon fa fa-circle-o"></i>@lang('users.edit_profile')</a></li>
                 <li><a class="treeview-item" href="{{ route('admin.profile.password.edit') }}"><i class="icon fa fa-circle-o"></i>@lang('users.change_password')</a></li>
-            </ul> --}}
-        </li>
+            </ul> 
+        </li> --}}
 
-    </ul>
+    </ul>{{-- app-menu --}}
+    
 </aside>

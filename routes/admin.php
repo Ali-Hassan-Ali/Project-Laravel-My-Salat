@@ -22,7 +22,7 @@ use App\Http\Controllers\Dashboard\Admin\SupportController;
 
 Route::get('dashboard/admin/login', [AuthController::class,'index'])->name('dashboard.admin.login');
 Route::post('/dashboard/admin/store', [AuthController::class,'store'])->name('dashboard.admin.login.store');
-Route::get('dashboard/admin/logout', [AuthController::class,'admin_logout'])->name('dashboard.admin.logout');
+Route::post('dashboard/admin/logout', [AuthController::class,'admin_logout'])->name('dashboard.admin.logout');
 
 Route::prefix('dashboard/admin')->name('dashboard.admin.')->middleware('auth:admin')->group(function () {
 
@@ -42,6 +42,7 @@ Route::prefix('dashboard/admin')->name('dashboard.admin.')->middleware('auth:adm
 
         Route::resource('service_categorys', ServiceCategoryController::class)->except('show');
 
+        Route::get('categoreys/data', [CategoreyController::class, 'data'])->name('categoreys.data');
         Route::resource('categoreys', CategoreyController::class)->except('show');
 
         Route::resource('bookings', BookingController::class)->except('show');

@@ -1,0 +1,1 @@
+<img src="{{ $categorey->logo_path }}" width="70">

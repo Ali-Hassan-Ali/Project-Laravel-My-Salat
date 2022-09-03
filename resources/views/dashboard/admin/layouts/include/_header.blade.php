@@ -30,7 +30,7 @@
                     <a class="dropdown-item" href="page-login.html" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                         <i class="fa fa-sign-out fa-lg"></i>
                         @lang('site.logout')
-                        <form id="logout-form" action="{{ route('dashboard.admin.logout') }}" method="get" style="display: none;">
+                        <form id="logout-form" action="{{ route('dashboard.admin.logout') }}" method="post" style="display: none;">
                             @csrf
                         </form>
                     </a>

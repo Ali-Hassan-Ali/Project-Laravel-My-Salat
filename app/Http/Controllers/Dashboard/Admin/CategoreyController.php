@@ -5,17 +5,43 @@ namespace App\Http\Controllers\Dashboard\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Categorey;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 
 class CategoreyController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('permission:categories_read')->only(['index','data']);
+        $this->middleware('permission:categories_create')->only(['create', 'store']);
+        $this->middleware('permission:categories_update')->only(['edit', 'update']);
+        $this->middleware('permission:categories_delete')->only(['delete', 'bulk_delete']);
+
+    }// end of __construct
     
     public function index()
     {
-        $categoreys = Categorey::all();
-
-        return view('dashboard_admin.categoreys.index', compact('categoreys'));
+        return view('dashboard.admin.categories.index');
 
     }//end of index
+
+    public function data()
+    {
+        $categories = Categorey::all();
+
+        return DataTables::of($categories)
+            ->editColumn('created_at', function (Categorey $categorey) {
+                return $categorey->created_at->format('Y-m-d');
+            })
+            ->editColumn('logo', function (Categorey $categorey) {
+                return view('dashboard.admin.categories.data_table.image', compact('categorey'));
+            })
+            ->addColumn('actions', 'dashboard.admin.categories.data_table.actions')
+            ->rawColumns(['actions'])
+            ->addIndexColumn()
+            ->toJson();
+
+    }// end of data
 
     
     public function create()
