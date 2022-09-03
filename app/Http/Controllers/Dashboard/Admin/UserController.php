@@ -1,28 +1,59 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard\User;
+namespace App\Http\Controllers\Dashboard\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 use App\Models\User;
+use App\Models\Categorey;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 
 class UserController extends Controller
 {   
+
+    public function __construct()
+    {
+        $this->middleware('permission:users_read')->only(['index']);
+        $this->middleware('permission:users_create')->only(['create', 'store']);
+        $this->middleware('permission:users_update')->only(['edit', 'update']);
+        $this->middleware('permission:users_delete')->only(['delete', 'bulk_delete']);
+
+    }// end of __construct
     
     public function index()
     {
-        $user = User::all();
-
-        return view('dashboard_User.user.index', compact('user'));
+        return view('dashboard.admin.users.index');
 
     }//end of index
+
+    public function data()
+    {
+        $users = User::query();
+
+        return DataTables::of($users)
+            ->addColumn('record_select', 'dashboard.admin.admins.data_table.record_select')
+            ->editColumn('created_at', function (User $user) {
+                return $user->created_at->format('Y-m-d');
+            })
+            ->editColumn('image', function (User $user) {
+                return view('dashboard.admin.users.data_table.image', compact('user'));
+            })
+            ->editColumn('status', function (User $user) {
+                return view('dashboard.admin.users.data_table.status', compact('user'));
+            })
+            ->addColumn('actions', 'dashboard.admin.admins.data_table.actions')
+            ->rawColumns(['record_select', 'actions'])
+            ->addIndexColumn()
+            ->toJson();
+
+    }// end of data
 
     
     public function create()
     {        
-        return view('dashboard_User.user.create');
+        return view('dashboard.admin.user.create');
 
     }//end of create
 

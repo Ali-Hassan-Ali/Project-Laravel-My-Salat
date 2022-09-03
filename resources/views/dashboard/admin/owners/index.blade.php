@@ -17,16 +17,16 @@
 
             <div class="tile shadow">
 
-                {{-- <div class="row mb-2">
+                <div class="row mb-2">
 
                     <div class="col-md-12">
 
-                        @if (auth()->user()->hasPermission('admins_read'))
-                            <a href="{{ route('dashboard.admin.admins.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> @lang('site.create')</a>
+                        @if (auth()->user()->hasPermission('owners_read'))
+                            <a href="{{ route('dashboard.admin.owners.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> @lang('site.create')</a>
                         @endif
 
-                        @if (auth()->user()->hasPermission('delete_admins'))
-                            <form method="post" action="{{ route('dashboard.admin.admins.bulk_delete') }}" style="display: inline-block;">
+                        @if (auth()->user()->hasPermission('owners_delete'))
+                            <form method="post" action="{{ route('dashboard.admin.owners.bulk_delete') }}" style="display: inline-block;">
                                 @csrf
                                 @method('delete')
                                 <input type="hidden" name="record_ids" id="record-ids">
@@ -36,7 +36,7 @@
 
                     </div>
 
-                </div> --}}<!-- end of row -->
+                </div><!-- end of row -->
 
                 <div class="row">
 
@@ -54,7 +54,7 @@
 
                         <div class="table-responsive">
 
-                            <table class="table datatable" id="users-table" style="width: 100%;">
+                            <table class="table datatable" id="owners-table" style="width: 100%;">
                                 <thead>
                                 <tr>
                                     <th>
@@ -66,11 +66,11 @@
                                         </div>
                                     </th>
                                     <th>@lang('site.DT_RowIndex')</th>
-                                    <th>@lang('users.username')</th>
-                                    <th>@lang('users.phone')</th>
-                                    <th>@lang('users.image')</th>
-                                    <th>@lang('users.code')</th>
-                                    <th>@lang('users.status')</th>
+                                    <th>@lang('owners.name')</th>
+                                    <th>@lang('owners.phone')</th>
+                                    <th>@lang('owners.image')</th>
+                                    <th>@lang('owners.categorey')</th>
+                                    <th>@lang('owners.status')</th>
                                     <th>@lang('site.created_at')</th>
                                     <th>@lang('site.action')</th>
                                 </tr>
@@ -95,7 +95,7 @@
 
     <script>
 
-        let usersTable = $('#users-table').DataTable({
+        let ownersTable = $('#owners-table').DataTable({
             dom: "tiplr",
             scrollY: '500px',
             scrollCollapse: true,
@@ -106,15 +106,15 @@
                 "url": "{{ asset('admin_assets/datatable-lang/' . app()->getLocale() . '.json') }}"
             },
             ajax: {
-                url: '{{ route('dashboard.admin.users.data') }}',
+                url: '{{ route('dashboard.admin.owners.data') }}',
             },
             columns: [
                 {data: 'record_select', name: 'record_select', searchable: false, sortable: false, width: '1%'},
                 {data: 'DT_RowIndex', name: 'DT_RowIndex'},
-                {data: 'username', name: 'username'},
+                {data: 'name', name: 'name'},
                 {data: 'phone', name: 'phone'},
                 {data: 'image', name: 'image'},
-                {data: 'code', name: 'code'},
+                {data: 'categorey', name: 'categorey'},
                 {data: 'status', name: 'status'},
                 {data: 'created_at', name: 'created_at', searchable: false},
                 {data: 'actions', name: 'actions', searchable: false, sortable: false, width: '20%'},
@@ -129,7 +129,7 @@
         });
 
         $('#data-table-search').keyup(function () {
-            usersTable.search(this.value).draw();
+            ownersTable.search(this.value).draw();
         });
     </script>
 

@@ -1,0 +1,1 @@
+<img src="{{ $owner->image_path }}" width="70">

@@ -6,23 +6,59 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 use App\Models\Admin;
+use App\Models\Role;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 
 class AdminController extends Controller
 {   
+
+    public function __construct()
+    {
+        $this->middleware('permission:admins_read')->only(['index']);
+        $this->middleware('permission:admins_create')->only(['create', 'store']);
+        $this->middleware('permission:admins_update')->only(['edit', 'update']);
+        $this->middleware('permission:admins_delete')->only(['delete', 'bulk_delete']);
+
+    }// end of __construct
     
     public function index()
     {
         $admins = Admin::all();
+        $roles  = Role::whereNotIn('name', ['super_admin', 'admin', 'user'])->get();
 
-        return view('dashboard_admin.admins.index', compact('admins'));
+        return view('dashboard.admin.admins.index', compact('admins','roles'));
 
     }//end of index
+
+    public function data()
+    {
+        $admins = Admin::all();
+
+        return DataTables::of($admins)
+            ->addColumn('record_select', 'dashboard.admin.admins.data_table.record_select')
+            ->addColumn('roles', function (Admin $admin) {
+                return view('dashboard.admin.admins.data_table.roles', compact('admin'));
+            })
+            ->editColumn('created_at', function (Admin $admin) {
+                return $admin->created_at->format('Y-m-d');
+            })
+            ->editColumn('image', function (Admin $admin) {
+                return view('dashboard.admin.admins.data_table.image', compact('admin'));
+            })
+            ->addColumn('actions', 'dashboard.admin.admins.data_table.actions')
+            ->rawColumns(['record_select', 'roles', 'actions'])
+            ->addIndexColumn()
+            ->toJson();
+
+    }// end of data
 
     
     public function create()
     {        
-        return view('dashboard_admin.admins.create');
+        $roles  = Role::all();
+
+        return view('dashboard.admin.admins.create', compact('roles'));
 
     }//end of create
 

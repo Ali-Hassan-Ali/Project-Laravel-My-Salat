@@ -5,10 +5,12 @@ return [
     'dashboard'     => 'لوحة التحكم',
     'salats'        => 'الصلات',
     
+    'name'          => 'الاسم',
     'email'         => 'الايميل',
     'password'      => 'كلمة السر',
     'login'         => 'تسجيل دخول',
     'remember_me'   => 'تزكرتي',
+    'image'         => 'الصورة',
 
     'the_banners'   => 'البيانات الاساسية',
     'exterior'      => 'المظهر الخارجي',
@@ -35,5 +37,6 @@ return [
     'product_categorys'=> 'اقسام المنتجات',
 
     'supports'        => 'رسائل الدعم',
+    'password_confirmation'      => 'إعادة كتابة كلمة المرور',
 
 ];

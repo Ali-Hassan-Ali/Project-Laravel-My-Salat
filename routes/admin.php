@@ -28,13 +28,16 @@ Route::prefix('dashboard/admin')->name('dashboard.admin.')->middleware('auth:adm
 
         Route::get('/home', [WelcomController::class,'index'])->name('home');
 
-        Route::get('admins/data', [OwnerController::class, 'data'])->name('admins.data');
+        Route::get('admins/data', [AdminController::class, 'data'])->name('admins.data');
+        Route::delete('/status/bulk_delete', [AdminController::class, 'bulkDelete'])->name('admins.bulk_delete');
         Route::resource('admins', AdminController::class)->except('show');
 
         Route::get('owners/data', [OwnerController::class, 'data'])->name('owners.data');
+        Route::delete('/owners/bulk_delete', [OwnerController::class, 'bulkDelete'])->name('owners.bulk_delete');
         Route::resource('owners', OwnerController::class)->except('show');
 
-        Route::get('users/data', [OwnerController::class, 'data'])->name('users.data');
+        Route::get('users/data', [UserController::class, 'data'])->name('users.data');
+        Route::delete('/users/bulk_delete', [UserController::class, 'bulkDelete'])->name('users.bulk_delete');
         Route::resource('users', UserController::class)->except('show');
 
         Route::resource('service_categorys', ServiceCategoryController::class)->except('show');

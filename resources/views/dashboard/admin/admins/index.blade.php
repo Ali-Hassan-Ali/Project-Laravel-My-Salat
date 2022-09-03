@@ -3,12 +3,12 @@
 @section('content')
 
     <div>
-        <h2>@lang('users.users')</h2>
+        <h2>@lang('admins.admins')</h2>
     </div>
 
     <ul class="breadcrumb mt-2">
         <li class="breadcrumb-item"><a href="{{ route('dashboard.admin.home') }}">@lang('site.home')</a></li>
-        <li class="breadcrumb-item">@lang('users.users')</li>
+        <li class="breadcrumb-item">@lang('admins.admins')</li>
     </ul>
 
     <div class="row">
@@ -17,7 +17,7 @@
 
             <div class="tile shadow">
 
-                {{-- <div class="row mb-2">
+                <div class="row mb-2">
 
                     <div class="col-md-12">
 
@@ -36,13 +36,26 @@
 
                     </div>
 
-                </div> --}}<!-- end of row -->
+                </div><!-- end of row -->
 
                 <div class="row">
 
                     <div class="col-md-6">
                         <div class="form-group">
                             <input type="text" id="data-table-search" class="form-control" autofocus placeholder="@lang('site.search')">
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="form-group">
+                                <select id="role" class="form-control select2">
+                                    <option value="">@lang('site.all') @lang('roles.roles')</option>
+                                    @foreach ($roles as $role)
+                                        <option value="{{ $role->id }}">{{ $role->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
                     </div>
 
@@ -54,7 +67,7 @@
 
                         <div class="table-responsive">
 
-                            <table class="table datatable" id="users-table" style="width: 100%;">
+                            <table class="table datatable" id="admins-table" style="width: 100%;">
                                 <thead>
                                 <tr>
                                     <th>
@@ -66,11 +79,10 @@
                                         </div>
                                     </th>
                                     <th>@lang('site.DT_RowIndex')</th>
-                                    <th>@lang('users.username')</th>
-                                    <th>@lang('users.phone')</th>
-                                    <th>@lang('users.image')</th>
-                                    <th>@lang('users.code')</th>
-                                    <th>@lang('users.status')</th>
+                                    <th>@lang('admins.name')</th>
+                                    <th>@lang('admins.email')</th>
+                                    <th>@lang('admins.image')</th>
+                                    <th>@lang('roles.roles')</th>
                                     <th>@lang('site.created_at')</th>
                                     <th>@lang('site.action')</th>
                                 </tr>
@@ -95,7 +107,9 @@
 
     <script>
 
-        let usersTable = $('#users-table').DataTable({
+        let role;
+
+        let adminsTable = $('#admins-table').DataTable({
             dom: "tiplr",
             scrollY: '500px',
             scrollCollapse: true,
@@ -106,16 +120,18 @@
                 "url": "{{ asset('admin_assets/datatable-lang/' . app()->getLocale() . '.json') }}"
             },
             ajax: {
-                url: '{{ route('dashboard.admin.users.data') }}',
+                url: '{{ route('dashboard.admin.admins.data') }}',
+                data: function (d) {
+                    d.role_id = role;
+                }
             },
             columns: [
                 {data: 'record_select', name: 'record_select', searchable: false, sortable: false, width: '1%'},
                 {data: 'DT_RowIndex', name: 'DT_RowIndex'},
-                {data: 'username', name: 'username'},
-                {data: 'phone', name: 'phone'},
+                {data: 'name', name: 'name'},
+                {data: 'email', name: 'email'},
                 {data: 'image', name: 'image'},
-                {data: 'code', name: 'code'},
-                {data: 'status', name: 'status'},
+                {data: 'roles', name: 'roles'},
                 {data: 'created_at', name: 'created_at', searchable: false},
                 {data: 'actions', name: 'actions', searchable: false, sortable: false, width: '20%'},
             ],
@@ -129,8 +145,13 @@
         });
 
         $('#data-table-search').keyup(function () {
-            usersTable.search(this.value).draw();
-        });
+            adminsTable.search(this.value).draw();
+        })
+
+        $('#role').on('change', function () {
+            role = this.value;
+            adminsTable.ajax.reload();
+        })
     </script>
 
 @endpush

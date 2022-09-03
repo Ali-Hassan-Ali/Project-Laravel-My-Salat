@@ -17,16 +17,18 @@
 
         <li><a class="app-menu__item {{ request()->is('*home*') ? 'active' : '' }}" href="{{ route('dashboard.admin.home') }}"><i class="app-menu__icon fa fa-home"></i> <span class="app-menu__label">@lang('site.home')</span></a></li>
 
-        <li><a class="app-menu__item {{ request()->is('*users*') ? 'active' : '' }}" href="{{ route('dashboard.admin.home') }}"><i class="app-menu__icon fa fa-home"></i> <span class="app-menu__label">@lang('users.users')</span></a></li>
-
         {{--owners--}}
         @if (auth()->user()->hasPermission('owners_read'))
-            <li><a class="app-menu__item {{ request()->segment(2) == 'owners' ? 'active' : '' }}" href="{{ route('dashboard.admin.owners.index') }}"><i class="app-menu__icon fas fa-tools"></i> <span class="app-menu__label">@lang('owners.owners')</span></a></li>
+            <li><a class="app-menu__item {{ request()->segment(3) == 'owners' ? 'active' : '' }}" href="{{ route('dashboard.admin.owners.index') }}"><i class="app-menu__icon fas fa-tools"></i> <span class="app-menu__label">@lang('owners.owners')</span></a></li>
+        @endif
+
+        @if (auth()->user()->hasPermission('users_read'))
+            <li><a class="app-menu__item {{ request()->segment(3) == 'users' ? 'active' : '' }}" href="{{ route('dashboard.admin.users.index') }}"><i class="app-menu__icon fas fa-tools"></i> <span class="app-menu__label">@lang('users.users')</span></a></li>
         @endif
 
         {{--admins--}}
         @if (auth()->user()->hasPermission('admins_read'))
-            <li><a class="app-menu__item {{ request()->segment(2) == 'admins' ? 'active' : '' }}" href="{{ route('dashboard.admin.admins.index') }}"><i class="app-menu__icon fas fa-tools"></i> <span class="app-menu__label">@lang('admins.admins')</span></a></li>
+            <li><a class="app-menu__item {{ request()->segment(3) == 'admins' ? 'active' : '' }}" href="{{ route('dashboard.admin.admins.index') }}"><i class="app-menu__icon fas fa-tools"></i> <span class="app-menu__label">@lang('admins.admins')</span></a></li>
         @endif
 
 

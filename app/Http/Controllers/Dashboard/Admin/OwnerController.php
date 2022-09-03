@@ -8,17 +8,51 @@ use Illuminate\Validation\Rule;
 use App\Models\Owner;
 use App\Models\Categorey;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 
 class OwnerController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('permission:owners_read')->only(['index','data']);
+        $this->middleware('permission:owners_create')->only(['create', 'store']);
+        $this->middleware('permission:owners_update')->only(['edit', 'update']);
+        $this->middleware('permission:owners_delete')->only(['delete', 'bulk_delete']);
+
+    }// end of __construct
+    
+
     public function index()
     {
-        $owners = Owner::latest()->limit(10)->get();
-        
-        return view('dashboard_admin.owners.index',compact('owners'));
+        return view('dashboard.admin.owners.index');
 
     }//end of index
+
+    public function data()
+    {
+        $owners = Owner::query();
+
+        return DataTables::of($owners)
+            ->addColumn('record_select', 'dashboard.admin.admins.data_table.record_select')
+            ->editColumn('created_at', function (Owner $owner) {
+                return $owner->created_at->format('Y-m-d');
+            })
+            ->editColumn('image', function (Owner $owner) {
+                return view('dashboard.admin.owners.data_table.image', compact('owner'));
+            })
+            ->editColumn('status', function (Owner $owner) {
+                return view('dashboard.admin.owners.data_table.status', compact('owner'));
+            })
+            ->addColumn('categorey', function (Owner $owner) {
+                return $owner->banner->category->name;
+            })
+            ->addColumn('actions', 'dashboard.admin.admins.data_table.actions')
+            ->rawColumns(['record_select', 'actions'])
+            ->addIndexColumn()
+            ->toJson();
+
+    }// end of data
 
     
     public function create()

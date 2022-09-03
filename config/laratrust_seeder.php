@@ -16,7 +16,7 @@ return [
         'admin' => [
             'admins'     => 'c,r,u,d',
             'users'      => 'c,r,u,d',
-            'owners'     => 'c,r,u,d',
+            'owners'     => 'c,r,u,d,s',
             'categorys'  => 'c,r,u,d',
             'payments'   => 'c,r,u,d',
             'services'   => 'c,r,u,d',
@@ -30,6 +30,7 @@ return [
         'c' => 'create',
         'r' => 'read',
         'u' => 'update',
-        'd' => 'delete'
+        'd' => 'delete',
+        's' => 'show'
     ]
 ];
