@@ -171,9 +171,13 @@ class OrderController extends Controller
         
     }//end of fun
 
-    public function payment_order_status(Order $order)
+    public function orderCancel(Order $order)
     {
-        return $order->;
+        $order->update([
+            'order_statuses_id' => 3,
+        ]);
+
+        return response()->api($order);
         
     }//end of fun
 
