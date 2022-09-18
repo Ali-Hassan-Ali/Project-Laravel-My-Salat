@@ -173,9 +173,12 @@ class OrderController extends Controller
 
     public function orderCancel(Order $order)
     {
-        $order->update([
-            'order_statuses_id' => 3,
-        ]);
+        if (!$order->order_statuses_id == 3) {
+            
+            $order->update([
+                'order_statuses_id' => 3,
+            ]);   
+        }
 
         return response()->api($order);
         
