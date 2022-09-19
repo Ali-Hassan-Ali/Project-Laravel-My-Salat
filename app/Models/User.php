@@ -7,9 +7,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Laratrust\Traits\LaratrustUserTrait;
 
 class User extends Authenticatable
 {
+    use LaratrustUserTrait;
     use HasApiTokens, HasFactory, Notifiable;
 
     protected $guarded  = [];
@@ -29,7 +31,7 @@ class User extends Authenticatable
 
     public function getFavoredsAttribute()
     {
-        return $this->favoreds();
+        return $this->favoreds()->count() > 0 ? $this->favoreds() : [];
 
     }//end of fun
 
@@ -42,7 +44,7 @@ class User extends Authenticatable
             ->orWhere('phone', 'like', "%$search%");
         });
         
-    }//end o fscopeWhenSearch`
+    }//end of fun copeWhenSearch
 
     //relations ----------------------------------
 

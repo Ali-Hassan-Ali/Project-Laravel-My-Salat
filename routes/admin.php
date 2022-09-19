@@ -7,6 +7,7 @@ use App\Http\Controllers\Dashboard\Admin\Auth\AuthController;
 use App\Http\Controllers\Dashboard\Admin\WelcomController;
 use App\Http\Controllers\Dashboard\Admin\AdminController;
 use App\Http\Controllers\Dashboard\Admin\OwnerController;
+use App\Http\Controllers\Dashboard\Admin\UserController;
 use App\Http\Controllers\Dashboard\Admin\CategoreyController;
 use App\Http\Controllers\Dashboard\Admin\BookingController;
 use App\Http\Controllers\Dashboard\Admin\ServiceCategoryController;
@@ -21,18 +22,27 @@ use App\Http\Controllers\Dashboard\Admin\SupportController;
 
 Route::get('dashboard/admin/login', [AuthController::class,'index'])->name('dashboard.admin.login');
 Route::post('/dashboard/admin/store', [AuthController::class,'store'])->name('dashboard.admin.login.store');
-Route::get('dashboard/admin/logout', [AuthController::class,'admin_logout'])->name('dashboard.admin.logout');
+Route::post('dashboard/admin/logout', [AuthController::class,'admin_logout'])->name('dashboard.admin.logout');
 
 Route::prefix('dashboard/admin')->name('dashboard.admin.')->middleware('auth:admin')->group(function () {
 
-        Route::get('/', [WelcomController::class,'index'])->name('welcome');
+        Route::get('/home', [WelcomController::class,'index'])->name('home');
 
+        Route::get('admins/data', [AdminController::class, 'data'])->name('admins.data');
+        Route::delete('/status/bulk_delete', [AdminController::class, 'bulkDelete'])->name('admins.bulk_delete');
         Route::resource('admins', AdminController::class)->except('show');
 
+        Route::get('owners/data', [OwnerController::class, 'data'])->name('owners.data');
+        Route::delete('/owners/bulk_delete', [OwnerController::class, 'bulkDelete'])->name('owners.bulk_delete');
         Route::resource('owners', OwnerController::class)->except('show');
+
+        Route::get('users/data', [UserController::class, 'data'])->name('users.data');
+        Route::delete('/users/bulk_delete', [UserController::class, 'bulkDelete'])->name('users.bulk_delete');
+        Route::resource('users', UserController::class)->except('show');
 
         Route::resource('service_categorys', ServiceCategoryController::class)->except('show');
 
+        Route::get('categoreys/data', [CategoreyController::class, 'data'])->name('categoreys.data');
         Route::resource('categoreys', CategoreyController::class)->except('show');
 
         Route::resource('bookings', BookingController::class)->except('show');

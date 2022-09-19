@@ -13,6 +13,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $this->call(LaratrustSeeder::class);
         $this->call(AdminsTableSeeder::class);
         $this->call(CategoreyTableSeeder::class);
         $this->call(UserTableSeeder::class);
@@ -26,17 +27,17 @@ class DatabaseSeeder extends Seeder
         $this->call(GalleryTableSeeder::class);
         $this->call(PaymentClientTableSeeder::class);
 
-        $this->call(OwnerTableSeederMove::class);
-        $this->call(OwnerTableSeederHotels::class);
-        $this->call(OwnerTableSeederHotelAppartment::class);
-        $this->call(OwnerTableSeederArtist::class);
-        $this->call(OwnerTableSeedCar::class);
-        $this->call(SuitTableSeeder::class);
-        $this->call(WomenHairdresserTableSeeder::class);
-        $this->call(OwnerTableSeederFarms::class);
-        $this->call(OwnerTableSeedConferenceRooms::class);
+        // $this->call(OwnerTableSeederMove::class);
+        // $this->call(OwnerTableSeederHotels::class);
+        // $this->call(OwnerTableSeederHotelAppartment::class);
+        // $this->call(OwnerTableSeederArtist::class);
+        // $this->call(OwnerTableSeedCar::class);
+        // $this->call(SuitTableSeeder::class);
+        // $this->call(WomenHairdresserTableSeeder::class);
+        // $this->call(OwnerTableSeederFarms::class);
+        // $this->call(OwnerTableSeedConferenceRooms::class);
         
-        $this->call(FavoredTableSeeder::class);
+        // $this->call(FavoredTableSeeder::class);
         
     }//end of run
 
