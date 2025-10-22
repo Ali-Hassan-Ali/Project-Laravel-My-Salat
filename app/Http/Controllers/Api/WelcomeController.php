@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Models\Categorey;
+use App\Http\Controllers\Controller;
 
 class WelcomeController extends Controller
 {
