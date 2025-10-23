@@ -1,10 +1,10 @@
 <?php
 
-namespace Database\Seeders;
+namespace Database\Seeders\Dashboard;
 
 use Illuminate\Database\Seeder;
 
-class OwnerTableSeeder extends Seeder
+class OwnerTableSeederMove extends Seeder
 {
     /**
      * Run the database seeds.

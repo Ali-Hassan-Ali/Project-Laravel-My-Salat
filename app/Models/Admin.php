@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Model;
-use Laratrust\Traits\LaratrustUserTrait;
+use Laratrust\Traits\HasRolesAndPermissions;
 
 class Admin extends Authenticatable
 {
-    use LaratrustUserTrait;
+    use HasRolesAndPermissions;
     use HasFactory;
 
     protected $guard    = 'admin';
