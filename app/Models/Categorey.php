@@ -16,6 +16,17 @@ class Categorey extends Model
      //attributes----------------------------------
     public function getLogoPathAttribute()
     {
+        if ($this->logo == 'categorey_images/halls.png') return asset('site_assets/category/apartments.png');
+        if ($this->logo == 'categorey_images/movedhalls.png') return asset('site_assets/category/tent.png');
+        if ($this->logo == 'categorey_images/hotels.png') return asset('site_assets/category/hotels.png');
+        if ($this->logo == 'categorey_images/graduating.png') return asset('site_assets/category/Furnished apartments.png');
+        if ($this->logo == 'categorey_images/singer.png') return asset('site_assets/category/singer.png');
+        if ($this->logo == 'categorey_images/appartments.png') return asset('site_assets/category/Wedding car.png');
+        if ($this->logo == 'categorey_images/suit.png') return asset('site_assets/category/suit.png');
+        if ($this->logo == 'categorey_images/beauty.png') return asset('site_assets/category/Wedding hairdresser.png');
+        if ($this->logo == 'categorey_images/appartments.png') return asset('site_assets/category/resort.png');
+        if ($this->logo == 'categorey_images/meeting.png') return asset('site_assets/category/resort.png');
+
         return asset('storage/' . $this->logo);
 
     }//end of get logo path

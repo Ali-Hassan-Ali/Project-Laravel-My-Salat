@@ -36,9 +36,9 @@ class DatabaseSeeder extends Seeder
         // $this->call(WomenHairdresserTableSeeder::class);
         // $this->call(OwnerTableSeederFarms::class);
         // $this->call(OwnerTableSeedConferenceRooms::class);
-        
-        // $this->call(FavoredTableSeeder::class);
-        
-    }//end of run
 
-}//end of seede
+        // $this->call(FavoredTableSeeder::class);
+
+    }// end of run
+
+}// end of seede

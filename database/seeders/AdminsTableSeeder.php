@@ -14,14 +14,16 @@ class AdminsTableSeeder extends Seeder
     public function run()
     {
         $admin = \App\Models\Admin::create([
-            'name'     => 'admin',
-            'phone'    => '123123123',
-            'email'    => 'super_admin@app.com',
+            'name' => 'admin',
+            'phone' => '123123123',
+            'email' => 'super_admin@app.com',
             'password' => bcrypt('123123123'),
         ]);
 
-        $admin->attachRole('admin');
+        $adminRole = \App\Models\Role::where('name', 'admin')->first()->pluck('name');
+        // dd('gfg');
+        // dd($adminRole);
+        // $admin->addRoles(['admin', 'user']);
+    }// end of run
 
-    }//end of run
-    
-}//end of class
+}// end of class

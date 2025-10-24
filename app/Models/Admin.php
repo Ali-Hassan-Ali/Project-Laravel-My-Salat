@@ -3,45 +3,45 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Laratrust\Contracts\LaratrustUser;
 use Laratrust\Traits\HasRolesAndPermissions;
 
-class Admin extends Authenticatable
+class Admin extends Authenticatable implements LaratrustUser
 {
-    use HasRolesAndPermissions;
     use HasFactory;
+    use HasRolesAndPermissions;
 
-    protected $guard    = 'admin';
+    protected $guard = 'admin';
 
-    protected $fillable = ['name','email','password','phone'];
+    protected $fillable = ['name', 'email', 'password', 'phone'];
 
-    protected $hidden   = ['password','remember_token'];
-    
-    protected $casts    = ['email_verified_at' => 'datetime'];
+    protected $hidden = ['password', 'remember_token'];
 
-    protected $appends  = ['image_path'];
+    protected $casts = ['email_verified_at' => 'datetime'];
 
-     //attributes----------------------------------
+    protected $appends = ['image_path'];
+
+    // attributes----------------------------------
     public function getImagePathAttribute()
     {
-        return asset('storage/' . $this->image);
+        return asset('storage/'.$this->image);
 
-    }//end of get image path
+    }// end of get image path
 
-
-    //scopes -------------------------------------
-    public function scopeWhenSearch($query , $search) 
+    // scopes -------------------------------------
+    public function scopeWhenSearch($query, $search)
     {
         return $query->when($search, function ($q) use ($search) {
 
-            return $q->where('name' , 'like', "%$search%")
-            ->orWhere('email', 'like', "%$search%")
-            ->orWhere('phone', 'like', "%$search%");
+            return $q->where('name', 'like', "%$search%")
+                ->orWhere('email', 'like', "%$search%")
+                ->orWhere('phone', 'like', "%$search%");
         });
-        
-    }//end o fscopeWhenSearch`
 
-    //relations ----------------------------------
+    }// end o fscopeWhenSearch`
 
-}//end of model
+    // relations ----------------------------------
+
+}// end of model

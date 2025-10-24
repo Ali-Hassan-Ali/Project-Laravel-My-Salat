@@ -36,10 +36,10 @@ class LaratrustSeeder extends Seeder
                 'display_name' => ucwords(str_replace('_', ' ', $key)),
                 'description' => ucwords(str_replace('_', ' ', $key))
             ]);
+
             $permissions = [];
 
             $this->command->info('Creating Role '. strtoupper($key));
-
             // Reading role permission modules
             foreach ($modules as $module => $value) {
 
