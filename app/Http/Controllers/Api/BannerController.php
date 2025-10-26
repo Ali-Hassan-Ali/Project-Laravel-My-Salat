@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 
 class BannerController extends Controller
 {
-    public function index($id)
+    public function index($id = 1)
     {
         if ($id == '6') {
             
