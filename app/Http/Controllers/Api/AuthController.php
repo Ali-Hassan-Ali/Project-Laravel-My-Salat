@@ -17,7 +17,7 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'username' => ['required'],
+            'username' => ['nullable'],
             'phone'    => ['required','numeric','min:9'],
         ]);
 

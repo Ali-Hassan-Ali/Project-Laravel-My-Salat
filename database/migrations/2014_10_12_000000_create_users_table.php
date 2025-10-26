@@ -15,7 +15,7 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('username');
+            $table->string('username')->default('username');
             $table->string('region')->default('region');
             $table->string('phone')->unique();
             $table->string('image')->default('user_images/default.png');
