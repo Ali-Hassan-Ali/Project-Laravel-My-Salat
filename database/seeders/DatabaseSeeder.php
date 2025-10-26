@@ -26,8 +26,7 @@ class DatabaseSeeder extends Seeder
         $this->call(OrderTableSeeder::class);
         $this->call(GalleryTableSeeder::class);
         $this->call(PaymentClientTableSeeder::class);
-
-        // $this->call(OwnerTableSeederMove::class);
+        $this->call(OwnerTableSeederMove::class);
         // $this->call(OwnerTableSeederHotels::class);
         // $this->call(OwnerTableSeederHotelAppartment::class);
         // $this->call(OwnerTableSeederArtist::class);

@@ -51,7 +51,7 @@ class OwnerTableSeederMove extends Seeder
         //////////////////////////////////////////// category 1 ////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////////////
 
-        $owners = ['saluhs 1','saluhs 2','saluhs 3','saluhs 4','saluhs 5'];
+        $owners = ['صالة الأحلام للمناسبات','صالة الذهبية','صالة ماجستك','صالة الوداد','صالة ليلة العمر'];
 
         foreach ($owners as $index=>$owner) {
 
@@ -59,11 +59,11 @@ class OwnerTableSeederMove extends Seeder
                 'name'     => $owner,
                 'status'   => 1,
                 'phone'    => '+2491149296'.$index,
-                'email'    =>  $owner.'@gmail.com',
+                'email'    =>  rand(1111,9999).'@gmail.com',
                 'password' => bcrypt('123123123'),
             ]);
 
-            $onner = $new_owner->banner()->create(['categoreys_id'=>1]);
+            $onner = $new_owner->banner()->create(['categoreys_id'=>1, 'image' => "site_assets/saluhs/$index"]);
 
             $interiors = ['interior 1','interior 2','interior 3','interior 4'];
 

@@ -24,6 +24,9 @@ class Banner extends Model
      //attributes----------------------------------
     public function getImagePathAttribute()
     {
+            return asset($this->image);
+        if ($this->image == 'site_assets/saluhs/*') {
+        }
         return asset('storage/' . $this->image);
 
     }//end of get image path

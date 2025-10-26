@@ -13,16 +13,26 @@ class BookingTableSeeder extends Seeder
      */
     public function run()
     {
-        $names = ['زواج','تخريج ','مؤتمر','كرنفال','مهرجان'];
+        $names = ['زواج', 'تخريج', 'مؤتمر', 'كرنفال', 'مهرجان'];
 
-        foreach ($names as $name) {
-
-           \App\Models\Booking::create([
-                'name'           => $name,
-                'categoreys_id'  => '1',
+        // Ensure at least one category exists to attach bookings to.
+        $category = \App\Models\Categorey::first();
+        if (! $category) {
+            $category = \App\Models\Categorey::create([
+                'name' => 'صالات الافراح',
+                'slug' => \Illuminate\Support\Str::slug('صالات الافراح', '_'),
+                'logo' => 'categorey_images/halls.png',
             ]);
         }
 
-    }//end of run
-    
-}//end of class
+        foreach ($names as $name) {
+            // Use firstOrCreate so the seeder is idempotent and can be re-run safely.
+            \App\Models\Booking::firstOrCreate([
+                'name' => $name,
+                'categoreys_id' => (int) $category->id,
+            ]);
+        }
+
+    }// end of run
+
+}// end of class
