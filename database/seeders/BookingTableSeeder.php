@@ -13,7 +13,7 @@ class BookingTableSeeder extends Seeder
      */
     public function run()
     {
-        $names = ['زواج', 'تخريج', 'مؤتمر', 'كرنفال', 'مهرجان'];
+        $names = ['زواج', 'تخريج', 'مؤتمر', 'كرنفال', 'مهرجان', 'Junie'];
 
         // Ensure at least one category exists to attach bookings to.
         $category = \App\Models\Categorey::first();

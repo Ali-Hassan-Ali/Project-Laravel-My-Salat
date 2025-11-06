@@ -13,17 +13,22 @@ class AdminsTableSeeder extends Seeder
      */
     public function run()
     {
-        $admin = \App\Models\Admin::create([
-            'name' => 'admin',
-            'phone' => '123123123',
-            'email' => 'super_admin@app.com',
-            'password' => bcrypt('123123123'),
-        ]);
+        // Create or get the admin user (idempotent)
+        $admin = \App\Models\Admin::firstOrCreate(
+            ['email' => 'super_admin@app.com'],
+            [
+                'name' => 'admin',
+                'phone' => '123123123',
+                'password' => bcrypt('123123123'),
+            ]
+        );
 
-        $adminRole = \App\Models\Role::where('name', 'admin')->first()->pluck('name');
-        // dd('gfg');
-        // dd($adminRole);
-        // $admin->addRoles(['admin', 'user']);
+        // Ensure the roles exist
+        $adminRole = \App\Models\Role::firstOrCreate(['name' => 'admin']);
+        $userRole = \App\Models\Role::firstOrCreate(['name' => 'user']);
+
+        // Attach roles to admin without duplicating
+        $admin->roles()->syncWithoutDetaching([$adminRole->id, $userRole->id]);
     }// end of run
 
 }// end of class

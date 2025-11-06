@@ -3,22 +3,21 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Http\Resources\UserResource;
+use App\Models\Favored;
+use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
-use App\Models\User;
-use App\Models\Favored;
 
 class AuthController extends Controller
 {
-    
     public function login(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'username' => ['nullable'],
-            'phone'    => ['required','numeric','min:9'],
+            'phone' => ['required', 'numeric', 'min:9'],
         ]);
 
         if ($validator->fails()) {
@@ -31,8 +30,8 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
 
-            $user          = auth()->user();
-            $data['user']  = new UserResource($user);
+            $user = auth()->user();
+            $data['user'] = new UserResource($user);
             $data['token'] = $user->createToken('my-app-token')->plainTextToken;
 
             return response()->api($data);
@@ -41,19 +40,18 @@ class AuthController extends Controller
 
             return response()->api([], 1, __('auth.failed'));
 
-        }//end of else
+        }// end of else
 
-    }//end of login
+    }// end of login
 
     public function register(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'username' => ['required'],
-            'region'   => ['required'],
-            'phone'    => ['required','unique:users'],
+            'region' => ['required'],
+            'phone' => ['required', 'unique:users'],
             // 'password' => ['required','min:6'],
         ]);
-
 
         if ($validator->fails()) {
             return response()->api([], 1, $validator->errors()->first());
@@ -61,11 +59,11 @@ class AuthController extends Controller
         $request_data = $request->except('image');
         $request_data['password'] = bcrypt('123123123');
 
-        if($request->image) {
+        if ($request->image) {
 
-            $request_data['image'] = $request->file('image')->store('user_images','public');
+            $request_data['image'] = $request->file('image')->store('user_images', 'public');
 
-        }//end of image
+        }// end of image
 
         $user = User::create($request_data);
 
@@ -74,8 +72,8 @@ class AuthController extends Controller
 
         if (auth()->attempt($credentials)) {
 
-            $user          = auth()->user();
-            $data['user']  = new UserResource($user);
+            $user = auth()->user();
+            $data['user'] = new UserResource($user);
             $data['token'] = $user->createToken('my-app-token')->plainTextToken;
 
             return response()->api($data);
@@ -84,15 +82,15 @@ class AuthController extends Controller
 
             return response()->api([], 1, __('auth.failed'));
 
-        }//end of else
+        }// end of else
 
-    }//end of register
+    }// end of register
 
     public function user()
     {
         $data['user'] = new UserResource(auth()->user('sanctum'));
 
-        $data['favoreds']      = User::with('favoreds')->find($data['user']->id);
+        $data['favoreds'] = User::with('favoreds')->find($data['user']->id);
         $data['favored_count'] = Favored::where('user_id', $data['user']->id)->count();
 
         return response()->api($data);
@@ -104,17 +102,16 @@ class AuthController extends Controller
 
         $validator = Validator::make($request->all(), [
             'username' => ['required'],
-            'region'   => ['required'],
+            'region' => ['required'],
             // 'phone'    => ['required','unique:users'],
             // 'image'    => ['required','image'],
             // 'password' => ['required','min:6'],
         ]);
 
-
         if ($validator->fails()) {
             return response()->api([], 1, $validator->errors()->first());
         }
-        
+
         $data['user'] = new UserResource(auth()->user('sanctum'));
 
         $user = User::find($data['user']->id);
@@ -123,44 +120,71 @@ class AuthController extends Controller
 
             if ($user->image != 'user_images/default.png') {
 
-                Storage::disk('local')->delete('public/'. $user->image);
+                Storage::disk('local')->delete('public/'.$user->image);
 
-            } //end of if
+            } // end of if
 
-            $request_data['image'] = $request->file('image')->store('user_images','public');
+            $request_data['image'] = $request->file('image')->store('user_images', 'public');
 
             $user->update([
                 'username' => $request->username,
-                'region'   => $request->region,
-                'image'    => $request_data['image'],
+                'region' => $request->region,
+                'image' => $request_data['image'],
             ]);
-            
+
         } else {
 
             $user->update([
                 'username' => $request->username,
-                'region'   => $request->region,
+                'region' => $request->region,
             ]);
 
-        }//end of if
+        }// end of if
 
         $user = User::find($data['user']->id);
 
         return response()->api($user);
 
-    }//end of update user
+    }// end of update user
 
     public function update_user(User $user, Request $request)
     {
-        $user = User::find($request->id);
-
-        $user->update([
-            'username' => $request->username,
-            'region'   => $request->region,
+        $validator = Validator::make($request->all(), [
+            'id' => ['required', 'exists:users,id'],
+            'username' => ['required', 'string', 'max:255'],
+            'region' => ['required', 'string', 'max:255'],
+            'image' => ['sometimes', 'image'],
+            'password' => ['sometimes', 'string', 'min:6'],
         ]);
 
-        return response()->api($user);
+        if ($validator->fails()) {
+            return response()->api([], 1, $validator->errors()->first());
+        }
 
-    }//end of update user
+        $user = User::find($request->id);
 
-}//end of controller
+        $updateData = [
+            'username' => $request->username,
+            'region' => $request->region,
+        ];
+
+        if ($request->hasFile('image')) {
+            // delete old image if not default
+            if ($user->image && $user->image !== 'user_images/default.png') {
+                Storage::disk('local')->delete('public/'.$user->image);
+            }
+
+            $updateData['image'] = $request->file('image')->store('user_images', 'public');
+        }
+
+        if ($request->filled('password')) {
+            $updateData['password'] = bcrypt($request->password);
+        }
+
+        $user->update($updateData);
+
+        return response()->api(new UserResource($user));
+
+    }// end of update user
+
+}// end of controller

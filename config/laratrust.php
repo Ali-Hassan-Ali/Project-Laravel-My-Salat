@@ -100,13 +100,9 @@ return [
     */
     'user_models' => [
         'users' => \App\Models\User::class,
-        // 'checker' => \Laratrust\Checkers\User\UserDefaultChecker::class,
-    ],
-
-    'admin_models' => [
         'admins' => \App\Models\Admin::class,
     ],
-
+    
     /*
     |--------------------------------------------------------------------------
     | Laratrust Models

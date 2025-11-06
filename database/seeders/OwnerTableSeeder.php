@@ -65,15 +65,16 @@ class OwnerTableSeeder extends Seeder
                 'password' => bcrypt('123123123'),
             ]);
 
-            $onner = $new_owner->banner()->create(['map' => $maps[$index], 'name' => $owner, 'categoreys_id' => 1, 'image' => "site_assets/saluhs/$index.png"]);
+            $banner = $new_owner->banner()->create(['map' => $maps[$index], 'name' => $owner, 'categoreys_id' => 1, 'image' => "site_assets/saluhs/$index.png"]);
 
-            $interiors = ['interior 1', 'interior 2', 'interior 3', 'interior 4'];
+            $interiors = [1, 2, 3];
 
-            foreach ($interiors as $interior) {
+            foreach ($interiors as $indexInteriors => $interior) {
 
                 \App\Models\Gallery::create([
                     'title' => 'صور الصاله',
-                    'banner_id' => $new_owner->id,
+                    'banner_id' => $banner->id,
+                    'image' => "site_assets/saluhs/$index/$index-$interior.png",
                 ]);
 
             }// end of foreach

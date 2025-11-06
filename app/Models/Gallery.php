@@ -11,13 +11,17 @@ class Gallery extends Model
 
     protected $guarded = [];
 
-    protected $appends  = ['image_path'];
+    protected $appends = ['image_path'];
 
-     //attributes----------------------------------
+    // attributes----------------------------------
     public function getImagePathAttribute()
     {
-        return asset('storage/' . $this->image);
+        // return 'gfgfgfg';
 
-    }//end of get image path   
+        return asset($this->image);
 
-}//end of model
+        // return asset('storage/'.$this->image);
+
+    }// end of get image path
+
+}// end of model
